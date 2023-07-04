@@ -1,6 +1,6 @@
 // Project imports:
 import 'package:gerencia_net_plus/src/config/http_client/gerencia_net_plus_pix_rest_client.dart';
-import 'package:gerencia_net_plus/src/pix/charge/models/pix_create_charge_response.dart';
+import 'package:gerencia_net_plus/src/pix/charge/models/pix_charge_response.dart';
 
 import '../../gerencia_net_credentials.dart';
 import '../models/additional_info.dart';
@@ -12,7 +12,7 @@ class PixCreateImmediateCharge {
 
   const PixCreateImmediateCharge(this.client);
 
-  Future<PixCreateChargeResponse> call({
+  Future<PixChargeResponse> call({
     required GerenciaNetCredentials credentials,
     required Duration expiration,
     required double value,
@@ -33,6 +33,6 @@ class PixCreateImmediateCharge {
 
     final response = await client<Map<String, dynamic>>(endPoint: endPoint, body: body.toMap());
 
-    return PixCreateChargeResponse(response.data!);
+    return PixChargeResponse(response.data!);
   }
 }

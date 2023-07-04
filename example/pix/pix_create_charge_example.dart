@@ -6,7 +6,7 @@ import '../base_credentials.dart';
 
 Future<void> main(List<String> args) async {
   final gerenciaNetPlus = GerenciaNetPlus(credentials: baseCredentials);
-  final result = await gerenciaNetPlus.pix.pixCreateCharge(
+  final result = await gerenciaNetPlus.pix.createCharge(
     expiration: Duration(days: 10),
     value: 5.99,
     debtor: LegalPersonDebtor(

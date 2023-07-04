@@ -7,7 +7,7 @@ import '../../models/debtor.dart';
 import '../../models/location_info.dart';
 import '../../models/pix_status.dart';
 
-class PixCreateChargeResponse {
+class PixChargeResponse {
   final DateTime creation;
   final Duration expiration;
   final String txid;
@@ -20,7 +20,7 @@ class PixCreateChargeResponse {
   final String? payerSolicitation;
   final List<AdditionalInfo>? additionalInfo;
 
-  const PixCreateChargeResponse._({
+  const PixChargeResponse._({
     required this.creation,
     required this.expiration,
     required this.txid,
@@ -34,7 +34,7 @@ class PixCreateChargeResponse {
     this.additionalInfo,
   });
 
-  factory PixCreateChargeResponse(Map<String, dynamic> json) {
+  factory PixChargeResponse(Map<String, dynamic> json) {
     final Map<String, dynamic>? debtorJson = json['devedor'];
     Debtor? debtor;
     if (debtorJson?.containsKey('cpf') ?? false) {
@@ -56,7 +56,7 @@ class PixCreateChargeResponse {
           additionalInfoJson.map((e) => AdditionalInfo.fromMap(e)).toList();
     }
 
-    return PixCreateChargeResponse._(
+    return PixChargeResponse._(
       creation: DateTime.parse(json['calendario']['criacao'].toString()),
       expiration: Duration(milliseconds: json['calendario']['expiracao']),
       txid: json['txid'],
@@ -93,6 +93,6 @@ class PixCreateChargeResponse {
 
   String toJson() => json.encode(toMap());
 
-  factory PixCreateChargeResponse.fromJson(String source) =>
-      PixCreateChargeResponse(json.decode(source) as Map<String, dynamic>);
+  factory PixChargeResponse.fromJson(String source) =>
+      PixChargeResponse(json.decode(source) as Map<String, dynamic>);
 }

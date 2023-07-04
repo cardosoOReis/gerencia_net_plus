@@ -8,14 +8,14 @@ import '../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import '../../gerencia_net_credentials.dart';
 import '../models/additional_info.dart';
 import '../models/debtor.dart';
-import 'models/pix_create_charge_response.dart';
+import 'models/pix_charge_response.dart';
 
 class PixCreateCharge {
   final GerenciaNetPlusPixRestClient client;
 
   const PixCreateCharge(this.client);
 
-  Future<PixCreateChargeResponse> call({
+  Future<PixChargeResponse> call({
     required GerenciaNetCredentials credentials,
     required Duration expiration,
     required double value,
@@ -40,7 +40,7 @@ class PixCreateCharge {
       endPoint: endPoint,
       body: body.toMap(),
     );
-    return PixCreateChargeResponse(response.data!);
+    return PixChargeResponse(response.data!);
   }
 
   String _generateRandomTXID() {

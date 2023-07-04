@@ -1,6 +1,9 @@
+import 'package:gerencia_net_plus/src/pix/charge/pix_update_charge.dart';
+import 'package:gerencia_net_plus/src/pix/models/pix_status.dart';
+
 import '../config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import '../gerencia_net_credentials.dart';
-import 'charge/models/pix_create_charge_response.dart';
+import 'charge/models/pix_charge_response.dart';
 import 'charge/pix_create_charge.dart';
 import 'charge/pix_create_immediate_charge.dart';
 import 'models/additional_info.dart';
@@ -15,7 +18,7 @@ class Pix {
     required this.client,
   });
 
-  Future<PixCreateChargeResponse> pixCreateCharge({
+  Future<PixChargeResponse> createCharge({
     required Duration expiration,
     required double value,
     String? txid,
@@ -36,7 +39,7 @@ class Pix {
     );
   }
 
-  Future<PixCreateChargeResponse> pixCreateImmediateCharge({
+  Future<PixChargeResponse> createImmediateCharge({
     required Duration expiration,
     required double value,
     Debtor? debtor,
@@ -52,6 +55,32 @@ class Pix {
       debtor: debtor,
       payerSolicitation: payerSolicitation,
       additionalInfo: additionalInfo,
+    );
+  }
+
+  Future<PixChargeResponse> updateCharge({
+    required String txid,
+    bool? persist,
+    double? value,
+    int? locId,
+    Debtor? debtor,
+    PixStatus? status,
+    String? pixKey,
+    List<AdditionalInfo>? additionalInfo,
+    String? payerSolicitation,
+  }) async {
+    final pixUpdateCharge = PixUpdateCharge(client);
+
+    return await pixUpdateCharge(
+      txid: txid,
+      
+      value: value,
+      locId: locId,
+      debtor: debtor,
+      status: status,
+      pixKey: pixKey,
+      additionalInfo: additionalInfo,
+      payerSolicitation: payerSolicitation,
     );
   }
 }

@@ -33,16 +33,7 @@ class PixCreateChargeRequestBody {
     final debtor = this.debtor;
     if (debtor != null) {
       body.addAll({
-        'devedor': switch (debtor) {
-          PhysicalPersonDebtor() => {
-              'cpf': debtor.cpf,
-              'nome': debtor.name,
-            },
-          LegalPersonDebtor() => {
-              'cnpj': debtor.cnpj,
-              'nome': debtor.name,
-            },
-        }
+        'devedor': debtor.toMap(),
       });
     }
     if (payerSolicitation != null) {

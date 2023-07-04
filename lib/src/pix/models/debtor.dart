@@ -21,14 +21,14 @@ class PhysicalPersonDebtor extends Debtor {
   @override
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'name': name,
+      'nome': name,
       'cpf': cpf,
     };
   }
 
   factory PhysicalPersonDebtor.fromMap(Map<String, dynamic> map) {
     return PhysicalPersonDebtor(
-      name: map['name'] as String,
+      name: map['nome'] as String,
       cpf: map['cpf'] as String,
     );
   }
@@ -53,14 +53,14 @@ class LegalPersonDebtor extends Debtor {
   @override
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'name': name,
+      'nome': name,
       'cnpj': cnpj,
     };
   }
 
   factory LegalPersonDebtor.fromMap(Map<String, dynamic> map) {
     return LegalPersonDebtor(
-      name: map['name'] as String,
+      name: map['nome'] as String,
       cnpj: map['cnpj'] as String,
     );
   }
