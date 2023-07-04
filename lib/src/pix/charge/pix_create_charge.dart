@@ -15,7 +15,7 @@ class PixCreateCharge {
 
   const PixCreateCharge(this.client);
 
-  Future<PixChargeResponse> call({
+  Future<PixCharge> call({
     required GerenciaNetCredentials credentials,
     required Duration expiration,
     required double value,
@@ -40,7 +40,7 @@ class PixCreateCharge {
       endPoint: endPoint,
       body: body.toMap(),
     );
-    return PixChargeResponse(response.data!);
+    return PixCharge(response.data!);
   }
 
   String _generateRandomTXID() {

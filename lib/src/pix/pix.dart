@@ -18,7 +18,7 @@ class Pix {
     required this.client,
   });
 
-  Future<PixChargeResponse> createCharge({
+  Future<PixCharge> createCharge({
     required Duration expiration,
     required double value,
     String? txid,
@@ -39,7 +39,7 @@ class Pix {
     );
   }
 
-  Future<PixChargeResponse> createImmediateCharge({
+  Future<PixCharge> createImmediateCharge({
     required Duration expiration,
     required double value,
     Debtor? debtor,
@@ -58,7 +58,7 @@ class Pix {
     );
   }
 
-  Future<PixChargeResponse> updateCharge({
+  Future<PixCharge> updateCharge({
     required String txid,
     bool? persist,
     double? value,

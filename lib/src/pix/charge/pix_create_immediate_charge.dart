@@ -12,7 +12,7 @@ class PixCreateImmediateCharge {
 
   const PixCreateImmediateCharge(this.client);
 
-  Future<PixChargeResponse> call({
+  Future<PixCharge> call({
     required GerenciaNetCredentials credentials,
     required Duration expiration,
     required double value,
@@ -33,6 +33,6 @@ class PixCreateImmediateCharge {
 
     final response = await client<Map<String, dynamic>>(endPoint: endPoint, body: body.toMap());
 
-    return PixChargeResponse(response.data!);
+    return PixCharge(response.data!);
   }
 }

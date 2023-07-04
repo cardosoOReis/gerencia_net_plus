@@ -11,7 +11,7 @@ class PixUpdateCharge {
 
   const PixUpdateCharge(this.client);
 
-  Future<PixChargeResponse> call({
+  Future<PixCharge> call({
     required String txid,
     bool persist = true,
     required double? value,
@@ -40,6 +40,6 @@ class PixUpdateCharge {
           persist: persist,
         ));
 
-    return PixChargeResponse(response.data!);
+    return PixCharge(response.data!);
   }
 }
