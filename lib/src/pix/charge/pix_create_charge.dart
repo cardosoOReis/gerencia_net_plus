@@ -2,6 +2,8 @@
 import 'dart:math';
 
 // Project imports:
+import 'package:gerencia_net_plus/src/pix/charge/models/pix_create_charge_request_body.dart';
+
 import '../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import '../../gerencia_net_credentials.dart';
 import '../models/additional_info.dart';
@@ -22,45 +24,22 @@ class PixCreateCharge {
     String? payerSolicitation,
     List<AdditionalInfo> additionalInfo = const [],
   }) async {
-    final body = <String, dynamic>{
-      'calendario': {
-        'expiracao': expiration.inMilliseconds,
-      },
-      'valor': {
-        'original': value.toStringAsFixed(2),
-      },
-      'chave': credentials.pixKey,
-    };
-    if (debtor != null) {
-      body.addAll({
-        'devedor': switch (debtor) {
-          PhysicalPersonDebtor() => {
-              'cpf': debtor.cpf,
-              'nome': debtor.name,
-            },
-          LegalPersonDebtor() => {
-              'cnpj': debtor.cnpj,
-              'nome': debtor.name,
-            },
-        }
-      });
-    }
-    if (payerSolicitation != null) {
-      body.addAll({
-        'solicitacaoPagador': payerSolicitation,
-      });
-    }
-    if (additionalInfo.isNotEmpty) {
-      body.addAll({
-        'infoAdicionais': additionalInfo.map((e) => e.toMap()).toList(),
-      });
-    }
-
+    final body = PixCreateChargeRequestBody(
+      credentials: credentials,
+      expiration: expiration,
+      value: value,
+      debtor: debtor,
+      payerSolicitation: payerSolicitation,
+      additionalInfo: additionalInfo,
+    );
     final endPoint = client.pixEndPoints.charge.pixCreateCharge(
       txid ?? _generateRandomTXID(),
     );
 
-    final response = await client<Map<String, dynamic>>(endPoint: endPoint, body: body);
+    final response = await client<Map<String, dynamic>>(
+      endPoint: endPoint,
+      body: body.toMap(),
+    );
     return PixCreateChargeResponse(response.data!);
   }
 
