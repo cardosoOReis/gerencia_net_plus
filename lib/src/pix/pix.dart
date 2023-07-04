@@ -1,10 +1,10 @@
-import 'models/additional_info.dart';
-import 'models/debtor.dart';
-
+// Project imports:
 import '../config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import '../gerencia_net_credentials.dart';
 import 'charge/models/pix_create_charge_response.dart';
 import 'charge/pix_create_charge.dart';
+import 'models/additional_info.dart';
+import 'models/debtor.dart';
 
 class Pix {
   final GerenciaNetCredentials credentials;

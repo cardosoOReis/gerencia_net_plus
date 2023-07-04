@@ -1,7 +1,8 @@
+// Dart imports:
 import 'dart:convert';
 
-import 'package:gerencia_net_plus/src/pix/models/additional_info.dart';
-
+// Project imports:
+import '../../models/additional_info.dart';
 import '../../models/debtor.dart';
 import '../../models/location_info.dart';
 import '../../models/pix_status.dart';

@@ -1,6 +1,6 @@
-import 'models/http_method.dart';
-
+// Project imports:
 import 'models/end_point.dart';
+import 'models/http_method.dart';
 
 class AppNetwork {
   const AppNetwork({

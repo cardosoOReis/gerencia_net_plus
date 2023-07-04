@@ -1,5 +1,7 @@
+// Dart imports:
 import 'dart:convert';
 
+// Package imports:
 import 'package:equatable/equatable.dart';
 
 class LocationInfo extends Equatable {

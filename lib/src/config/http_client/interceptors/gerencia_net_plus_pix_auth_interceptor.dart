@@ -1,11 +1,14 @@
+// Dart imports:
 import 'dart:convert';
 
+// Package imports:
 import 'package:dio/dio.dart';
 
-import '../models/token.dart';
+// Project imports:
 import '../../../gerencia_net_credentials.dart';
 import '../../network/app_network.dart';
 import '../gerencia_net_plus_rest_client.dart';
+import '../models/token.dart';
 
 class GerenciaNetPlusPixAuthInterceptor extends Interceptor {
   final GerenciaNetCredentials _credentials;
