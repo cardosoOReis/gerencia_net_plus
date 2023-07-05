@@ -32,7 +32,7 @@ class Pix {
   }) async {
     final pixCreateCharge = PixCreateCharge(_client);
 
-    return await pixCreateCharge(
+    return pixCreateCharge(
       credentials: _credentials,
       expiration: expiration,
       txid: txid,
@@ -52,7 +52,7 @@ class Pix {
   }) async {
     final pixCreateImmediateCharge = PixCreateImmediateCharge(_client);
 
-    return await pixCreateImmediateCharge(
+    return pixCreateImmediateCharge(
       credentials: _credentials,
       value: value,
       expiration: expiration,
@@ -75,7 +75,7 @@ class Pix {
   }) async {
     final pixUpdateCharge = PixUpdateCharge(_client);
 
-    return await pixUpdateCharge(
+    return pixUpdateCharge(
       txid: txid,
       value: value,
       locId: locId,

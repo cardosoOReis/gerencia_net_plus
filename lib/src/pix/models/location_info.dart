@@ -15,21 +15,17 @@ class LocationInfo extends Equatable {
     required this.chargeType,
   });
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'location': location,
-      'chargeType': chargeType,
-    };
-  }
+  Map<String, dynamic> toMap() => <String, dynamic>{
+        'id': id,
+        'location': location,
+        'chargeType': chargeType,
+      };
 
-  factory LocationInfo.fromMap(Map<String, dynamic> map) {
-    return LocationInfo(
-      id: map['id'] as int,
-      location: map['location'] as String,
-      chargeType: map['chargeType'] as String,
-    );
-  }
+  factory LocationInfo.fromMap(Map<String, dynamic> map) => LocationInfo(
+        id: map['id'] as int,
+        location: map['location'] as String,
+        chargeType: map['chargeType'] as String,
+      );
 
   String toJson() => json.encode(toMap());
 

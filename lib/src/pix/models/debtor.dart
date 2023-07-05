@@ -19,19 +19,16 @@ class PhysicalPersonDebtor extends Debtor {
   });
 
   @override
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'nome': name,
-      'cpf': cpf,
-    };
-  }
+  Map<String, dynamic> toMap() => <String, dynamic>{
+        'nome': name,
+        'cpf': cpf,
+      };
 
-  factory PhysicalPersonDebtor.fromMap(Map<String, dynamic> map) {
-    return PhysicalPersonDebtor(
-      name: map['nome'] as String,
-      cpf: map['cpf'] as String,
-    );
-  }
+  factory PhysicalPersonDebtor.fromMap(Map<String, dynamic> map) =>
+      PhysicalPersonDebtor(
+        name: map['nome'] as String,
+        cpf: map['cpf'] as String,
+      );
 
   String toJson() => json.encode(toMap());
 
@@ -51,19 +48,16 @@ class LegalPersonDebtor extends Debtor {
   });
 
   @override
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'nome': name,
-      'cnpj': cnpj,
-    };
-  }
+  Map<String, dynamic> toMap() => <String, dynamic>{
+        'nome': name,
+        'cnpj': cnpj,
+      };
 
-  factory LegalPersonDebtor.fromMap(Map<String, dynamic> map) {
-    return LegalPersonDebtor(
-      name: map['nome'] as String,
-      cnpj: map['cnpj'] as String,
-    );
-  }
+  factory LegalPersonDebtor.fromMap(Map<String, dynamic> map) =>
+      LegalPersonDebtor(
+        name: map['nome'] as String,
+        cnpj: map['cnpj'] as String,
+      );
 
   String toJson() => json.encode(toMap());
 

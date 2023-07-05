@@ -2,16 +2,22 @@
 import 'dart:math';
 
 class Txid {
+  /// Generates a valid random txid to be used in the requisitions
+  ///
+  /// A valid txid must be 26-35 characters long and only contain the values
+  /// a-z, A-Z, 0-9
+  ///
+  /// A valid txid regex is ^[a-zA-Z0-9]{26,35}$
   static String generate() {
-    /// A valid txid must be 26-35 characters long and only contain a-z, A-Z, 0-9
     const packageName = 'GerenciaNetPlus';
-    final random = Random.secure();
-    final txidLength = 35;
-    final allowedCharacters =
+    const txidMaxLength = 35;
+    const allowedCharacters =
         'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
+    final random = Random.secure();
+
     final lastTxidCharacters = List.generate(
-      txidLength - packageName.length,
+      txidMaxLength - packageName.length,
       (_) {
         final index = random.nextInt(allowedCharacters.length);
         return allowedCharacters[index];

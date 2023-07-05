@@ -12,21 +12,18 @@ class Parameters {
     required this.pagination,
   });
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'inicio': start.millisecondsSinceEpoch,
-      'fim': end.millisecondsSinceEpoch,
-      'paginacao': pagination.toMap(),
-    };
-  }
+  Map<String, dynamic> toMap() => <String, dynamic>{
+        'inicio': start.millisecondsSinceEpoch,
+        'fim': end.millisecondsSinceEpoch,
+        'paginacao': pagination.toMap(),
+      };
 
-  factory Parameters.fromMap(Map<String, dynamic> map) {
-    return Parameters(
-      start: DateTime.parse(map['inicio']),
-      end: DateTime.parse(map['fim']),
-      pagination: Pagination.fromMap(map['paginacao'] as Map<String, dynamic>),
-    );
-  }
+  factory Parameters.fromMap(Map<String, dynamic> map) => Parameters(
+        start: DateTime.parse(map['inicio']),
+        end: DateTime.parse(map['fim']),
+        pagination:
+            Pagination.fromMap(map['paginacao'] as Map<String, dynamic>),
+      );
 
   String toJson() => json.encode(toMap());
 
@@ -47,23 +44,19 @@ class Pagination {
     required this.totalItemAmount,
   });
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'paginaAtual': currentPage,
-      'itensPorPagina': itensByPage,
-      'quantidadeDePaginas': pageAmount,
-      'quantidadeTotalDeItens': totalItemAmount,
-    };
-  }
+  Map<String, dynamic> toMap() => <String, dynamic>{
+        'paginaAtual': currentPage,
+        'itensPorPagina': itensByPage,
+        'quantidadeDePaginas': pageAmount,
+        'quantidadeTotalDeItens': totalItemAmount,
+      };
 
-  factory Pagination.fromMap(Map<String, dynamic> map) {
-    return Pagination(
-      currentPage: map['paginaAtual'] as int,
-      itensByPage: map['itensPorPagina'] as int,
-      pageAmount: map['quantidadeDePaginas'] as int,
-      totalItemAmount: map['quantidadeTotalDeItens'] as int,
-    );
-  }
+  factory Pagination.fromMap(Map<String, dynamic> map) => Pagination(
+        currentPage: map['paginaAtual'] as int,
+        itensByPage: map['itensPorPagina'] as int,
+        pageAmount: map['quantidadeDePaginas'] as int,
+        totalItemAmount: map['quantidadeTotalDeItens'] as int,
+      );
 
   String toJson() => json.encode(toMap());
 

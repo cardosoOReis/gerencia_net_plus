@@ -14,15 +14,12 @@ class PixChargeList {
     required this.charges,
   });
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
+  Map<String, dynamic> toMap() => <String, dynamic>{
       'parametros': parameters.toMap(),
       'cobs': charges.map((x) => x.toMap()).toList(),
     };
-  }
 
-  factory PixChargeList.fromMap(Map<String, dynamic> map) {
-    return PixChargeList(
+  factory PixChargeList.fromMap(Map<String, dynamic> map) => PixChargeList(
       parameters: Parameters.fromMap(map['parametros'] as Map<String, dynamic>),
       charges: List<PixCharge>.from(
         (map['cobs'] as List<dynamic>).map<PixCharge>(
@@ -32,7 +29,6 @@ class PixChargeList {
         ),
       ),
     );
-  }
 
   String toJson() => json.encode(toMap());
 

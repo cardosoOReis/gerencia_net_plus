@@ -7,19 +7,19 @@ import '../base_credentials.dart';
 Future<void> main(List<String> args) async {
   final gerenciaNetPlus = GerenciaNetPlus(credentials: baseCredentials);
   final result = await gerenciaNetPlus.pix.createCharge(
-    expiration: Duration(days: 10),
+    expiration: const Duration(days: 10),
     value: 5.99,
-    debtor: LegalPersonDebtor(
+    debtor: const LegalPersonDebtor(
       name: 'Empresa de Serviços SA',
       cnpj: '12345678000195',
     ),
     payerSolicitation: 'Informe o número ou identificador do pedido.',
     additionalInfo: [
-      AdditionalInfo(
+      const AdditionalInfo(
         name: 'Campo 1',
         value: 'informação adicional 1 do PSP-Recebedor',
       ),
-      AdditionalInfo(
+      const AdditionalInfo(
         name: 'Campo 2',
         value: 'informação adicional 2 do PSP-Recebedor',
       ),

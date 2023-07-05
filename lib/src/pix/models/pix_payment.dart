@@ -24,23 +24,23 @@ class PixPayment {
     this.devolutions,
   });
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'endToEndId': endToEndId,
-      'txid': txid,
-      'valor': value.toStringAsFixed(2),
-      'chave': pixKey,
-      'horario': paymentTime.toRFC3339(),
-      'infoPagador': payerInfo,
-      'devolucoes': devolutions?.map((d) => d.toMap()).toList()
-    };
-  }
+  Map<String, dynamic> toMap() => <String, dynamic>{
+        'endToEndId': endToEndId,
+        'txid': txid,
+        'valor': value.toStringAsFixed(2),
+        'chave': pixKey,
+        'horario': paymentTime.toRFC3339(),
+        'infoPagador': payerInfo,
+        'devolucoes': devolutions?.map((d) => d.toMap()).toList()
+      };
 
   factory PixPayment.fromMap(Map<String, dynamic> map) {
     List<dynamic>? devolutionJson = map['devolucoes'];
     List<Devolution>? devolutions;
     if (devolutionJson != null) {
-      devolutions = devolutionJson.map((d) => Devolution.fromMap(d)).toList();
+      devolutions = devolutionJson
+          .map((d) => Devolution.fromMap(d as Map<String, dynamic>))
+          .toList();
     }
 
     return PixPayment(

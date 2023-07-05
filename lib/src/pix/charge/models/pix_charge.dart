@@ -56,14 +56,17 @@ class PixCharge {
     List<dynamic>? additionalInfoJson = json['infoAdicionais'];
     List<AdditionalInfo>? additionalInfo;
     if (additionalInfoJson != null) {
-      additionalInfo =
-          additionalInfoJson.map((e) => AdditionalInfo.fromMap(e)).toList();
+      additionalInfo = additionalInfoJson
+          .map((e) => AdditionalInfo.fromMap(e as Map<String, dynamic>))
+          .toList();
     }
 
     List<dynamic>? pixJson = json['pix'];
     List<PixPayment>? pix;
     if (pixJson != null) {
-      pix = pixJson.map((p) => PixPayment.fromMap(p)).toList();
+      pix = pixJson
+          .map((p) => PixPayment.fromMap(p as Map<String, dynamic>))
+          .toList();
     }
 
     return PixCharge._(
@@ -86,22 +89,20 @@ class PixCharge {
     );
   }
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'creation': creation.toRFC3339(),
-      'expiration': expiration.inMilliseconds,
-      'txid': txid,
-      'revisionAmount': revisionAmount,
-      'locationInfo': locationInfo.toMap(),
-      'status': status.name,
-      'value': value,
-      'debtor': debtor?.toMap(),
-      'pixKey': pixKey,
-      'payerSolicitation': payerSolicitation,
-      'additionalInfo': additionalInfo?.map((e) => e.toMap()).toList(),
-      'pix': pixPayment?.map((p) => p.toMap()).toList(),
-    };
-  }
+  Map<String, dynamic> toMap() => <String, dynamic>{
+        'creation': creation.toRFC3339(),
+        'expiration': expiration.inMilliseconds,
+        'txid': txid,
+        'revisionAmount': revisionAmount,
+        'locationInfo': locationInfo.toMap(),
+        'status': status.name,
+        'value': value,
+        'debtor': debtor?.toMap(),
+        'pixKey': pixKey,
+        'payerSolicitation': payerSolicitation,
+        'additionalInfo': additionalInfo?.map((e) => e.toMap()).toList(),
+        'pix': pixPayment?.map((p) => p.toMap()).toList(),
+      };
 
   String toJson() => json.encode(toMap());
 

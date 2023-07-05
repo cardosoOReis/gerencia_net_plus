@@ -9,7 +9,7 @@ Future<void> main(List<String> args) async {
   final result = await gerenciaNetPlus.pix.updateCharge(
     txid: '0b093a77c06040e3bd6b3fd477b95a06',
     value: 50,
-    debtor: LegalPersonDebtor(
+    debtor: const LegalPersonDebtor(
       name: 'Empresa de Serviços SA',
       cnpj: '12345678000195',
     ),

@@ -13,7 +13,6 @@ class PixUpdateCharge {
 
   Future<PixCharge> call({
     required String txid,
-    bool persist = true,
     required double? value,
     required int? locId,
     required Debtor? debtor,
@@ -21,6 +20,7 @@ class PixUpdateCharge {
     required String? pixKey,
     required List<AdditionalInfo>? additionalInfo,
     required PixStatus? status,
+    bool persist = true,
   }) async {
     final body = PixUpdateChargeRequestBody(
       locId: locId,
@@ -35,10 +35,11 @@ class PixUpdateCharge {
     final endPoint = client.pixEndPoints.charge.pixUpdateCharge(txid);
 
     final response = await client<Map<String, dynamic>>(
-        endPoint: endPoint,
-        body: body.toMap(
-          persist: persist,
-        ));
+      endPoint: endPoint,
+      body: body.toMap(
+        persist: persist,
+      ),
+    );
 
     return PixCharge(response.data!);
   }

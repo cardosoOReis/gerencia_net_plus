@@ -13,8 +13,8 @@ import '../network/models/http_method.dart';
 
 class GerenciaNetPlusRestClient extends DioForNative {
   static final _baseOptions = BaseOptions(
-    connectTimeout: Duration(minutes: 1),
-    receiveTimeout: Duration(minutes: 1),
+    connectTimeout: const Duration(minutes: 1),
+    receiveTimeout: const Duration(minutes: 1),
   );
 
   GerenciaNetPlusRestClient({
@@ -33,80 +33,74 @@ class GerenciaNetPlusRestClient extends DioForNative {
     required EndPoint endPoint,
     Map<String, dynamic>? queryParameters,
     Object? body,
-  }) {
-    return switch (endPoint.method) {
-      HttpMethod.post => _defaultPost(
-          endPoint: endPoint,
-          queryParameters: queryParameters,
-          body: body,
-        ),
-      HttpMethod.get => _defaultGet(
-          endPoint: endPoint,
-          queryParameters: queryParameters,
-        ),
-      HttpMethod.put => _defaultPut(
-          endPoint: endPoint,
-          queryParameters: queryParameters,
-          body: body,
-        ),
-      HttpMethod.delete => _defaultDelete(
-          endPoint: endPoint,
-          queryParameters: queryParameters,
-        ),
-      HttpMethod.patch => _defaultPatch(
-          endPoint: endPoint,
-          queryParameters: queryParameters,
-          body: body,
-        ),
-    };
-  }
+  }) =>
+      switch (endPoint.method) {
+        HttpMethod.post => _defaultPost(
+            endPoint: endPoint,
+            queryParameters: queryParameters,
+            body: body,
+          ),
+        HttpMethod.get => _defaultGet(
+            endPoint: endPoint,
+            queryParameters: queryParameters,
+          ),
+        HttpMethod.put => _defaultPut(
+            endPoint: endPoint,
+            queryParameters: queryParameters,
+            body: body,
+          ),
+        HttpMethod.delete => _defaultDelete(
+            endPoint: endPoint,
+            queryParameters: queryParameters,
+          ),
+        HttpMethod.patch => _defaultPatch(
+            endPoint: endPoint,
+            queryParameters: queryParameters,
+            body: body,
+          ),
+      };
 
   Future<Response<T>> _defaultPost<T>({
     required EndPoint endPoint,
     Map<String, dynamic>? queryParameters,
     Object? body,
-  }) {
-    return post<T>(
-      endPoint.path,
-      data: body,
-      queryParameters: queryParameters,
-    );
-  }
+  }) =>
+      post<T>(
+        endPoint.path,
+        data: body,
+        queryParameters: queryParameters,
+      );
 
   Future<Response<T>> _defaultGet<T>({
     required EndPoint endPoint,
     Map<String, dynamic>? queryParameters,
-  }) {
-    return get<T>(endPoint.path, queryParameters: queryParameters);
-  }
+  }) =>
+      get<T>(endPoint.path, queryParameters: queryParameters);
 
   Future<Response<T>> _defaultPut<T>({
     required EndPoint endPoint,
     Map<String, dynamic>? queryParameters,
     Object? body,
-  }) {
-    return put<T>(endPoint.path, queryParameters: queryParameters, data: body);
-  }
+  }) =>
+      put<T>(endPoint.path, queryParameters: queryParameters, data: body);
 
   Future<Response<T>> _defaultDelete<T>({
     required EndPoint endPoint,
     Map<String, dynamic>? queryParameters,
     Object? body,
-  }) {
-    return delete<T>(endPoint.path, queryParameters: queryParameters);
-  }
+  }) =>
+      delete<T>(endPoint.path, queryParameters: queryParameters);
 
   Future<Response<T>> _defaultPatch<T>({
     required EndPoint endPoint,
     Map<String, dynamic>? queryParameters,
     Object? body,
-  }) {
-    return patch<T>(
-      endPoint.path,
-      queryParameters: queryParameters,
-      data: body,
-    );
-  }
+  }) =>
+      patch<T>(
+        endPoint.path,
+        queryParameters: queryParameters,
+        data: body,
+      );
 
   void _configureCertificates({
     required String certificatePath,
@@ -131,10 +125,9 @@ class GerenciaNetPlusRestClient extends DioForNative {
     required String keyPath,
   }) {
     final root = Directory.current.path;
-    final securityContext = SecurityContext(withTrustedRoots: true);
-
-    securityContext.useCertificateChain('$root/$certificatePath');
-    securityContext.usePrivateKey('$root/$keyPath');
+    final securityContext = SecurityContext(withTrustedRoots: true)
+      ..useCertificateChain('$root/$certificatePath')
+      ..usePrivateKey('$root/$keyPath');
 
     clientSetting.context = securityContext;
   }

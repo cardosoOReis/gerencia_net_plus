@@ -15,27 +15,23 @@ class Devolution {
     required this.status,
   });
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'rtrId': rtrId,
-      'valor': value,
-      'horario': {
-        'solicitacao': solicitationTime.millisecondsSinceEpoch,
-      },
-      'status': status.value,
-    };
-  }
+  Map<String, dynamic> toMap() => <String, dynamic>{
+        'id': id,
+        'rtrId': rtrId,
+        'valor': value,
+        'horario': {
+          'solicitacao': solicitationTime.millisecondsSinceEpoch,
+        },
+        'status': status.value,
+      };
 
-  factory Devolution.fromMap(Map<String, dynamic> map) {
-    return Devolution(
-      id: map['id'] as String,
-      rtrId: map['rtrId'] as String,
-      value: map['value'] as double,
-      solicitationTime: DateTime.parse(map['horario']['solicitacao']),
-      status: DevolutionStatus.match(map['status']),
-    );
-  }
+  factory Devolution.fromMap(Map<String, dynamic> map) => Devolution(
+        id: map['id'] as String,
+        rtrId: map['rtrId'] as String,
+        value: map['value'] as double,
+        solicitationTime: DateTime.parse(map['horario']['solicitacao']),
+        status: DevolutionStatus.match(map['status']),
+      );
 
   String toJson() => json.encode(toMap());
 
@@ -52,10 +48,9 @@ enum DevolutionStatus {
 
   const DevolutionStatus(this.value);
 
-  factory DevolutionStatus.match(String value) {
-    return DevolutionStatus.values.firstWhere(
-      (status) => status.value == value,
-      orElse: () => throw ArgumentError.value(value),
-    );
-  }
+  factory DevolutionStatus.match(String value) =>
+      DevolutionStatus.values.firstWhere(
+        (status) => status.value == value,
+        orElse: () => throw ArgumentError.value(value),
+      );
 }

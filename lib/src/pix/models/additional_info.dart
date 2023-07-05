@@ -12,19 +12,15 @@ class AdditionalInfo extends Equatable {
     required this.value,
   });
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'nome': name,
-      'valor': value,
-    };
-  }
+  Map<String, dynamic> toMap() => <String, dynamic>{
+        'nome': name,
+        'valor': value,
+      };
 
-  factory AdditionalInfo.fromMap(Map<String, dynamic> map) {
-    return AdditionalInfo(
-      name: map['nome'] as String,
-      value: map['valor'] as String,
-    );
-  }
+  factory AdditionalInfo.fromMap(Map<String, dynamic> map) => AdditionalInfo(
+        name: map['nome'] as String,
+        value: map['valor'] as String,
+      );
 
   String toJson() => json.encode(toMap());
 

@@ -8,10 +8,8 @@ enum PixStatus {
 
   const PixStatus(this.value);
 
-  factory PixStatus.match(String value) {
-    return PixStatus.values.firstWhere(
-      (status) => status.value == value,
-      orElse: () => throw ArgumentError.value(value),
-    );
-  }
+  factory PixStatus.match(String value) => PixStatus.values.firstWhere(
+        (status) => status.value == value,
+        orElse: () => throw ArgumentError.value(value),
+      );
 }
