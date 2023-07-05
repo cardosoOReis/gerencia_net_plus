@@ -1,8 +1,9 @@
-import 'package:gerencia_net_plus/src/config/http_client/gerencia_net_plus_pix_rest_client.dart';
-import 'package:gerencia_net_plus/src/config/utils/date_extensions.dart';
-import 'package:gerencia_net_plus/src/config/utils/map_extensions.dart';
-import 'package:gerencia_net_plus/src/pix/charge/models/pix_charge_consulting.dart';
-import 'package:gerencia_net_plus/src/pix/models/pix_status.dart';
+// Project imports:
+import '../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
+import '../../config/utils/date_extensions.dart';
+import '../../config/utils/map_extensions.dart';
+import '../models/pix_status.dart';
+import 'models/pix_charge_consulting.dart';
 
 class PixListCharges {
   final GerenciaNetPlusPixRestClient client;

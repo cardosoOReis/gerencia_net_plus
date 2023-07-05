@@ -1,7 +1,9 @@
+// Dart imports:
 import 'dart:convert';
 
-import 'package:gerencia_net_plus/src/pix/charge/models/pix_charge.dart';
-import 'package:gerencia_net_plus/src/pix/models/pagination.dart';
+// Project imports:
+import '../../models/pagination.dart';
+import 'pix_charge.dart';
 
 class PixChargeList {
   final Parameters parameters;

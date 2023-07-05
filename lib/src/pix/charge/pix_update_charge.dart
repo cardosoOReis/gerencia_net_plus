@@ -1,9 +1,9 @@
-import 'package:gerencia_net_plus/src/config/http_client/gerencia_net_plus_pix_rest_client.dart';
-import 'package:gerencia_net_plus/src/pix/charge/models/pix_charge.dart';
-import 'package:gerencia_net_plus/src/pix/models/additional_info.dart';
-import 'package:gerencia_net_plus/src/pix/models/debtor.dart';
-import 'package:gerencia_net_plus/src/pix/models/pix_status.dart';
-
+// Project imports:
+import '../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
+import '../models/additional_info.dart';
+import '../models/debtor.dart';
+import '../models/pix_status.dart';
+import 'models/pix_charge.dart';
 import 'models/pix_update_charge_request_body.dart';
 
 class PixUpdateCharge {

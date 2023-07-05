@@ -1,16 +1,16 @@
-import 'package:gerencia_net_plus/src/pix/charge/models/pix_charge_consulting.dart';
-import 'package:gerencia_net_plus/src/pix/charge/pix_detail_charge.dart';
-import 'package:gerencia_net_plus/src/pix/charge/pix_list_charges.dart';
-import 'package:gerencia_net_plus/src/pix/charge/pix_update_charge.dart';
-import 'package:gerencia_net_plus/src/pix/models/pix_status.dart';
-
+// Project imports:
 import '../config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import '../gerencia_net_credentials.dart';
 import 'charge/models/pix_charge.dart';
+import 'charge/models/pix_charge_consulting.dart';
 import 'charge/pix_create_charge.dart';
 import 'charge/pix_create_immediate_charge.dart';
+import 'charge/pix_detail_charge.dart';
+import 'charge/pix_list_charges.dart';
+import 'charge/pix_update_charge.dart';
 import 'models/additional_info.dart';
 import 'models/debtor.dart';
+import 'models/pix_status.dart';
 
 class Pix {
   final GerenciaNetCredentials _credentials;

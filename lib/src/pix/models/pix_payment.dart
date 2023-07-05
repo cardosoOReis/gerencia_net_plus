@@ -1,7 +1,9 @@
+// Dart imports:
 import 'dart:convert';
 
-import 'package:gerencia_net_plus/src/config/utils/date_extensions.dart';
-import 'package:gerencia_net_plus/src/pix/models/devolution.dart';
+// Project imports:
+import '../../config/utils/date_extensions.dart';
+import 'devolution.dart';
 
 class PixPayment {
   final String endToEndId;

@@ -1,10 +1,10 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
+// Dart imports:
 import 'dart:convert';
 
-import 'package:gerencia_net_plus/src/pix/models/additional_info.dart';
-import 'package:gerencia_net_plus/src/pix/models/debtor.dart';
-import 'package:gerencia_net_plus/src/pix/models/pix_status.dart';
+// Project imports:
+import '../../models/additional_info.dart';
+import '../../models/debtor.dart';
+import '../../models/pix_status.dart';
 
 class PixUpdateChargeRequestBody {
   final int? locId;
