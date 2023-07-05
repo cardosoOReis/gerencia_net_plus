@@ -1,7 +1,7 @@
 // Project imports:
 import '../../../gerencia_net_credentials.dart';
 import '../../models/additional_info.dart';
-import '../../models/debtor.dart';
+import 'debtor.dart';
 
 class PixCreateChargeRequestBody {
   final GerenciaNetCredentials credentials;

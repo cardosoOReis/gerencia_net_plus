@@ -3,7 +3,7 @@ import 'dart:convert';
 
 // Project imports:
 import '../../models/additional_info.dart';
-import '../../models/debtor.dart';
+import 'debtor.dart';
 import '../../models/pix_status.dart';
 
 class PixUpdateChargeRequestBody {

@@ -2,7 +2,7 @@
 import '../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import '../../gerencia_net_credentials.dart';
 import '../models/additional_info.dart';
-import '../models/debtor.dart';
+import 'models/debtor.dart';
 import '../models/pix_status.dart';
 import 'actions/pix_create_charge.dart';
 import 'actions/pix_create_immediate_charge.dart';

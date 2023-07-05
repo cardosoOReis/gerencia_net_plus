@@ -2,6 +2,7 @@
 import '../config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import '../config/network/app_network.dart';
 import '../gerencia_net_credentials.dart';
+import 'due_charge/due_charge.dart';
 import 'immediate_charge/immediate_charge.dart';
 
 class Pix {
@@ -20,6 +21,11 @@ class Pix {
       );
 
   ImmediateCharge get immediateCharge => ImmediateCharge(
+        client: _client,
+        credentials: _credentials,
+      );
+
+  DueCharge get dueCharge => DueCharge(
         client: _client,
         credentials: _credentials,
       );
