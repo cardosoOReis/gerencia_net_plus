@@ -1,3 +1,4 @@
+// Project imports:
 import '../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import '../../gerencia_net_credentials.dart';
 import '../models/additional_info.dart';
@@ -8,8 +9,8 @@ import 'actions/pix_create_immediate_charge.dart';
 import 'actions/pix_detail_charge.dart';
 import 'actions/pix_list_charges.dart';
 import 'actions/pix_update_charge.dart';
-import 'models/pix_charge.dart';
-import 'models/pix_charge_consulting.dart';
+import 'models/pix_immediate_charge.dart';
+import 'models/pix_immediate_charge_list.dart';
 
 class ImmediateCharge {
   final GerenciaNetPlusPixRestClient _client;
@@ -21,7 +22,7 @@ class ImmediateCharge {
   })  : _client = client,
         _credentials = credentials;
 
-  Future<PixCharge> createCharge({
+  Future<PixImmediateCharge> createCharge({
     required Duration expiration,
     required double value,
     String? txid,
@@ -42,7 +43,7 @@ class ImmediateCharge {
     );
   }
 
-  Future<PixCharge> createImmediateCharge({
+  Future<PixImmediateCharge> createImmediateCharge({
     required Duration expiration,
     required double value,
     Debtor? debtor,
@@ -61,7 +62,7 @@ class ImmediateCharge {
     );
   }
 
-  Future<PixCharge> updateCharge({
+  Future<PixImmediateCharge> updateCharge({
     required String txid,
     bool? persist,
     double? value,
@@ -86,7 +87,7 @@ class ImmediateCharge {
     );
   }
 
-  Future<PixCharge> detailCharge(
+  Future<PixImmediateCharge> detailCharge(
     String txid, {
     int? revision,
   }) async {
@@ -98,7 +99,7 @@ class ImmediateCharge {
     );
   }
 
-  Future<PixChargeList> listCharges({
+  Future<PixImmediateChargeList> listCharges({
     required DateTime start,
     required DateTime end,
     String? cpf,

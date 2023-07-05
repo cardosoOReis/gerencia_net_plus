@@ -6,7 +6,7 @@ import '../../../config/utils/txid.dart';
 import '../../../gerencia_net_credentials.dart';
 import '../../models/additional_info.dart';
 import '../../models/debtor.dart';
-import '../models/pix_charge.dart';
+import '../models/pix_immediate_charge.dart';
 import '../models/pix_create_charge_request_body.dart';
 
 class PixCreateCharge {
@@ -14,7 +14,7 @@ class PixCreateCharge {
 
   const PixCreateCharge(this.client);
 
-  Future<PixCharge> call({
+  Future<PixImmediateCharge> call({
     required GerenciaNetCredentials credentials,
     required Duration expiration,
     required double value,
@@ -39,6 +39,6 @@ class PixCreateCharge {
       endPoint: endPoint,
       body: body.toMap(),
     );
-    return PixCharge(response.data!);
+    return PixImmediateCharge(response.data!);
   }
 }

@@ -9,7 +9,7 @@ import '../../models/location_info.dart';
 import '../../models/pix_payment.dart';
 import '../../models/pix_status.dart';
 
-class PixCharge {
+class PixImmediateCharge {
   final DateTime creation;
   final Duration expiration;
   final String txid;
@@ -23,7 +23,7 @@ class PixCharge {
   final List<AdditionalInfo>? additionalInfo;
   final List<PixPayment>? pixPayment;
 
-  const PixCharge._({
+  const PixImmediateCharge._({
     required this.creation,
     required this.expiration,
     required this.txid,
@@ -38,7 +38,7 @@ class PixCharge {
     this.pixPayment,
   });
 
-  factory PixCharge(Map<String, dynamic> json) {
+  factory PixImmediateCharge(Map<String, dynamic> json) {
     final Map<String, dynamic>? debtorJson = json['devedor'];
     Debtor? debtor;
     if (debtorJson?.containsKey('cpf') ?? false) {
@@ -69,7 +69,7 @@ class PixCharge {
           .toList();
     }
 
-    return PixCharge._(
+    return PixImmediateCharge._(
       creation: DateTime.parse(json['calendario']['criacao'].toString()),
       expiration: Duration(milliseconds: json['calendario']['expiracao']),
       txid: json['txid'],
@@ -106,6 +106,6 @@ class PixCharge {
 
   String toJson() => json.encode(toMap());
 
-  factory PixCharge.fromJson(String source) =>
-      PixCharge(json.decode(source) as Map<String, dynamic>);
+  factory PixImmediateCharge.fromJson(String source) =>
+      PixImmediateCharge(json.decode(source) as Map<String, dynamic>);
 }

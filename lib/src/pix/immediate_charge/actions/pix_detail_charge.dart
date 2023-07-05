@@ -1,13 +1,13 @@
 // Project imports:
 import '../../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
-import '../models/pix_charge.dart';
+import '../models/pix_immediate_charge.dart';
 
 class PixDetailCharge {
   final GerenciaNetPlusPixRestClient client;
 
   const PixDetailCharge(this.client);
 
-  Future<PixCharge> call({
+  Future<PixImmediateCharge> call({
     required String txid,
     int? revision,
   }) async {
@@ -24,6 +24,6 @@ class PixDetailCharge {
       queryParameters: queryParameters,
     );
 
-    return PixCharge(result.data!);
+    return PixImmediateCharge(result.data!);
   }
 }
