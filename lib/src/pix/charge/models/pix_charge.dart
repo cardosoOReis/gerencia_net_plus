@@ -2,6 +2,8 @@
 import 'dart:convert';
 
 // Project imports:
+import 'package:gerencia_net_plus/src/pix/models/pix_payment.dart';
+
 import '../../models/additional_info.dart';
 import '../../models/debtor.dart';
 import '../../models/location_info.dart';
@@ -19,6 +21,7 @@ class PixCharge {
   final Debtor? debtor;
   final String? payerSolicitation;
   final List<AdditionalInfo>? additionalInfo;
+  final List<PixPayment>? pixPayment;
 
   const PixCharge._({
     required this.creation,
@@ -32,6 +35,7 @@ class PixCharge {
     this.debtor,
     this.payerSolicitation,
     this.additionalInfo,
+    this.pixPayment,
   });
 
   factory PixCharge(Map<String, dynamic> json) {
@@ -56,6 +60,12 @@ class PixCharge {
           additionalInfoJson.map((e) => AdditionalInfo.fromMap(e)).toList();
     }
 
+    List<dynamic>? pixJson = json['pix'];
+    List<PixPayment>? pix;
+    if (pixJson != null) {
+      pix = pixJson.map((p) => PixPayment.fromMap(p)).toList();
+    }
+
     return PixCharge._(
       creation: DateTime.parse(json['calendario']['criacao'].toString()),
       expiration: Duration(milliseconds: json['calendario']['expiracao']),
@@ -72,6 +82,7 @@ class PixCharge {
       pixKey: json['chave'],
       value: double.parse(json['valor']['original']),
       additionalInfo: additionalInfo,
+      pixPayment: pix,
     );
   }
 
@@ -88,6 +99,7 @@ class PixCharge {
       'pixKey': pixKey,
       'payerSolicitation': payerSolicitation,
       'additionalInfo': additionalInfo?.map((e) => e.toMap()).toList(),
+      'pix': pixPayment?.map((p) => p.toMap()).toList(),
     };
   }
 

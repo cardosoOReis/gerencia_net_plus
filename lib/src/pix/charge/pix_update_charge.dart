@@ -1,5 +1,5 @@
 import 'package:gerencia_net_plus/src/config/http_client/gerencia_net_plus_pix_rest_client.dart';
-import 'package:gerencia_net_plus/src/pix/charge/models/pix_charge_response.dart';
+import 'package:gerencia_net_plus/src/pix/charge/models/pix_charge.dart';
 import 'package:gerencia_net_plus/src/pix/models/additional_info.dart';
 import 'package:gerencia_net_plus/src/pix/models/debtor.dart';
 import 'package:gerencia_net_plus/src/pix/models/pix_status.dart';

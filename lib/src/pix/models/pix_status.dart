@@ -9,12 +9,9 @@ enum PixStatus {
   const PixStatus(this.value);
 
   factory PixStatus.match(String value) {
-    return switch (value.toUpperCase()) {
-      'ATIVA' => PixStatus.active,
-      'CONCLUIDA' => PixStatus.completed,
-      'REMOVIDA_PELO_USUARIO_RECEBEDOR' => PixStatus.removedByPayee,
-      'REMOVIDA_PELO_PSP' => PixStatus.removedByPSP,
-      _ => throw UnimplementedError(value),
-    };
+    return PixStatus.values.firstWhere(
+      (status) => status.value == value,
+      orElse: () => throw ArgumentError.value(value),
+    );
   }
 }
