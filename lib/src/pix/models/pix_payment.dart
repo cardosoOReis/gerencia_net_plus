@@ -31,7 +31,7 @@ class PixPayment {
         'chave': pixKey,
         'horario': paymentTime.toRFC3339(),
         'infoPagador': payerInfo,
-        'devolucoes': devolutions?.map((d) => d.toMap()).toList()
+        'devolucoes': devolutions?.map((d) => d.toMap()).toList(),
       };
 
   factory PixPayment.fromMap(Map<String, dynamic> map) {

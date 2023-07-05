@@ -101,11 +101,11 @@ const Map<String, Map<String, dynamic>> CONSTANTS = {
       'pixGenerateQRCode': {'route': '/v2/loc/:id/qrcode', 'method': 'get'},
       'pixDevolution': {
         'route': '/v2/pix/:e2eId/devolucao/:id',
-        'method': 'put'
+        'method': 'put',
       },
       'pixDetailDevolution': {
         'route': '/v2/pix/:e2eId/devolucao/:id',
-        'method': 'get'
+        'method': 'get',
       },
       'pixSend': {'route': '/v2/gn/pix/:idEnvio', 'method': 'put'},
       'pixSendList': {'route': '/v2/pix/:e2eId', 'method': 'get'},
@@ -128,15 +128,15 @@ const Map<String, Map<String, dynamic>> CONSTANTS = {
       'pixListDueCharges': {'route': '/v2/cobv/', 'method': 'get'},
       'createReport': {
         'route': '/v2/gn/relatorios/extrato-conciliacao',
-        'method': 'post'
+        'method': 'post',
       },
-      'detailReport': {'route': '/v2/gn/relatorios/:id', 'method': 'get'}
-    }
+      'detailReport': {'route': '/v2/gn/relatorios/:id', 'method': 'get'},
+    },
   },
   'OPEN-FINANCE': {
     'URL': {
       'production': 'https://apis.gerencianet.com.br/open-finance',
-      'sandbox': 'https://apis-h.gerencianet.com.br/open-finance'
+      'sandbox': 'https://apis-h.gerencianet.com.br/open-finance',
     },
     'ENDPOINTS': {
       'authorize': {'route': '/oauth/token', 'method': 'post'},
@@ -144,20 +144,20 @@ const Map<String, Map<String, dynamic>> CONSTANTS = {
       'ofDetailSettings': {'route': '/config', 'method': 'get'},
       'ofListParticipants': {'route': '/participantes/', 'method': 'get'},
       'ofStartPixPayment': {'route': '/pagamentos/pix', 'method': 'post'},
-      'ofListPixPayment': {'route': '/pagamentos/pix', 'method': 'get'}
-    }
+      'ofListPixPayment': {'route': '/pagamentos/pix', 'method': 'get'},
+    },
   },
   'PAGAMENTOS': {
     'URL': {
       'production': 'https://apis.gerencianet.com.br/pagamento',
-      'sandbox': 'https://apis.gerencianet.com.br/pagamento'
+      'sandbox': 'https://apis.gerencianet.com.br/pagamento',
     },
     'ENDPOINTS': {
       'authorize': {'route': '/oauth/token', 'method': 'post'},
       'payDetailBarCode': {'route': '/codBarras/:codBarras', 'method': 'get'},
       'payRequestBarCode': {'route': '/codBarras/:codBarras', 'method': 'post'},
       'payDetailPayment': {'route': '/:idPagamento', 'method': 'get'},
-      'payListPayments': {'route': '/resumo', 'method': 'get'}
-    }
+      'payListPayments': {'route': '/resumo', 'method': 'get'},
+    },
   },
 };

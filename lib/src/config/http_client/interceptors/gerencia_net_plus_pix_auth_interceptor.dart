@@ -44,7 +44,7 @@ class GerenciaNetPlusPixAuthInterceptor extends Interceptor {
 
     final headers = {
       'authorization': 'Basic ${_getAuthorization()}',
-      'content-type': 'application/json'
+      'content-type': 'application/json',
     };
 
     final result = await client.post(
