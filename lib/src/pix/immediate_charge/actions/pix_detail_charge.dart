@@ -11,7 +11,7 @@ class PixDetailCharge {
     required String txid,
     int? revision,
   }) async {
-    final endPoint = client.pixEndPoints.charge.pixDetailCharge(txid);
+    final endPoint = client.pixEndPoints.immediateCharge.pixDetailCharge(txid);
     final queryParameters = <String, dynamic>{};
     if (revision != null) {
       queryParameters.addAll({

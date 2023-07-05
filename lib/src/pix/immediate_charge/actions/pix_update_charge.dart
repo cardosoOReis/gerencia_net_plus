@@ -32,7 +32,7 @@ class PixUpdateCharge {
       status: status,
     );
 
-    final endPoint = client.pixEndPoints.charge.pixUpdateCharge(txid);
+    final endPoint = client.pixEndPoints.immediateCharge.pixUpdateCharge(txid);
 
     final response = await client<Map<String, dynamic>>(
       endPoint: endPoint,

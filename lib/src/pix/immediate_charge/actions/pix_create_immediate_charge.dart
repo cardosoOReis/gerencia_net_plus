@@ -28,7 +28,7 @@ class PixCreateImmediateCharge {
       additionalInfo: additionalInfo,
     );
 
-    final endPoint = client.pixEndPoints.charge.pixCreateImmediateCharge();
+    final endPoint = client.pixEndPoints.immediateCharge.pixCreateImmediateCharge();
 
     final response = await client<Map<String, dynamic>>(
       endPoint: endPoint,

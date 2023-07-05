@@ -29,7 +29,7 @@ class PixListCharges {
       ..addIfNotNull('paginacao.paginaAtual', pageNumber)
       ..addIfNotNull('paginacao.itensPorPagina', itemAmount);
 
-    final endPoint = client.pixEndPoints.charge.pixListCharges();
+    final endPoint = client.pixEndPoints.immediateCharge.pixListCharges();
 
     final result = await client<Map<String, dynamic>>(
       endPoint: endPoint,

@@ -31,7 +31,7 @@ class PixCreateCharge {
       payerSolicitation: payerSolicitation,
       additionalInfo: additionalInfo,
     );
-    final endPoint = client.pixEndPoints.charge.pixCreateCharge(
+    final endPoint = client.pixEndPoints.immediateCharge.pixCreateCharge(
       txid ?? Txid.generate(),
     );
 
