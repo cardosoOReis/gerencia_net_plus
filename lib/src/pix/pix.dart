@@ -89,13 +89,13 @@ class Pix {
 
   Future<PixCharge> detailCharge(
     String txid, {
-    int? revisao,
+    int? revision,
   }) async {
     final pixDetailCharge = PixDetailCharge(_client);
 
     return pixDetailCharge(
       txid: txid,
-      revision: revisao,
+      revision: revision,
     );
   }
 

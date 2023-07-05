@@ -22,11 +22,7 @@ class GerenciaNetPlusRestClient extends DioForNative {
     required String keyPath,
   }) : super(_baseOptions) {
     _configureCertificates(certificatePath: certificatePath, keyPath: keyPath);
-    interceptors.add(
-      PrettyDioLogger(
-        requestBody: true,
-      ),
-    );
+    interceptors.add(PrettyDioLogger(requestBody: true));
   }
 
   Future<Response<T>> call<T>({
