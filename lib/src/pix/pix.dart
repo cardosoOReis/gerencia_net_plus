@@ -1,4 +1,6 @@
+import 'package:gerencia_net_plus/src/pix/charge/models/pix_charge_consulting.dart';
 import 'package:gerencia_net_plus/src/pix/charge/pix_detail_charge.dart';
+import 'package:gerencia_net_plus/src/pix/charge/pix_list_charges.dart';
 import 'package:gerencia_net_plus/src/pix/charge/pix_update_charge.dart';
 import 'package:gerencia_net_plus/src/pix/models/pix_status.dart';
 
@@ -94,6 +96,28 @@ class Pix {
     return pixDetailCharge(
       txid: txid,
       revision: revisao,
+    );
+  }
+
+  Future<PixChargeList> listCharges({
+    required DateTime start,
+    required DateTime end,
+    String? cpf,
+    String? cnpj,
+    PixStatus? status,
+    int? pageNumber,
+    int? itemAmount,
+  }) async {
+    final pixListCharges = PixListCharges(_client);
+
+    return pixListCharges(
+      start: start,
+      end: end,
+      cpf: cpf,
+      cnpj: cnpj,
+      status: status,
+      pageNumber: pageNumber,
+      itemAmount: itemAmount,
     );
   }
 }

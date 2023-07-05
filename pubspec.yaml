@@ -12,6 +12,7 @@ dependencies:
   dotenv: ^4.1.0
   equatable: ^2.0.5
   import_sorter: ^4.6.0
+  intl: ^0.18.1
   pretty_dio_logger: ^1.3.1
 
 dev_dependencies:

@@ -2,6 +2,7 @@
 import 'dart:convert';
 
 // Project imports:
+import 'package:gerencia_net_plus/src/config/utils/date_extensions.dart';
 import 'package:gerencia_net_plus/src/pix/models/pix_payment.dart';
 
 import '../../models/additional_info.dart';
@@ -88,7 +89,7 @@ class PixCharge {
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
-      'creation': creation.toIso8601String(),
+      'creation': creation.toRFC3339(),
       'expiration': expiration.inMilliseconds,
       'txid': txid,
       'revisionAmount': revisionAmount,

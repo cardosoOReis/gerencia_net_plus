@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:gerencia_net_plus/src/config/utils/date_extensions.dart';
 import 'package:gerencia_net_plus/src/pix/models/devolution.dart';
 
 class PixPayment {
@@ -27,7 +28,7 @@ class PixPayment {
       'txid': txid,
       'valor': value.toStringAsFixed(2),
       'chave': pixKey,
-      'horario': paymentTime.toIso8601String(),
+      'horario': paymentTime.toRFC3339(),
       'infoPagador': payerInfo,
       'devolucoes': devolutions?.map((d) => d.toMap()).toList()
     };
