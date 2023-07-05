@@ -2,11 +2,11 @@
 import 'dart:convert';
 
 // Project imports:
-import 'package:gerencia_net_plus/src/config/utils/date_extensions.dart';
-import 'package:gerencia_net_plus/src/pix/models/pix_payment.dart';
+import '../../../config/utils/date_extensions.dart';
 import '../../models/additional_info.dart';
 import '../../models/debtor.dart';
 import '../../models/location_info.dart';
+import '../../models/pix_payment.dart';
 import '../../models/pix_status.dart';
 
 class PixCharge {
