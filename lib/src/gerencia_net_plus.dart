@@ -4,20 +4,26 @@ import 'config/network/app_network.dart';
 import 'gerencia_net_credentials.dart';
 import 'pix/pix.dart';
 
+/// Base GerenciaNetPlus class to use for integration.
+///
+/// Instantiate this class to use all operations available by
+/// the GerenciaNet API.
 class GerenciaNetPlus {
-  final GerenciaNetCredentials credentials;
+  final GerenciaNetCredentials _credentials;
 
+  /// Default constructor.
   const GerenciaNetPlus({
-    required this.credentials,
-  });
+    required GerenciaNetCredentials credentials,
+  }) : _credentials = credentials;
 
-  AppNetwork get appNetwork => AppNetwork(sandbox: credentials.sandbox);
+  AppNetwork get _appNetwork => AppNetwork(sandbox: _credentials.sandbox);
 
+  /// All the Pix operations available by the GerenciaNet API.
   Pix get pix => Pix(
-        credentials: credentials,
+        credentials: _credentials,
         client: GerenciaNetPlusPixRestClient(
-          credentials: credentials,
-          pixEndPoints: appNetwork.pix,
+          credentials: _credentials,
+          pixEndPoints: _appNetwork.pix,
         ),
       );
 }
