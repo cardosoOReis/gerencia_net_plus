@@ -9,5 +9,6 @@ GerenciaNetCredentials get baseCredentials {
     certificatePath: env.getOrElse('CERTIFICATE_PATH', () => ''),
     privateKeyPath: env.getOrElse('PRIVATE_KEY_PATH', () => ''),
     pixKey: env.getOrElse('PIX_KEY', () => ''),
+    sandbox: bool.tryParse(env.getOrElse('SANDBOX', () => 'true')) ?? true,
   );
 }

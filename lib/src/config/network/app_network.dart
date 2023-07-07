@@ -2,6 +2,7 @@
 import 'models/end_point.dart';
 import 'models/http_method.dart';
 
+/// Contains all the endpoints used by this application
 class AppNetwork {
   const AppNetwork({
     this.sandbox = true,

@@ -23,7 +23,7 @@ class PixCreateChargeRequestBody {
   Map<String, dynamic> toMap() {
     final body = <String, dynamic>{
       'calendario': {
-        'expiracao': expiration.inMilliseconds,
+        'expiracao': expiration.inSeconds,
       },
       'valor': {
         'original': value.toStringAsFixed(2),

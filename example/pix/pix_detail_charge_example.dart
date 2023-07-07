@@ -5,7 +5,7 @@ import '../base_credentials.dart';
 Future<void> main(List<String> args) async {
   final gerenciaNetPlus = GerenciaNetPlus(credentials: baseCredentials);
   final result = await gerenciaNetPlus.pix.immediateCharge.detailCharge(
-    'GerenciaNetPlusxpwFQHHSXNB45Mt9mC66',
+    'GerenciaNetPlus7RtLszIwfTpD8cx1iTVs',
   );
 
   print(result.toMap());

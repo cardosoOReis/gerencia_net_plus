@@ -1,6 +1,6 @@
 import 'package:gerencia_net_plus/gerencia_net_plus.dart';
-import 'package:gerencia_net_plus/src/pix/models/additional_info.dart';
 import 'package:gerencia_net_plus/src/pix/immediate_charge/models/debtor.dart';
+import 'package:gerencia_net_plus/src/pix/models/additional_info.dart';
 
 import '../base_credentials.dart';
 

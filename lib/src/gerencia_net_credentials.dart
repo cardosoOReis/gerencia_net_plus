@@ -96,9 +96,10 @@ class GerenciaNetCredentials extends Equatable {
   /// - Cpf;
   /// - Email;
   /// - Phone number;
-  /// - Random key.
+  /// - EVP / Random key.
   final String pixKey;
 
+  /// Default constructor
   const GerenciaNetCredentials({
     required this.clientId,
     required this.clientSecret,
@@ -108,6 +109,7 @@ class GerenciaNetCredentials extends Equatable {
     this.sandbox = true,
   });
 
+  /// Helper method to transform this class into a Map
   Map<String, dynamic> toMap() => <String, dynamic>{
         'clientId': clientId,
         'clientSecret': clientSecret,
@@ -117,6 +119,7 @@ class GerenciaNetCredentials extends Equatable {
         'pixKey': pixKey,
       };
 
+  /// Helper constructor to instantiate this class from a Map
   factory GerenciaNetCredentials.fromMap(Map<String, dynamic> map) =>
       GerenciaNetCredentials(
         clientId: map['clientId'] as String,
@@ -127,8 +130,11 @@ class GerenciaNetCredentials extends Equatable {
         pixKey: map['pixKey'] as String,
       );
 
+  /// Helper method to transform this class into a JSON String
   String toJson() => json.encode(toMap());
 
+
+  /// Helper constructor to instantiate this class from a JSON String
   factory GerenciaNetCredentials.fromJson(String source) =>
       GerenciaNetCredentials.fromMap(
         json.decode(source) as Map<String, dynamic>,

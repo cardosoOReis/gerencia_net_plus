@@ -4,10 +4,10 @@ import 'dart:convert';
 // Project imports:
 import '../../../config/utils/date_extensions.dart';
 import '../../models/additional_info.dart';
-import 'debtor.dart';
 import '../../models/location_info.dart';
 import '../../models/pix_payment.dart';
 import '../../models/pix_status.dart';
+import 'debtor.dart';
 
 class PixImmediateCharge {
   final DateTime creation;
