@@ -6,7 +6,7 @@ import '../base_credentials.dart';
 
 Future<void> main(List<String> args) async {
   final gerenciaNetPlus = GerenciaNetPlus(credentials: baseCredentials);
-  final result = await gerenciaNetPlus.pix.immediateCharge.createChargeWithTxid(
+  final result = await gerenciaNetPlus.pix.immediateCharge.createCharge(
     expiration: const Duration(days: 1),
     value: 0.01,
     debtor: const LegalPersonDebtor(
@@ -14,12 +14,12 @@ Future<void> main(List<String> args) async {
       cnpj: '12345678000195',
     ),
     payerSolicitation: 'Informe o número ou identificador do pedido.',
-    additionalInfo: [
-      const AdditionalInfo(
+    additionalInfo: const [
+      AdditionalInfo(
         name: 'Campo 1',
         value: 'informação adicional 1 do PSP-Recebedor',
       ),
-      const AdditionalInfo(
+      AdditionalInfo(
         name: 'Campo 2',
         value: 'informação adicional 2 do PSP-Recebedor',
       ),

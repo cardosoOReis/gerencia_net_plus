@@ -10,7 +10,7 @@ class DueChargeInterestRate {
   });
 
   Map<String, dynamic> toMap() => <String, dynamic>{
-        'valorPerc': value,
+        'valorPerc': value.toStringAsFixed(2),
         'modalidade': modality.domain,
       };
 

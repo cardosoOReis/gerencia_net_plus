@@ -5,7 +5,7 @@ import 'debtor.dart';
 
 class PixCreateChargeRequestBody {
   final GerenciaNetCredentials credentials;
-  final Duration expiration;
+  final Duration? expiration;
   final double value;
   final List<AdditionalInfo> additionalInfo;
   final Debtor? debtor;
@@ -22,18 +22,18 @@ class PixCreateChargeRequestBody {
 
   Map<String, dynamic> toMap() {
     final body = <String, dynamic>{
-      'calendario': {
-        'expiracao': expiration.inSeconds,
-      },
+      'calendario': {},
       'valor': {
         'original': value.toStringAsFixed(2),
       },
       'chave': credentials.pixKey,
     };
-    final debtor = this.debtor;
+    if (expiration != null) {
+      body['calendario']['expiracao'] = expiration?.inSeconds;
+    }
     if (debtor != null) {
       body.addAll({
-        'devedor': debtor.toMap(),
+        'devedor': debtor?.toMap(),
       });
     }
     if (payerSolicitation != null) {

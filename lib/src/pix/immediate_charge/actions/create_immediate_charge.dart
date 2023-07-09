@@ -16,8 +16,8 @@ class PixCreateCharge {
 
   Future<PixImmediateCharge> call({
     required GerenciaNetCredentials credentials,
-    required Duration expiration,
     required double value,
+    Duration? expiration,
     String? txid,
     Debtor? debtor,
     String? payerSolicitation,
