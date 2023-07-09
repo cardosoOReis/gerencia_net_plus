@@ -29,10 +29,8 @@ class GerenciaNetPlusPixAuthInterceptor extends Interceptor {
 
     options.headers.addAll({
       'authorization': 'Bearer ${token.accessToken}',
-      'content-type': 'application/json',
     });
-
-    options.contentType = 'application/json';
+    
     handler.next(options);
   }
 
