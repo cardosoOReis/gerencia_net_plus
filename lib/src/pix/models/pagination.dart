@@ -1,6 +1,8 @@
 // Dart imports:
 import 'dart:convert';
 
+import '../../config/utils/date_extensions.dart';
+
 class Parameters {
   final DateTime start;
   final DateTime end;
@@ -13,8 +15,8 @@ class Parameters {
   });
 
   Map<String, dynamic> toMap() => <String, dynamic>{
-        'inicio': start.millisecondsSinceEpoch,
-        'fim': end.millisecondsSinceEpoch,
+        'inicio': start.toRFC3339(),
+        'fim': end.toRFC3339(),
         'paginacao': pagination.toMap(),
       };
 
