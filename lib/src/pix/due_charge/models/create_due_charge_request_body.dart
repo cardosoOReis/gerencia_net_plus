@@ -47,7 +47,7 @@ class CreateDueChargeRequestBody {
       }
         ..addIfNotNull('multa', fine?.toMap())
         ..addIfNotNull('juros', interestRate?.toMap())
-        ..addIfNotNull('abadimento', reduction?.toMap())
+        ..addIfNotNull('abatimento', reduction?.toMap())
         ..addIfNotNull('desconto', discount?.toMap()),
       'chave': pixKey,
     }..addIfNotNull('solicitacaoPagador', payerSolicitation);

@@ -7,7 +7,7 @@ class DueChargeReduction {
   const DueChargeReduction({required this.value, required this.modality});
 
   Map<String, dynamic> toMap() => <String, dynamic>{
-        'valorPerc': value,
+        'valorPerc': value.toStringAsFixed(2),
         'modalidade': modality.domain,
       };
 
