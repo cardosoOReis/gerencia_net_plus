@@ -2,13 +2,13 @@
 import '../../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import '../../../config/utils/txid.dart';
 import '../../models/additional_info.dart';
-import 'models/create_due_charge_request_body.dart';
 import '../models/debtor_details.dart';
 import '../models/due_charge.dart';
 import '../models/due_charge_discount.dart';
 import '../models/due_charge_fine.dart';
 import '../models/due_charge_interest_rates.dart';
 import '../models/due_charge_reduction.dart';
+import 'models/create_due_charge_request_body.dart';
 
 class CreateDueCharge {
   final GerenciaNetPlusPixRestClient _client;

@@ -4,6 +4,7 @@ import 'dart:convert';
 // Package imports:
 import 'package:equatable/equatable.dart';
 
+// Project imports:
 import '../../config/utils/date_extensions.dart';
 
 class LocationInfo extends Equatable {
