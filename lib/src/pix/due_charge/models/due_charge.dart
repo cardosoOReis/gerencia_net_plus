@@ -120,4 +120,44 @@ class DueCharge {
           : null,
     );
   }
+
+  DueCharge copyWith({
+    DateTime? creationDate,
+    DateTime? dueDate,
+    int? validDaysAfterExpiration,
+    String? txid,
+    int? revison,
+    LocationInfo? locationInfo,
+    ChargeStatus? status,
+    DebtorDetails? debtorDetails,
+    RecieverDetails? recieverDetails,
+    double? originalValue,
+    String? pixKey,
+    DueChargeInterestRate? interestRate,
+    DueChargeFine? fine,
+    DueChargeReduction? reduction,
+    DueChargeDiscount? discount,
+    String? payerSolicitation,
+    List<AdditionalInfo>? additionalInfo,
+  }) =>
+      DueCharge(
+        creationDate: creationDate ?? this.creationDate,
+        dueDate: dueDate ?? this.dueDate,
+        validDaysAfterExpiration:
+            validDaysAfterExpiration ?? this.validDaysAfterExpiration,
+        txid: txid ?? this.txid,
+        revison: revison ?? this.revison,
+        locationInfo: locationInfo ?? this.locationInfo,
+        status: status ?? this.status,
+        debtorDetails: debtorDetails ?? this.debtorDetails,
+        recieverDetails: recieverDetails ?? this.recieverDetails,
+        originalValue: originalValue ?? this.originalValue,
+        pixKey: pixKey ?? this.pixKey,
+        interestRate: interestRate ?? this.interestRate,
+        fine: fine ?? this.fine,
+        reduction: reduction ?? this.reduction,
+        discount: discount ?? this.discount,
+        payerSolicitation: payerSolicitation ?? this.payerSolicitation,
+        additionalInfo: additionalInfo ?? this.additionalInfo,
+      );
 }
