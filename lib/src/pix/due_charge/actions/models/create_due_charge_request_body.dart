@@ -1,12 +1,12 @@
 // Project imports:
-import '../../../config/utils/date_extensions.dart';
-import '../../../config/utils/map_extensions.dart';
-import '../../models/additional_info.dart';
-import 'debtor_details.dart';
-import 'due_charge_discount.dart';
-import 'due_charge_fine.dart';
-import 'due_charge_interest_rates.dart';
-import 'due_charge_reduction.dart';
+import '../../../../config/utils/date_extensions.dart';
+import '../../../../config/utils/map_extensions.dart';
+import '../../../models/additional_info.dart';
+import '../../models/debtor_details.dart';
+import '../../models/due_charge_discount.dart';
+import '../../models/due_charge_fine.dart';
+import '../../models/due_charge_interest_rates.dart';
+import '../../models/due_charge_reduction.dart';
 
 class CreateDueChargeRequestBody {
   final DateTime dueDate;

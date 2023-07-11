@@ -57,6 +57,24 @@ class PhysicalDebtorDetails extends DebtorDetails {
         federativeUnit,
         cep,
       ];
+
+  PhysicalDebtorDetails copyWith({
+    String? name,
+    String? cpf,
+    String? email,
+    String? adress,
+    String? city,
+    String? federativeUnit,
+    String? cep,
+  }) => PhysicalDebtorDetails(
+      name: name ?? this.name,
+      cpf: cpf ?? this.cpf,
+      email: email ?? this.email,
+      adress: adress ?? this.adress,
+      city: city ?? this.city,
+      federativeUnit: federativeUnit ?? this.federativeUnit,
+      cep: cep ?? this.cep,
+    );
 }
 
 class LegalDebtorDetails extends DebtorDetails {
@@ -109,4 +127,22 @@ class LegalDebtorDetails extends DebtorDetails {
         federativeUnit,
         cep,
       ];
+
+  LegalDebtorDetails copyWith({
+    String? name,
+    String? cnpj,
+    String? email,
+    String? adress,
+    String? city,
+    String? federativeUnit,
+    String? cep,
+  }) => LegalDebtorDetails(
+      name: name ?? this.name,
+      cnpj: cnpj ?? this.cnpj,
+      email: email ?? this.email,
+      adress: adress ?? this.adress,
+      city: city ?? this.city,
+      federativeUnit: federativeUnit ?? this.federativeUnit,
+      cep: cep ?? this.cep,
+    );
 }
