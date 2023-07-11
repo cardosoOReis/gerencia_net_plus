@@ -4,9 +4,9 @@ import 'dart:convert';
 // Project imports:
 import '../../../config/utils/date_extensions.dart';
 import '../../models/additional_info.dart';
+import '../../models/charge_status.dart';
 import '../../models/location_info.dart';
 import '../../models/pix_payment.dart';
-import '../../models/pix_status.dart';
 import 'debtor.dart';
 
 class PixImmediateCharge {
@@ -15,7 +15,7 @@ class PixImmediateCharge {
   final String txid;
   final int revisionAmount;
   final LocationInfo locationInfo;
-  final PixStatus status;
+  final ChargeStatus status;
   final double value;
   final String pixKey;
   final Debtor? debtor;
@@ -74,12 +74,8 @@ class PixImmediateCharge {
       expiration: Duration(milliseconds: json['calendario']['expiracao']),
       txid: json['txid'],
       revisionAmount: json['revisao'],
-      locationInfo: LocationInfo(
-        id: json['loc']['id'],
-        location: json['loc']['location'],
-        chargeType: json['loc']['tipoCob'],
-      ),
-      status: PixStatus.match(json['status']),
+      locationInfo: LocationInfo.fromMap(json['loc']),
+      status: ChargeStatus.match(json['status']),
       debtor: debtor,
       payerSolicitation: json['solicitacaoPagador'],
       pixKey: json['chave'],

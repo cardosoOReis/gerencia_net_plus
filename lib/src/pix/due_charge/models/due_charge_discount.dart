@@ -1,121 +1,114 @@
-import 'dart:convert';
-
+// Project imports:
 import '../../../config/utils/date_extensions.dart';
 
-class DueChargeDiscount {
-  final DiscountModality modality;
-  final double? value;
-  final List<FixedDateDiscount>? fixedDateDiscount;
-  final bool _isUntilDate;
+sealed class DueChargeDiscount {
+  const DueChargeDiscount();
 
-  DueChargeDiscount({
-    required this.modality,
-    this.value,
-    this.fixedDateDiscount,
-  }) : _isUntilDate = modality.domain == 1 || modality.domain == 2 {
-    if (_isUntilDate) {
-      if (fixedDateDiscount == null) {
-        throw ArgumentError.value(
-          fixedDateDiscount,
-          'fixedDiscountValue',
-          '''
-          When modality is fixedValueUntilDate or percentualValueIntilDate, 
-          fixedDateDiscount should not be null.
-          ''',
-        );
-      }
-    } else {
-      if (value == null) {
-        throw ArgumentError.value(
-          value,
-          'value',
-          '''
-          When modality is fixedValueForAdvanceCalendarDay, 
-          percentualValueForAdvanceCalendarDay, 
-          fixedValueForAdvanceBusinessDay or 
-          percentualValueForAdvanceBusinessDay, 
-          value should not be null.
-          ''',
-        );
-      }
+  Map<String, dynamic> toMap();
+
+  static DueChargeDiscount fromMap(Map<String, dynamic> map) {
+    if (map.containsKey('valorPerc')) {
+      return DueChargeDiscountAnticipationPerDay.fromMap(map);
     }
-  }
-
-  Map<String, dynamic> toMap() => _isUntilDate
-      ? <String, dynamic>{
-          'modalidade': modality.domain,
-          'descontoDataFixa': fixedDateDiscount!.map((e) => e.toMap()).toList(),
-        }
-      : <String, dynamic>{
-          'modalidade': modality.domain,
-          'valorPerc': value,
-        };
-
-  factory DueChargeDiscount.fromMap(Map<String, dynamic> map) {
-    List<dynamic>? fixedDateDiscountJson = map['descontoDataFixa'];
-    List<FixedDateDiscount>? fixedDateDiscount;
-    if (fixedDateDiscountJson != null) {
-      fixedDateDiscount = fixedDateDiscountJson
-          .map((e) => FixedDateDiscount.fromMap(e as Map<String, dynamic>))
-          .toList();
+    if (map.containsKey('descontoDataFixa')) {
+      return DueChargeDiscountUntilDate.fromMap(map);
     }
 
-    return DueChargeDiscount(
-      modality: DiscountModality.match(map['modalidade'] as int),
-      value: map['valorPerc'],
-      fixedDateDiscount: fixedDateDiscount,
-    );
+    throw ArgumentError.value(map);
   }
-
-  String toJson() => json.encode(toMap());
-
-  factory DueChargeDiscount.fromJson(String source) =>
-      DueChargeDiscount.fromMap(json.decode(source) as Map<String, dynamic>);
 }
 
-enum DiscountModality {
-  fixedValueUntilDate(1),
-  percentualValueIntilDate(2),
-  fixedValueForAdvanceCalendarDay(3),
-  percentualValueForAdvanceCalendarDay(4),
-  fixedValueForAdvanceBusinessDay(5),
-  percentualValueForAdvanceBusinessDay(6);
+class DueChargeDiscountUntilDate extends DueChargeDiscount {
+  final DueChargeDiscountUntilDateModality modality;
+  final List<(DateTime, double)> dates;
+
+  const DueChargeDiscountUntilDate({
+    required this.modality,
+    required this.dates,
+  });
+
+  factory DueChargeDiscountUntilDate.fromMap(Map<String, dynamic> map) =>
+      DueChargeDiscountUntilDate(
+        modality:
+            DueChargeDiscountUntilDateModality.match(map['modalidade'] as int),
+        dates: (map['descontoDataFixa'] as List<dynamic>)
+            .map<(DateTime, double)>(
+              (data) => (
+                DateTime.parse(data['data']),
+                double.parse(data['valorPerc']),
+              ),
+            )
+            .toList(),
+      );
+
+  @override
+  Map<String, dynamic> toMap() => <String, dynamic>{
+        'modalidade': modality.domain,
+        'descontoDataFixa': dates
+            .map(
+              (date) => <String, dynamic>{
+                'data': date.$1.toYearMonthDay(),
+                'valorPerc': date.$2.toStringAsFixed(2),
+              },
+            )
+            .toList(),
+      };
+}
+
+enum DueChargeDiscountUntilDateModality {
+  fixedValue(1),
+  percentageValue(2);
 
   final int domain;
 
-  const DiscountModality(this.domain);
+  const DueChargeDiscountUntilDateModality(this.domain);
 
-  factory DiscountModality.match(int value) =>
-      DiscountModality.values.firstWhere(
+  factory DueChargeDiscountUntilDateModality.match(int value) =>
+      DueChargeDiscountUntilDateModality.values.firstWhere(
         (modality) => modality.domain == value,
         orElse: () => throw ArgumentError.value(value),
       );
 }
 
-class FixedDateDiscount {
+class DueChargeDiscountAnticipationPerDay extends DueChargeDiscount {
+  final DueChargeDiscountAnticipationPerDayModality modality;
   final double value;
-  final DateTime date;
 
-  const FixedDateDiscount({
+  const DueChargeDiscountAnticipationPerDay({
+    required this.modality,
     required this.value,
-    required this.date,
   });
 
-  Map<String, dynamic> toMap() => <String, dynamic>{
-        'valorPerc': value.toStringAsFixed(2),
-        'data': date.toRFC3339(),
-      };
-
-  factory FixedDateDiscount.fromMap(Map<String, dynamic> map) =>
-      FixedDateDiscount(
-        value: map['valorPerc'] as double,
-        date: DateTime.parse(map['data']),
+  factory DueChargeDiscountAnticipationPerDay.fromMap(
+    Map<String, dynamic> map,
+  ) =>
+      DueChargeDiscountAnticipationPerDay(
+        modality: DueChargeDiscountAnticipationPerDayModality.match(
+          map['modalidade'] as int,
+        ),
+        value: double.parse(map['valorPerc']),
       );
 
-  String toJson() => json.encode(toMap());
+  @override
+  Map<String, dynamic> toMap() => {
+        'modalidade': modality.domain,
+        'valorPerc': value.toStringAsFixed(2),
+      };
+}
 
-  factory FixedDateDiscount.fromJson(String source) =>
-      FixedDateDiscount.fromMap(
-        json.decode(source) as Map<String, dynamic>,
+enum DueChargeDiscountAnticipationPerDayModality {
+  amountInAdvancePerCalendarDay(3),
+  amountInAdvancePerWorkingDay(4),
+  percentageInAdvancePerCalendarDay(5),
+  percentageInAdvancePerWorkingDay(6);
+
+  final int domain;
+
+  const DueChargeDiscountAnticipationPerDayModality(this.domain);
+
+  factory DueChargeDiscountAnticipationPerDayModality.match(int value) =>
+      DueChargeDiscountAnticipationPerDayModality.values.firstWhere(
+        (modality) => modality.domain == value,
+        orElse: () => throw ArgumentError.value(value),
       );
 }

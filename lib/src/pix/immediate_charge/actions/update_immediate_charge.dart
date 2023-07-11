@@ -1,7 +1,7 @@
 // Project imports:
 import '../../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import '../../models/additional_info.dart';
-import '../../models/pix_status.dart';
+import '../../models/charge_status.dart';
 import '../models/debtor.dart';
 import '../models/pix_immediate_charge.dart';
 import '../models/pix_update_charge_request_body.dart';
@@ -19,7 +19,7 @@ class PixUpdateCharge {
     required String? payerSolicitation,
     required String? pixKey,
     required List<AdditionalInfo>? additionalInfo,
-    required PixStatus? status,
+    required ChargeStatus? status,
     bool persist = true,
   }) async {
     final body = PixUpdateChargeRequestBody(

@@ -1,3 +1,4 @@
+// Dart imports:
 import 'dart:convert';
 
 class DueChargeInterestRate {
@@ -16,7 +17,7 @@ class DueChargeInterestRate {
 
   factory DueChargeInterestRate.fromMap(Map<String, dynamic> map) =>
       DueChargeInterestRate(
-        value: map['valorPerc'] as double,
+        value: double.parse(map['valorPerc']),
         modality: InterestRateModality.match(map['modalidade']),
       );
 

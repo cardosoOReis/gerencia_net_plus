@@ -1,3 +1,4 @@
+// Package imports:
 import 'package:equatable/equatable.dart';
 
 sealed class DebtorDetails extends Equatable {
@@ -35,7 +36,7 @@ class PhysicalDebtorDetails extends DebtorDetails {
         'cep': cep,
       };
 
-  factory PhysicalDebtorDetails.fromJson(Map<String, dynamic> json) =>
+  factory PhysicalDebtorDetails.fromMap(Map<String, dynamic> json) =>
       PhysicalDebtorDetails(
         name: json['nome'],
         cpf: json['cpf'],
@@ -87,7 +88,7 @@ class LegalDebtorDetails extends DebtorDetails {
         'cep': cep,
       };
 
-  factory LegalDebtorDetails.fromJson(Map<String, dynamic> json) =>
+  factory LegalDebtorDetails.fromMap(Map<String, dynamic> json) =>
       LegalDebtorDetails(
         name: json['nome'],
         cnpj: json['cnpj'],

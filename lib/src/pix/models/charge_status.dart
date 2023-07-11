@@ -1,4 +1,4 @@
-enum PixStatus {
+enum ChargeStatus {
   active('ATIVA'),
   completed('CONCLUIDA'),
   removedByPayee('REMOVIDA_PELO_USUARIO_RECEBEDOR'),
@@ -6,9 +6,9 @@ enum PixStatus {
 
   final String value;
 
-  const PixStatus(this.value);
+  const ChargeStatus(this.value);
 
-  factory PixStatus.match(String value) => PixStatus.values.firstWhere(
+  factory ChargeStatus.match(String value) => ChargeStatus.values.firstWhere(
         (status) => status.value == value,
         orElse: () => throw ArgumentError.value(value),
       );

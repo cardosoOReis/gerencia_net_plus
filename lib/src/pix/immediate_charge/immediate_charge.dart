@@ -2,7 +2,7 @@
 import '../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import '../../gerencia_net_credentials.dart';
 import '../models/additional_info.dart';
-import '../models/pix_status.dart';
+import '../models/charge_status.dart';
 import 'actions/create_immediate_charge.dart';
 import 'actions/detail_immediate_charge.dart';
 import 'actions/list_immediate_charges.dart';
@@ -105,7 +105,7 @@ class ImmediateCharge {
     double? value,
     int? locId,
     Debtor? debtor,
-    PixStatus? status,
+    ChargeStatus? status,
     String? pixKey,
     List<AdditionalInfo>? additionalInfo,
     String? payerSolicitation,
@@ -166,7 +166,7 @@ class ImmediateCharge {
     required DateTime end,
     String? cpf,
     String? cnpj,
-    PixStatus? status,
+    ChargeStatus? status,
     int? pageNumber,
     int? itemAmount,
   }) async {

@@ -1,6 +1,7 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// Dart imports:
 import 'dart:convert';
 
+// Package imports:
 import 'package:equatable/equatable.dart';
 
 class DueChargeFine extends Equatable {
@@ -18,7 +19,7 @@ class DueChargeFine extends Equatable {
       };
 
   factory DueChargeFine.fromMap(Map<String, dynamic> map) => DueChargeFine(
-        value: map['valorPerc'] as double,
+        value: double.parse(map['valorPerc']),
         modality: DueChargeFineModality.match(map['modalidade']),
       );
 

@@ -3,7 +3,7 @@ import 'dart:convert';
 
 // Project imports:
 import '../../models/additional_info.dart';
-import '../../models/pix_status.dart';
+import '../../models/charge_status.dart';
 import 'debtor.dart';
 
 class PixUpdateChargeRequestBody {
@@ -11,7 +11,7 @@ class PixUpdateChargeRequestBody {
   final Debtor? debtor;
   final double? value;
   final String? payerSolicitation;
-  final PixStatus? status;
+  final ChargeStatus? status;
   final String? pixKey;
   final List<AdditionalInfo>? additionalInfo;
 

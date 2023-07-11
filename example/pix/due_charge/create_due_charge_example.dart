@@ -1,5 +1,6 @@
 import 'package:gerencia_net_plus/gerencia_net_plus.dart';
 import 'package:gerencia_net_plus/src/pix/due_charge/models/debtor_details.dart';
+import 'package:gerencia_net_plus/src/pix/due_charge/models/due_charge_discount.dart';
 import 'package:gerencia_net_plus/src/pix/due_charge/models/due_charge_fine.dart';
 import 'package:gerencia_net_plus/src/pix/due_charge/models/due_charge_interest_rates.dart';
 import 'package:gerencia_net_plus/src/pix/due_charge/models/due_charge_reduction.dart';
@@ -9,7 +10,7 @@ import '../../base_credentials.dart';
 
 Future<void> main(List<String> args) async {
   final gerenciaNetPlus = GerenciaNetPlus(credentials: baseCredentials);
-  await gerenciaNetPlus.pix.dueCharge.createDueCharge(
+  final dueCharge = await gerenciaNetPlus.pix.dueCharge.createDueCharge(
     dueDate: DateTime.now().add(const Duration(days: 45)),
     debtorDetails: const LegalDebtorDetails(
       name: 'Empresa de Serviços SA',
@@ -38,5 +39,15 @@ Future<void> main(List<String> args) async {
       value: 10,
       modality: InterestRateModality.valueWorkingDays,
     ),
+    discount: DueChargeDiscountUntilDate(
+      modality: DueChargeDiscountUntilDateModality.percentageValue,
+      dates: [
+        (DateTime.now().add(const Duration(days: 20)), 10),
+        (DateTime.now().add(const Duration(days: 30)), 10),
+      ],
+    ),
+    payerSolicitation: 'Paga logo isso!',
   );
+
+  print(dueCharge.toMap());
 }

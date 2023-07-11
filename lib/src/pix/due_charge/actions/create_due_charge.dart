@@ -1,8 +1,10 @@
+// Project imports:
 import '../../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import '../../../config/utils/txid.dart';
 import '../../models/additional_info.dart';
 import '../models/create_due_charge_request_body.dart';
 import '../models/debtor_details.dart';
+import '../models/due_charge.dart';
 import '../models/due_charge_discount.dart';
 import '../models/due_charge_fine.dart';
 import '../models/due_charge_interest_rates.dart';
@@ -13,7 +15,7 @@ class CreateDueCharge {
 
   const CreateDueCharge(this._client);
 
-  Future<void> call({
+  Future<DueCharge> call({
     required DateTime dueDate,
     required DebtorDetails debtorDetails,
     required double originalValue,
@@ -52,6 +54,6 @@ class CreateDueCharge {
       body: body.toMap(),
     );
 
-    print(response.data);
+    return DueCharge.fromMap(response.data!);
   }
 }
