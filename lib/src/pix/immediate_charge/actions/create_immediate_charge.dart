@@ -6,15 +6,15 @@ import '../../../config/utils/txid.dart';
 import '../../../gerencia_net_credentials.dart';
 import '../../models/additional_info.dart';
 import '../models/debtor.dart';
-import '../models/pix_create_charge_request_body.dart';
-import '../models/pix_immediate_charge.dart';
+import '../models/create_charge_request_body.dart';
+import '../models/immediate_charge.dart';
 
 class PixCreateCharge {
   final GerenciaNetPlusPixRestClient client;
 
   const PixCreateCharge(this.client);
 
-  Future<PixImmediateCharge> call({
+  Future<ImmediateCharge> call({
     required GerenciaNetCredentials credentials,
     required double value,
     Duration? expiration,
@@ -23,7 +23,7 @@ class PixCreateCharge {
     String? payerSolicitation,
     List<AdditionalInfo> additionalInfo = const [],
   }) async {
-    final body = PixCreateChargeRequestBody(
+    final body = CreateImmediateChargeRequestBody(
       credentials: credentials,
       expiration: expiration,
       value: value,
@@ -39,6 +39,6 @@ class PixCreateCharge {
       endPoint: endPoint,
       body: body.toMap(),
     );
-    return PixImmediateCharge(response.data!);
+    return ImmediateCharge(response.data!);
   }
 }

@@ -3,13 +3,13 @@ import 'dart:convert';
 
 // Project imports:
 import '../../models/pagination.dart';
-import 'pix_immediate_charge.dart';
+import 'immediate_charge.dart';
 
-class PixImmediateChargeList {
+class ImmediateChargeList {
   final Parameters parameters;
-  final List<PixImmediateCharge> charges;
+  final List<ImmediateCharge> charges;
 
-  const PixImmediateChargeList({
+  const ImmediateChargeList({
     required this.parameters,
     required this.charges,
   });
@@ -19,13 +19,13 @@ class PixImmediateChargeList {
         'cobs': charges.map((x) => x.toMap()).toList(),
       };
 
-  factory PixImmediateChargeList.fromMap(Map<String, dynamic> map) =>
-      PixImmediateChargeList(
+  factory ImmediateChargeList.fromMap(Map<String, dynamic> map) =>
+      ImmediateChargeList(
         parameters:
             Parameters.fromMap(map['parametros'] as Map<String, dynamic>),
-        charges: List<PixImmediateCharge>.from(
-          (map['cobs'] as List<dynamic>).map<PixImmediateCharge>(
-            (x) => PixImmediateCharge(
+        charges: List<ImmediateCharge>.from(
+          (map['cobs'] as List<dynamic>).map<ImmediateCharge>(
+            (x) => ImmediateCharge(
               x as Map<String, dynamic>,
             ),
           ),
@@ -34,8 +34,8 @@ class PixImmediateChargeList {
 
   String toJson() => json.encode(toMap());
 
-  factory PixImmediateChargeList.fromJson(String source) =>
-      PixImmediateChargeList.fromMap(
+  factory ImmediateChargeList.fromJson(String source) =>
+      ImmediateChargeList.fromMap(
         json.decode(source) as Map<String, dynamic>,
       );
 }

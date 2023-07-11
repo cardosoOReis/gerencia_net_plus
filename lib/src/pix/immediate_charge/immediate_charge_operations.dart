@@ -8,16 +8,16 @@ import 'actions/detail_immediate_charge.dart';
 import 'actions/list_immediate_charges.dart';
 import 'actions/update_immediate_charge.dart';
 import 'models/debtor.dart';
-import 'models/pix_immediate_charge.dart';
-import 'models/pix_immediate_charge_list.dart';
+import 'models/immediate_charge.dart';
+import 'models/immediate_charge_list.dart';
 
 /// Groups all available Immediate Charge operations
-class ImmediateCharge {
+class ImmediateChargeOperations {
   final GerenciaNetPlusPixRestClient _client;
   final GerenciaNetCredentials _credentials;
 
   /// Default Constructor
-  const ImmediateCharge({
+  const ImmediateChargeOperations({
     required GerenciaNetPlusPixRestClient client,
     required GerenciaNetCredentials credentials,
   })  : _client = client,
@@ -45,7 +45,7 @@ class ImmediateCharge {
   /// provide a solicitation message. Moreover, the [additionalInfo] parameter
   /// enables you to include any supplementary information that may be relevant
   /// to the immediate charge, such as order details or a reference number.
-  Future<PixImmediateCharge> createCharge({
+  Future<ImmediateCharge> createCharge({
     required double value,
     Duration? expiration,
     String? txid,
@@ -99,7 +99,7 @@ class ImmediateCharge {
   /// Finally, the [payerSolicitation] parameter allows you to update the
   /// solicitation message that can be sent to the payer, providing updated
   /// instructions or additional context.
-  Future<PixImmediateCharge> updateCharge({
+  Future<ImmediateCharge> updateCharge({
     required String txid,
     bool persist = true,
     double? value,
@@ -130,7 +130,7 @@ class ImmediateCharge {
   /// specific revision of the charge. If provided, the function will return
   /// the charge as it existed at the specified revision. If no revision is
   /// specified, the function will return the most recent version of the charge.
-  Future<PixImmediateCharge> detailCharge(
+  Future<ImmediateCharge> detailCharge(
     String txid, {
     int? revision,
   }) async {
@@ -153,15 +153,15 @@ class ImmediateCharge {
   /// (Brazilian individual taxpayer registry) or [cnpj] (Brazilian corporate 
   /// taxpayer registry) to filter charges associated with specific entities. 
   /// Moreover, you can specify a [status] to retrieve charges with a particular
-  /// PixStatus value, allowing you to focus on charges with specific processing
-  /// statuses.
+  /// ChargeStatus value, allowing you to focus on charges with specific 
+  /// processing statuses.
   /// 
   /// If there are multiple pages of charges available, you can specify the 
   /// desired [pageNumber] to retrieve a specific page. Additionally, you can 
   /// control the number of charges to retrieve per page by providing the 
   /// [itemAmount] parameter. This allows you to customize the pagination and 
   /// retrieve charges in a suitable manner.
-  Future<PixImmediateChargeList> listCharges({
+  Future<ImmediateChargeList> listCharges({
     required DateTime start,
     required DateTime end,
     String? cpf,

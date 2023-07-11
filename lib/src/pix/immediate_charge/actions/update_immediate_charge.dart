@@ -3,15 +3,15 @@ import '../../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import '../../models/additional_info.dart';
 import '../../models/charge_status.dart';
 import '../models/debtor.dart';
-import '../models/pix_immediate_charge.dart';
-import '../models/pix_update_charge_request_body.dart';
+import '../models/immediate_charge.dart';
+import '../models/update_charge_request_body.dart';
 
 class PixUpdateCharge {
   final GerenciaNetPlusPixRestClient client;
 
   const PixUpdateCharge(this.client);
 
-  Future<PixImmediateCharge> call({
+  Future<ImmediateCharge> call({
     required String txid,
     required double? value,
     required int? locId,
@@ -22,7 +22,7 @@ class PixUpdateCharge {
     required ChargeStatus? status,
     bool persist = true,
   }) async {
-    final body = PixUpdateChargeRequestBody(
+    final body = UpdateChargeRequestBody(
       locId: locId,
       value: value,
       debtor: debtor,
@@ -41,6 +41,6 @@ class PixUpdateCharge {
       ),
     );
 
-    return PixImmediateCharge(response.data!);
+    return ImmediateCharge(response.data!);
   }
 }

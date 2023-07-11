@@ -6,7 +6,7 @@ import '../../models/additional_info.dart';
 import '../../models/charge_status.dart';
 import 'debtor.dart';
 
-class PixUpdateChargeRequestBody {
+class UpdateChargeRequestBody {
   final int? locId;
   final Debtor? debtor;
   final double? value;
@@ -15,7 +15,7 @@ class PixUpdateChargeRequestBody {
   final String? pixKey;
   final List<AdditionalInfo>? additionalInfo;
 
-  const PixUpdateChargeRequestBody({
+  const UpdateChargeRequestBody({
     required this.locId,
     required this.debtor,
     required this.value,

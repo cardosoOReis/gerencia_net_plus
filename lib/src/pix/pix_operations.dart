@@ -3,7 +3,7 @@ import '../config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import '../config/network/app_network.dart';
 import '../gerencia_net_credentials.dart';
 import 'due_charge/due_charge_operations.dart';
-import 'immediate_charge/immediate_charge.dart';
+import 'immediate_charge/immediate_charge_operations.dart';
 
 /// Contains all available Pix operations.
 ///
@@ -29,7 +29,7 @@ class Pix {
   ///
   /// Use this to create a Pix charge that doesn't have any fees for delaying
   /// the payment. If you wish to add fees, use [dueCharge].
-  ImmediateCharge get immediateCharge => ImmediateCharge(
+  ImmediateChargeOperations get immediateCharge => ImmediateChargeOperations(
         client: _client,
         credentials: _credentials,
       );

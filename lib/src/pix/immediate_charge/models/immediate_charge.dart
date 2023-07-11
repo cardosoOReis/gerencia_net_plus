@@ -9,7 +9,7 @@ import '../../models/location_info.dart';
 import '../../models/pix_payment.dart';
 import 'debtor.dart';
 
-class PixImmediateCharge {
+class ImmediateCharge {
   final DateTime creation;
   final Duration expiration;
   final String txid;
@@ -23,7 +23,7 @@ class PixImmediateCharge {
   final List<AdditionalInfo>? additionalInfo;
   final List<PixPayment>? pixPayment;
 
-  const PixImmediateCharge._({
+  const ImmediateCharge._({
     required this.creation,
     required this.expiration,
     required this.txid,
@@ -38,7 +38,7 @@ class PixImmediateCharge {
     this.pixPayment,
   });
 
-  factory PixImmediateCharge(Map<String, dynamic> json) {
+  factory ImmediateCharge(Map<String, dynamic> json) {
     final Map<String, dynamic>? debtorJson = json['devedor'];
     Debtor? debtor;
     if (debtorJson?.containsKey('cpf') ?? false) {
@@ -69,7 +69,7 @@ class PixImmediateCharge {
           .toList();
     }
 
-    return PixImmediateCharge._(
+    return ImmediateCharge._(
       creation: DateTime.parse(json['calendario']['criacao'].toString()),
       expiration: Duration(milliseconds: json['calendario']['expiracao']),
       txid: json['txid'],
@@ -102,6 +102,6 @@ class PixImmediateCharge {
 
   String toJson() => json.encode(toMap());
 
-  factory PixImmediateCharge.fromJson(String source) =>
-      PixImmediateCharge(json.decode(source) as Map<String, dynamic>);
+  factory ImmediateCharge.fromJson(String source) =>
+      ImmediateCharge(json.decode(source) as Map<String, dynamic>);
 }

@@ -3,7 +3,7 @@ import '../../../gerencia_net_credentials.dart';
 import '../../models/additional_info.dart';
 import 'debtor.dart';
 
-class PixCreateChargeRequestBody {
+class CreateImmediateChargeRequestBody {
   final GerenciaNetCredentials credentials;
   final Duration? expiration;
   final double value;
@@ -11,7 +11,7 @@ class PixCreateChargeRequestBody {
   final Debtor? debtor;
   final String? payerSolicitation;
 
-  const PixCreateChargeRequestBody({
+  const CreateImmediateChargeRequestBody({
     required this.credentials,
     required this.expiration,
     required this.value,
