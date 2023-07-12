@@ -133,7 +133,6 @@ class GerenciaNetCredentials extends Equatable {
   /// Helper method to transform this class into a JSON String
   String toJson() => json.encode(toMap());
 
-
   /// Helper constructor to instantiate this class from a JSON String
   factory GerenciaNetCredentials.fromJson(String source) =>
       GerenciaNetCredentials.fromMap(
