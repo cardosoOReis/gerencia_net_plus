@@ -4,6 +4,9 @@ import 'dart:convert';
 // Package imports:
 import 'package:equatable/equatable.dart';
 
+/// The person responsible for paying the immediate charge.
+///
+/// The person paying
 sealed class Debtor extends Equatable {
   const Debtor();
 

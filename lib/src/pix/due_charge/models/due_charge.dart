@@ -30,7 +30,7 @@ class DueCharge {
   final String? payerSolicitation;
   final List<AdditionalInfo>? additionalInfo;
 
-  const DueCharge({
+  const DueCharge._({
     required this.creationDate,
     required this.dueDate,
     required this.validDaysAfterExpiration,
@@ -75,6 +75,8 @@ class DueCharge {
       };
 
   factory DueCharge.fromMap(Map<String, dynamic> map) {
+    final locationInfo =
+        map['loc'] != null ? LocationInfo.fromMap(map['loc']) : null;
     final calendarMap = map['calendario'] as Map<String, dynamic>;
     final debtorMap = map['devedor'] as Map<String, dynamic>;
     final debtorDetails = debtorMap.containsKey('cnpj')
@@ -94,13 +96,13 @@ class DueCharge {
         ? DueChargeDiscount.fromMap(valueMap['desconto'])
         : null;
 
-    return DueCharge(
+    return DueCharge._(
       creationDate: DateTime.parse(calendarMap['criacao']),
       dueDate: DateTime.parse(calendarMap['dataDeVencimento']),
       validDaysAfterExpiration: calendarMap['validadeAposVencimento'],
       txid: map['txid'],
       revison: map['revisao'],
-      locationInfo: LocationInfo.fromMap(map['loc']),
+      locationInfo: locationInfo,
       status: ChargeStatus.match(map['status']),
       debtorDetails: debtorDetails,
       recieverDetails: RecieverDetails.fromMap(map['recebedor']),

@@ -5,12 +5,14 @@ import '../models/additional_info.dart';
 import '../models/charge_status.dart';
 import 'actions/create_due_charge.dart';
 import 'actions/detail_due_charge.dart';
+import 'actions/list_due_charges.dart';
 import 'actions/update_due_charge.dart';
 import 'models/debtor_details.dart';
 import 'models/due_charge.dart';
 import 'models/due_charge_discount.dart';
 import 'models/due_charge_fine.dart';
 import 'models/due_charge_interest_rates.dart';
+import 'models/due_charge_pagination.dart';
 import 'models/due_charge_reduction.dart';
 
 class DueChargeOperations {
@@ -99,5 +101,31 @@ class DueChargeOperations {
     final detailDueCharge = DetailDueCharge(_client);
 
     return detailDueCharge(txid, revision: revision);
+  }
+
+  Future<DueChargePagination> listDueCharges({
+    required DateTime start,
+    required DateTime end,
+    String? cpf,
+    String? cnpj,
+    bool? hasLocation,
+    ChargeStatus? status,
+    int? idDueChargeBatch,
+    int? itemAmount,
+    int? pageNumber,
+  }) async {
+    final listDueCharges = ListDueCharges(_client);
+
+    return listDueCharges(
+      start: start,
+      end: end,
+      cpf: cpf,
+      cnpj: cnpj,
+      hasLocation: hasLocation,
+      status: status,
+      idDueChargeBatch: idDueChargeBatch,
+      pageNumber: pageNumber,
+      itemAmount: itemAmount,
+    );
   }
 }
