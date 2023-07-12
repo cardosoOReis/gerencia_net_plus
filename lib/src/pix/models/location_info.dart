@@ -7,10 +7,23 @@ import 'package:equatable/equatable.dart';
 // Project imports:
 import '../../config/utils/date_extensions.dart';
 
+/// Information about the location of a charge.
+///
+/// A [location] is a [capability URL](https://www.w3.org/TR/capability-urls/) that serves as an address for a charge.
+/// In other words, it is through a location that it becomes possible to
+/// retrieve the information related to a charge and, thus, perform the
+/// transactions.
 class LocationInfo extends Equatable {
+  /// The location's unique id.
   final int id;
+
+  /// The location's url.
   final String location;
+
+  /// The type of charge this location refers to.
   final String chargeType;
+
+  /// The creation's date of this location.
   final DateTime creationDate;
 
   const LocationInfo({

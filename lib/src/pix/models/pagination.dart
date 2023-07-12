@@ -4,9 +4,15 @@ import 'dart:convert';
 // Project imports:
 import '../../config/utils/date_extensions.dart';
 
+/// Helper class to facilitate pagination and parameters.
 class Parameters {
+  /// Initial date to filter the registers.
   final DateTime start;
+
+  /// End date to filter the registers.
   final DateTime end;
+
+  /// Information abou the current pagination.
   final Pagination pagination;
 
   const Parameters({
@@ -34,10 +40,19 @@ class Parameters {
       Parameters.fromMap(json.decode(source) as Map<String, dynamic>);
 }
 
+/// The current pagination's information.
 class Pagination {
+  /// Current page in this pagination.
   final int currentPage;
+
+  /// Amount of itens by the current page.
   final int itensByPage;
+
+  /// Amount of pages that can be searched with the current [itensByPage] amount
+  /// of itens.
   final int pageAmount;
+
+  /// Total amount of registers in your account.
   final int totalItemAmount;
 
   const Pagination({
