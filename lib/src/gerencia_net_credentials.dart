@@ -45,16 +45,17 @@ class GerenciaNetCredentials extends Equatable {
   /// Put your certificates there, and pass it's relative path to this field.
   ///
   /// Let's suppose your file structure is like this:
-  /// ```
-  /// |-- certificates
-  ///     |-- my_application_certificate.cert.pem
-  /// |-- lib
-  ///     |-- my_project.dart
+  /// ```bash
+  /// ├── certificates
+  /// │   ├── my_application_certificate.cert.pem
+  /// ├── lib
+  /// │   ├── src
+  /// │   ├── main.dart
   /// ```
   ///
   /// You should pass it's path like:
   ///
-  /// ```
+  /// ```dart
   /// certificatePath: 'certificates/my_application_certificate.cert.pem'
   /// ```
   final String certificatePath;
@@ -76,16 +77,18 @@ class GerenciaNetCredentials extends Equatable {
   /// Put your private key there, and pass it's relative path to this field.
   ///
   /// Let's suppose your file structure is like this:
-  /// ```
-  /// |-- certificates
-  ///     |-- my_application_private_key.key.pem
-  /// |-- lib
-  ///     |-- my_project.dart
+  /// 
+  /// ```bash
+  /// ├── certificates
+  /// │   ├── my_application_private_key.key.pem
+  /// ├── lib
+  /// │   ├── src
+  /// │   ├── main.dart
   /// ```
   ///
   /// You should pass it's path like:
   ///
-  /// ```
+  /// ```dart
   /// privateKeyPath: 'certificates/my_application_private_key.key.pem'
   /// ```
   final String privateKeyPath;

@@ -17,12 +17,12 @@ class DueCharge {
   final int validDaysAfterExpiration;
   final String txid;
   final int revison;
-  final LocationInfo locationInfo;
   final ChargeStatus status;
   final DebtorDetails debtorDetails;
   final RecieverDetails recieverDetails;
   final double originalValue;
   final String pixKey;
+  final LocationInfo? locationInfo;
   final DueChargeInterestRate? interestRate;
   final DueChargeFine? fine;
   final DueChargeReduction? reduction;
@@ -58,7 +58,7 @@ class DueCharge {
         },
         'txid': txid,
         'revisao': revison,
-        'loc': locationInfo.toMap(),
+        'loc': locationInfo?.toMap(),
         'status': status.value,
         'devedor': debtorDetails.toMap(),
         'recebedor': recieverDetails.toMap(),

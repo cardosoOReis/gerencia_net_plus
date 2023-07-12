@@ -4,7 +4,10 @@ import '../../base_credentials.dart';
 
 Future<void> main(List<String> args) async {
   final gerenciaNetPlus = GerenciaNetPlus(credentials: baseCredentials);
-  final result = await gerenciaNetPlus.pix.immediateCharge.detailCharge('txid');
+  final result = await gerenciaNetPlus.pix.dueCharge.detailDueCharge(
+    'txid',
+    revision: 1,
+  );
 
   print(result.toMap());
 }

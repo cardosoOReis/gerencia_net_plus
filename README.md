@@ -21,6 +21,7 @@ Go to:
   - [How to get Client_Id and Client_Secret credentials](#how-to-obtain-client-id-and-client-secret-credentials)
   - [How to generate a Pix certificate](#how-to-generate-a-pix-certificate)
   - [How to convert a Pix certificate](#how-to-convert-a-pix-certificate)
+  - [Add the certificate and private key to your project](#add-the-certificate-and-private-key-to-your-project)
   - [How to register Pix keys](#how-to-register-pix-keys)
 - [Usage](#usage)
 - [Examples](#examples)
@@ -30,13 +31,15 @@ Go to:
 ## Features
 
 - Create, update and list your Pix Charges, with or without additional expiration fees.
+
   TODO:
+
   - List Pix transactions
   - Webhook functionlity
 
 ## Getting started
 
-Add ```gerencia_net_plus``` as a dependency in your pubspec.yaml file.
+Add `gerencia_net_plus` as a dependency in your pubspec.yaml file.
 
 ### How to obtain Client-Id and Client-Secret credentials
 
@@ -88,8 +91,9 @@ openssl pkcs12 -in path.p12 -out newfile.key.pem -nocerts -nodes #private key
 
 ### Add the certificate and private key to your project
 
-In the root of your project, create a new folder called ```certificates``` and put your newly created certificate and private key inside.
+In the root of your project, create a new folder called `certificates` and put your newly created certificate and private key inside.
 
+```bash
 ├── certificates
 │   ├── private_key.pem
 │   ├── certificate.pem
@@ -99,6 +103,7 @@ In the root of your project, create a new folder called ```certificates``` and p
 └── .gitignore
 ├── analysis_options.yaml
 ├── pubspec.yaml
+```
 
 ### How to register Pix keys
 
@@ -120,7 +125,7 @@ To register your Pix keys through the application:
 
 ## Usage
 
-````dart
+```dart
 import 'package:gerencia_net_plus/gerencia_net_plus.dart';
 
 const gerenciaNetPlus = GerenciaNetPlus(
@@ -135,7 +140,7 @@ const gerenciaNetPlus = GerenciaNetPlus(
   );
 
 final newCharge = await gerenciaNetPlus.pix.immediateCharge.createCharge(value: 100);
-````
+```
 
 ## Examples
 
@@ -144,7 +149,9 @@ You can check all the available examples by clicking [here](https://github.com/c
 ## Additional Documentation
 
 Project's Github: <https://github.com/cardosoOReis/gerencia_net_plus>;
+
 GerenciaNet Api documentation: <https://dev.gerencianet.com.br/docs>;
+
 Official Gerencia Net Discord: <https://discord.com/invite/ptGHMtczcV>;
 
 ## License
