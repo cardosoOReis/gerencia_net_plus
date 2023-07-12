@@ -4,7 +4,7 @@ import '../../models/additional_info.dart';
 import '../../models/charge_status.dart';
 import '../models/debtor.dart';
 import '../models/immediate_charge.dart';
-import '../models/update_charge_request_body.dart';
+import 'models/update_charge_request_body.dart';
 
 class PixUpdateCharge {
   final GerenciaNetPlusPixRestClient client;

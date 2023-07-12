@@ -3,14 +3,14 @@ import '../../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import '../../../config/utils/date_extensions.dart';
 import '../../../config/utils/map_extensions.dart';
 import '../../models/charge_status.dart';
-import '../models/immediate_charge_list.dart';
+import '../models/immediate_charge_pagination.dart';
 
 class PixListCharges {
   final GerenciaNetPlusPixRestClient client;
 
   const PixListCharges(this.client);
 
-  Future<ImmediateChargeList> call({
+  Future<ImmediateChargePagination> call({
     required DateTime start,
     required DateTime end,
     required String? cpf,
@@ -36,6 +36,6 @@ class PixListCharges {
       queryParameters: queryParameters,
     );
 
-    return ImmediateChargeList.fromMap(result.data!);
+    return ImmediateChargePagination.fromMap(result.data!);
   }
 }
