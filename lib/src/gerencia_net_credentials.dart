@@ -77,7 +77,7 @@ class GerenciaNetCredentials extends Equatable {
   /// Put your private key there, and pass it's relative path to this field.
   ///
   /// Let's suppose your file structure is like this:
-  /// 
+  ///
   /// ```bash
   /// ├── certificates
   /// │   ├── my_application_private_key.key.pem
