@@ -115,7 +115,7 @@ class ImmediateCharge {
         'txid': txid,
         'revisionAmount': revisionAmount,
         'locationInfo': locationInfo.toMap(),
-        'status': status.name,
+        'status': status.value,
         'value': value,
         'debtor': debtor?.toMap(),
         'pixKey': pixKey,

@@ -6,6 +6,7 @@ import 'package:equatable/equatable.dart';
 
 // Project imports:
 import '../../config/utils/date_extensions.dart';
+import 'charge_type.dart';
 
 /// Information about the location of a charge.
 ///
@@ -21,7 +22,7 @@ class LocationInfo extends Equatable {
   final String location;
 
   /// The type of charge this location refers to.
-  final String chargeType;
+  final ChargeType chargeType;
 
   /// The creation's date of this location.
   final DateTime creationDate;
@@ -43,7 +44,7 @@ class LocationInfo extends Equatable {
   factory LocationInfo.fromMap(Map<String, dynamic> map) => LocationInfo(
         id: map['id'] as int,
         location: map['location'] as String,
-        chargeType: map['tipoCob'] as String,
+        chargeType: ChargeType.match(map['tipoCob'] as String),
         creationDate: DateTime.parse(map['criacao']),
       );
 
