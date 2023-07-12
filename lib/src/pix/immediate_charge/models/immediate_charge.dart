@@ -9,18 +9,42 @@ import '../../models/location_info.dart';
 import '../../models/pix_payment.dart';
 import 'debtor.dart';
 
+///
 class ImmediateCharge {
+  ///
   final DateTime creation;
+
+  ///
   final Duration expiration;
+
+  ///
   final String txid;
+
+  ///
   final int revisionAmount;
+
+  ///
   final LocationInfo locationInfo;
+
+  ///
   final ChargeStatus status;
+
+  ///
   final double value;
+
+  ///
   final String pixKey;
+
+  ///
   final Debtor? debtor;
+
+  ///
   final String? payerSolicitation;
+
+  ///
   final List<AdditionalInfo>? additionalInfo;
+
+  ///
   final List<PixPayment>? pixPayment;
 
   const ImmediateCharge._({
@@ -38,7 +62,7 @@ class ImmediateCharge {
     this.pixPayment,
   });
 
-  factory ImmediateCharge(Map<String, dynamic> json) {
+  factory ImmediateCharge.fromMap(Map<String, dynamic> json) {
     final Map<String, dynamic>? debtorJson = json['devedor'];
     Debtor? debtor;
     if (debtorJson?.containsKey('cpf') ?? false) {
@@ -103,5 +127,5 @@ class ImmediateCharge {
   String toJson() => json.encode(toMap());
 
   factory ImmediateCharge.fromJson(String source) =>
-      ImmediateCharge(json.decode(source) as Map<String, dynamic>);
+      ImmediateCharge.fromMap(json.decode(source) as Map<String, dynamic>);
 }

@@ -39,6 +39,6 @@ class CreateCharge {
       endPoint: endPoint,
       body: body.toMap(),
     );
-    return ImmediateCharge(response.data!);
+    return ImmediateCharge.fromMap(response.data!);
   }
 }

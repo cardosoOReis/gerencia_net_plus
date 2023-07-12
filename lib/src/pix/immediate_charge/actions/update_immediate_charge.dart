@@ -41,6 +41,6 @@ class UpdateCharge {
       ),
     );
 
-    return ImmediateCharge(response.data!);
+    return ImmediateCharge.fromMap(response.data!);
   }
 }

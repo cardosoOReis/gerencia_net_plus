@@ -25,7 +25,7 @@ class ImmediateChargePagination {
             Parameters.fromMap(map['parametros'] as Map<String, dynamic>),
         charges: List<ImmediateCharge>.from(
           (map['cobs'] as List<dynamic>).map<ImmediateCharge>(
-            (x) => ImmediateCharge(
+            (x) => ImmediateCharge.fromMap(
               x as Map<String, dynamic>,
             ),
           ),

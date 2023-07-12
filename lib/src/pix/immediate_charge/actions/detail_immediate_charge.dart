@@ -24,6 +24,6 @@ class DetailCharge {
       queryParameters: queryParameters,
     );
 
-    return ImmediateCharge(result.data!);
+    return ImmediateCharge.fromMap(result.data!);
   }
 }
