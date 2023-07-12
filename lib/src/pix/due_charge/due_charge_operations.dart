@@ -2,6 +2,7 @@
 import '../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import '../../gerencia_net_credentials.dart';
 import '../models/additional_info.dart';
+import '../models/charge_status.dart';
 import 'actions/create_due_charge.dart';
 import 'actions/update_due_charge.dart';
 import 'models/debtor_details.dart';
@@ -62,6 +63,7 @@ class DueChargeOperations {
     String? pixKey,
     int? expiryDaysAfterExpiration,
     int? locationId,
+    ChargeStatus? status,
     DueChargeFine? fine,
     DueChargeInterestRate? interestRate,
     DueChargeReduction? reduction,
@@ -80,6 +82,7 @@ class DueChargeOperations {
       expiryDaysAfterExpiration: expiryDaysAfterExpiration,
       locationId: locationId,
       fine: fine,
+      status: status,
       interestRate: interestRate,
       reduction: reduction,
       discount: discount,

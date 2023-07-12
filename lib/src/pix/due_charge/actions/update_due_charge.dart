@@ -1,6 +1,7 @@
 // Project imports:
 import '../../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import '../../models/additional_info.dart';
+import '../../models/charge_status.dart';
 import '../models/debtor_details.dart';
 import '../models/due_charge.dart';
 import '../models/due_charge_discount.dart';
@@ -22,6 +23,7 @@ class UpdateDueCharge {
     required String? pixKey,
     required int? expiryDaysAfterExpiration,
     required int? locationId,
+    required ChargeStatus? status,
     required DueChargeFine? fine,
     required DueChargeInterestRate? interestRate,
     required DueChargeReduction? reduction,
