@@ -2,10 +2,10 @@
 import '../../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import '../models/immediate_charge.dart';
 
-class PixDetailCharge {
+class DetailCharge {
   final GerenciaNetPlusPixRestClient client;
 
-  const PixDetailCharge(this.client);
+  const DetailCharge(this.client);
 
   Future<ImmediateCharge> call({
     required String txid,

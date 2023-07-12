@@ -9,10 +9,10 @@ import '../models/debtor.dart';
 import '../models/immediate_charge.dart';
 import 'models/create_charge_request_body.dart';
 
-class PixCreateCharge {
+class CreateCharge {
   final GerenciaNetPlusPixRestClient client;
 
-  const PixCreateCharge(this.client);
+  const CreateCharge(this.client);
 
   Future<ImmediateCharge> call({
     required GerenciaNetCredentials credentials,

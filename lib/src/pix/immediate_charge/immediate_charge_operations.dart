@@ -53,7 +53,7 @@ class ImmediateChargeOperations {
     String? payerSolicitation,
     List<AdditionalInfo> additionalInfo = const [],
   }) async {
-    final pixCreateCharge = PixCreateCharge(_client);
+    final pixCreateCharge = CreateCharge(_client);
 
     return pixCreateCharge(
       credentials: _credentials,
@@ -110,7 +110,7 @@ class ImmediateChargeOperations {
     List<AdditionalInfo>? additionalInfo,
     String? payerSolicitation,
   }) async {
-    final pixUpdateCharge = PixUpdateCharge(_client);
+    final pixUpdateCharge = UpdateCharge(_client);
 
     return pixUpdateCharge(
       txid: txid,
@@ -134,7 +134,7 @@ class ImmediateChargeOperations {
     String txid, {
     int? revision,
   }) async {
-    final pixDetailCharge = PixDetailCharge(_client);
+    final pixDetailCharge = DetailCharge(_client);
 
     return pixDetailCharge(
       txid: txid,
@@ -170,7 +170,7 @@ class ImmediateChargeOperations {
     int? pageNumber,
     int? itemAmount,
   }) async {
-    final pixListCharges = PixListCharges(_client);
+    final pixListCharges = ListCharges(_client);
 
     return pixListCharges(
       start: start,

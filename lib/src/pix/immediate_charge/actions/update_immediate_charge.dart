@@ -6,10 +6,10 @@ import '../models/debtor.dart';
 import '../models/immediate_charge.dart';
 import 'models/update_charge_request_body.dart';
 
-class PixUpdateCharge {
+class UpdateCharge {
   final GerenciaNetPlusPixRestClient client;
 
-  const PixUpdateCharge(this.client);
+  const UpdateCharge(this.client);
 
   Future<ImmediateCharge> call({
     required String txid,

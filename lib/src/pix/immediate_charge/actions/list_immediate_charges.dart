@@ -5,10 +5,10 @@ import '../../../config/utils/map_extensions.dart';
 import '../../models/charge_status.dart';
 import '../models/immediate_charge_pagination.dart';
 
-class PixListCharges {
+class ListCharges {
   final GerenciaNetPlusPixRestClient client;
 
-  const PixListCharges(this.client);
+  const ListCharges(this.client);
 
   Future<ImmediateChargePagination> call({
     required DateTime start,

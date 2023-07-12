@@ -4,6 +4,7 @@ import '../../gerencia_net_credentials.dart';
 import '../models/additional_info.dart';
 import '../models/charge_status.dart';
 import 'actions/create_due_charge.dart';
+import 'actions/detail_due_charge.dart';
 import 'actions/update_due_charge.dart';
 import 'models/debtor_details.dart';
 import 'models/due_charge.dart';
@@ -89,5 +90,14 @@ class DueChargeOperations {
       payerSolicitation: payerSolicitation,
       additionalInfo: additionalInfo,
     );
+  }
+
+  Future<DueCharge> detailDueCharge(
+    String txid, {
+    int? revision,
+  }) async {
+    final detailDueCharge = DetailDueCharge(_client);
+
+    return detailDueCharge(txid, revision: revision);
   }
 }
