@@ -5,11 +5,32 @@ import '../../../config/utils/map_extensions.dart';
 import '../../models/charge_status.dart';
 import '../models/immediate_charge_pagination.dart';
 
+/// List immediate charges.
 class ListCharges {
-  final GerenciaNetPlusPixRestClient client;
+  final GerenciaNetPlusPixRestClient _client;
 
-  const ListCharges(this.client);
+  /// Default constructor.
+  const ListCharges(this._client);
 
+  /// Retrieves a list of Immediate Charges within a specified timeframe.
+  ///
+  /// By providing the [start] and [end] parameters, you can define the desired
+  /// period for which you want to retrieve the charges. This allows you to
+  /// fetch charges created during a specific timeframe.
+  ///
+  /// Optionally, you can further refine the search results by utilizing
+  /// additional parameters. For example, you can provide a [cpf]
+  /// (Brazilian individual taxpayer registry) or [cnpj] (Brazilian corporate
+  /// taxpayer registry) to filter charges associated with specific entities.
+  /// Moreover, you can specify a [status] to retrieve charges with a particular
+  /// ChargeStatus value, allowing you to focus on charges with specific
+  /// processing statuses.
+  ///
+  /// If there are multiple pages of charges available, you can specify the
+  /// desired [pageNumber] to retrieve a specific page. Additionally, you can
+  /// control the number of charges to retrieve per page by providing the
+  /// [itemAmount] parameter. This allows you to customize the pagination and
+  /// retrieve charges in a suitable manner.
   Future<ImmediateChargePagination> call({
     required DateTime start,
     required DateTime end,
@@ -29,9 +50,9 @@ class ListCharges {
       ..addIfNotNull('paginacao.paginaAtual', pageNumber)
       ..addIfNotNull('paginacao.itensPorPagina', itemAmount);
 
-    final endPoint = client.pixEndPoints.immediateCharge.pixListCharges();
+    final endPoint = _client.pixEndPoints.immediateCharge.pixListCharges();
 
-    final result = await client<Map<String, dynamic>>(
+    final result = await _client<Map<String, dynamic>>(
       endPoint: endPoint,
       queryParameters: queryParameters,
     );

@@ -6,11 +6,46 @@ import '../models/debtor.dart';
 import '../models/immediate_charge.dart';
 import 'models/update_charge_request_body.dart';
 
+/// Updates an immediate charge.
 class UpdateCharge {
-  final GerenciaNetPlusPixRestClient client;
+  final GerenciaNetPlusPixRestClient _client;
 
-  const UpdateCharge(this.client);
+  /// Default constructor.
+  const UpdateCharge(this._client);
 
+  /// Updates an Immediate Charge with the given [txid]
+
+  /// This function allows you to update an existing Immediate Charge with new
+  /// information. By providing the necessary parameters, you can modify various
+  /// aspects of the charge to reflect changes or updates.
+  ///
+  /// To update an immediate charge, you need to provide the unique identifier
+  /// of the charge using the [txid] parameter. This identifier ensures that the
+  /// correct charge is being updated. Additionally, you can specify the
+  /// [persist] parameter, which determines whether the only changes made to the
+  /// charge are the ones passed. If set to true, the only changes made are the
+  /// ones passed in the parameters. Otherwise, this is the same thing as
+  /// creating a new Immediate Charge, while maintaining the same [txid].
+  ///
+  /// The [value] parameter allows you to change the amount of money associated
+  /// with the immediate charge. By providing a new value, you can update the
+  /// payment amount. Similarly, the [locId] parameter enables you to update the
+  /// location identifier associated with the charge, if applicable.
+  ///
+  /// If you wish to modify the debtor associated with the immediate charge, you
+  /// can provide a new [debtor] object containing the updated debtor
+  /// information. Additionally, you can change the [status] of the charge to
+  /// reflect its current state accurately.
+  ///
+  /// To update the Pix key associated with the charge, you can provide a new
+  /// [pixKey]. This is useful when changing the recipient's Pix key for the
+  /// payment. Furthermore, you can modify the [additionalInfo] parameter to
+  /// include any additional or updated information related to the immediate
+  /// charge, such as updated order details or reference numbers.
+  ///
+  /// Finally, the [payerSolicitation] parameter allows you to update the
+  /// solicitation message that can be sent to the payer, providing updated
+  /// instructions or additional context.
   Future<ImmediateCharge> call({
     required String txid,
     required double? value,
@@ -32,9 +67,9 @@ class UpdateCharge {
       status: status,
     );
 
-    final endPoint = client.pixEndPoints.immediateCharge.pixUpdateCharge(txid);
+    final endPoint = _client.pixEndPoints.immediateCharge.pixUpdateCharge(txid);
 
-    final response = await client<Map<String, dynamic>>(
+    final response = await _client<Map<String, dynamic>>(
       endPoint: endPoint,
       body: body.toMap(
         persist: persist,

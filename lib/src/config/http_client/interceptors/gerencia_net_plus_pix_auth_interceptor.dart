@@ -6,14 +6,16 @@ import 'package:dio/dio.dart';
 
 // Project imports:
 import '../../../gerencia_net_credentials.dart';
-import '../../network/app_network.dart';
+import '../../network/pix_endpoints.dart';
 import '../gerencia_net_plus_rest_client.dart';
 import '../models/token.dart';
 
+/// Pix Interceptor that handles Authorization.
 class GerenciaNetPlusPixAuthInterceptor extends Interceptor {
   final GerenciaNetCredentials _credentials;
   final PixEndPoints _pixEndPoints;
 
+  /// Default constructor.
   const GerenciaNetPlusPixAuthInterceptor({
     required GerenciaNetCredentials credentials,
     required PixEndPoints pixEndPoints,

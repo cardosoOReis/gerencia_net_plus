@@ -11,12 +11,18 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 import '../network/models/end_point.dart';
 import '../network/models/http_method.dart';
 
+/// Base Dio client to use during requests.
 class GerenciaNetPlusRestClient extends DioForNative {
   static final _baseOptions = BaseOptions(
     connectTimeout: const Duration(minutes: 1),
     receiveTimeout: const Duration(minutes: 1),
   );
 
+  /// Default constructor.
+  ///
+  /// Firstly, we configure the certificates to handle Authentication.
+  ///
+  /// After this, we add a [PrettyDioLogger] to help logging.
   GerenciaNetPlusRestClient({
     required String certificatePath,
     required String keyPath,
@@ -25,6 +31,7 @@ class GerenciaNetPlusRestClient extends DioForNative {
     interceptors.add(PrettyDioLogger(requestBody: true));
   }
 
+  /// Handy method to take care of HTTP calls.
   Future<Response<T>> call<T>({
     required EndPoint endPoint,
     Map<String, dynamic>? queryParameters,
