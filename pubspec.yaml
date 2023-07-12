@@ -1,5 +1,5 @@
 name: gerencia_net_plus
-description: A starting point for Dart libraries or applications.
+description: A Dart plugin that allows a better way to connect to Gerencianet - Efí Api.
 version: 0.0.1
 repository: https://github.com/cardosoOReis/gerencia_net_plus.git
 environment:
