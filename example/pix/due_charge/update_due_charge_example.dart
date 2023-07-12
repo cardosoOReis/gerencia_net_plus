@@ -9,7 +9,7 @@ import '../../base_credentials.dart';
 Future<void> main(List<String> args) async {
   final gerenciaNetPlus = GerenciaNetPlus(credentials: baseCredentials);
   final dueCharge = await gerenciaNetPlus.pix.dueCharge.updateDueCharge(
-    txid: 'GerenciaNetPlusTtFIUxRuqBTKXlvN9guM',
+    txid: '',
     dueDate: DateTime.now().add(const Duration(days: 10)),
     debtorDetails: const LegalDebtorDetails(
       name: 'Empresa de Serviços SA',

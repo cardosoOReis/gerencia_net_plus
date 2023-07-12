@@ -41,7 +41,7 @@ class UpdateDueChargeRequestBody {
     final body = <String, dynamic>{};
 
     final calendar = <String, dynamic>{}
-      ..addIfNotNull('dataDeVencimento', dueDate?.toRFC3339())
+      ..addIfNotNull('dataDeVencimento', dueDate?.toYearMonthDay())
       ..addIfNotNull('validadeAposVencimento', expiryDaysAfterExpiration);
     if (calendar.isNotEmpty) {
       body.addAll({
@@ -49,7 +49,7 @@ class UpdateDueChargeRequestBody {
       });
     }
     final value = <String, dynamic>{}
-      ..addIfNotNull('original', originalValue)
+      ..addIfNotNull('original', originalValue?.toStringAsFixed(2))
       ..addIfNotNull('multa', fine?.toMap())
       ..addIfNotNull('juros', interestRate?.toMap())
       ..addIfNotNull('abatimento', reduction?.toMap())
