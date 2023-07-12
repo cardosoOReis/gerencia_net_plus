@@ -27,6 +27,15 @@ class DueChargeInterestRate {
       DueChargeInterestRate.fromMap(
         json.decode(source) as Map<String, dynamic>,
       );
+
+  DueChargeInterestRate copyWith({
+    double? value,
+    InterestRateModality? modality,
+  }) =>
+      DueChargeInterestRate(
+        value: value ?? this.value,
+        modality: modality ?? this.modality,
+      );
 }
 
 enum InterestRateModality {

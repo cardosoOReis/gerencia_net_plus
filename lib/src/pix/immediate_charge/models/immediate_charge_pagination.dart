@@ -5,11 +5,11 @@ import 'dart:convert';
 import '../../models/pagination.dart';
 import 'immediate_charge.dart';
 
-class ImmediateChargeList {
+class ImmediateChargePagination {
   final Parameters parameters;
   final List<ImmediateCharge> charges;
 
-  const ImmediateChargeList({
+  const ImmediateChargePagination({
     required this.parameters,
     required this.charges,
   });
@@ -19,8 +19,8 @@ class ImmediateChargeList {
         'cobs': charges.map((x) => x.toMap()).toList(),
       };
 
-  factory ImmediateChargeList.fromMap(Map<String, dynamic> map) =>
-      ImmediateChargeList(
+  factory ImmediateChargePagination.fromMap(Map<String, dynamic> map) =>
+      ImmediateChargePagination(
         parameters:
             Parameters.fromMap(map['parametros'] as Map<String, dynamic>),
         charges: List<ImmediateCharge>.from(
@@ -34,8 +34,8 @@ class ImmediateChargeList {
 
   String toJson() => json.encode(toMap());
 
-  factory ImmediateChargeList.fromJson(String source) =>
-      ImmediateChargeList.fromMap(
+  factory ImmediateChargePagination.fromJson(String source) =>
+      ImmediateChargePagination.fromMap(
         json.decode(source) as Map<String, dynamic>,
       );
 }

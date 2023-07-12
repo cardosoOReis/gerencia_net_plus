@@ -27,6 +27,15 @@ class DueChargeFine extends Equatable {
 
   factory DueChargeFine.fromJson(String source) =>
       DueChargeFine.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  DueChargeFine copyWith({
+    double? value,
+    DueChargeFineModality? modality,
+  }) =>
+      DueChargeFine(
+        value: value ?? this.value,
+        modality: modality ?? this.modality,
+      );
 }
 
 enum DueChargeFineModality {

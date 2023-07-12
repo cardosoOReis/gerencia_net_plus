@@ -1,7 +1,7 @@
 // Project imports:
-import '../../../gerencia_net_credentials.dart';
-import '../../models/additional_info.dart';
-import 'debtor.dart';
+import '../../../../gerencia_net_credentials.dart';
+import '../../../models/additional_info.dart';
+import '../../models/debtor.dart';
 
 class CreateImmediateChargeRequestBody {
   final GerenciaNetCredentials credentials;

@@ -37,6 +37,15 @@ class PhysicalPersonDebtor extends Debtor {
 
   @override
   List<Object?> get props => [name, cpf];
+
+  PhysicalPersonDebtor copyWith({
+    String? name,
+    String? cpf,
+  }) =>
+      PhysicalPersonDebtor(
+        name: name ?? this.name,
+        cpf: cpf ?? this.cpf,
+      );
 }
 
 class LegalPersonDebtor extends Debtor {
@@ -66,4 +75,13 @@ class LegalPersonDebtor extends Debtor {
 
   @override
   List<Object?> get props => [name, cnpj];
+
+  LegalPersonDebtor copyWith({
+    String? name,
+    String? cnpj,
+  }) =>
+      LegalPersonDebtor(
+        name: name ?? this.name,
+        cnpj: cnpj ?? this.cnpj,
+      );
 }

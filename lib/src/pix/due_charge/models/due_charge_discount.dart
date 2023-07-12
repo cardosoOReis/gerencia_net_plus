@@ -53,6 +53,15 @@ class DueChargeDiscountUntilDate extends DueChargeDiscount {
             )
             .toList(),
       };
+
+  DueChargeDiscountUntilDate copyWith({
+    DueChargeDiscountUntilDateModality? modality,
+    List<(DateTime, double)>? dates,
+  }) =>
+      DueChargeDiscountUntilDate(
+        modality: modality ?? this.modality,
+        dates: dates ?? this.dates,
+      );
 }
 
 enum DueChargeDiscountUntilDateModality {
@@ -94,6 +103,15 @@ class DueChargeDiscountAnticipationPerDay extends DueChargeDiscount {
         'modalidade': modality.domain,
         'valorPerc': value.toStringAsFixed(2),
       };
+
+  DueChargeDiscountAnticipationPerDay copyWith({
+    DueChargeDiscountAnticipationPerDayModality? modality,
+    double? value,
+  }) =>
+      DueChargeDiscountAnticipationPerDay(
+        modality: modality ?? this.modality,
+        value: value ?? this.value,
+      );
 }
 
 enum DueChargeDiscountAnticipationPerDayModality {

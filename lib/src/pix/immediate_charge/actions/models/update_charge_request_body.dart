@@ -2,9 +2,9 @@
 import 'dart:convert';
 
 // Project imports:
-import '../../models/additional_info.dart';
-import '../../models/charge_status.dart';
-import 'debtor.dart';
+import '../../../models/additional_info.dart';
+import '../../../models/charge_status.dart';
+import '../../models/debtor.dart';
 
 class UpdateChargeRequestBody {
   final int? locId;

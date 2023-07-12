@@ -22,6 +22,15 @@ class DueChargeReduction {
 
   factory DueChargeReduction.fromJson(String source) =>
       DueChargeReduction.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  DueChargeReduction copyWith({
+    double? value,
+    ReductionModality? modality,
+  }) =>
+      DueChargeReduction(
+        value: value ?? this.value,
+        modality: modality ?? this.modality,
+      );
 }
 
 enum ReductionModality {

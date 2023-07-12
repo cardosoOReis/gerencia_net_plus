@@ -29,4 +29,13 @@ class AdditionalInfo extends Equatable {
 
   @override
   List<Object> get props => [name, value];
+
+  AdditionalInfo copyWith({
+    String? name,
+    String? value,
+  }) =>
+      AdditionalInfo(
+        name: name ?? this.name,
+        value: value ?? this.value,
+      );
 }
