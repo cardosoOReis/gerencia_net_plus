@@ -38,6 +38,7 @@ class UpdateDueCharge {
       pixKey: pixKey,
       expiryDaysAfterExpiration: expiryDaysAfterExpiration,
       locationId: locationId,
+      status: status,
       fine: fine,
       interestRate: interestRate,
       reduction: reduction,

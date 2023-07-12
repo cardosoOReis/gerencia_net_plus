@@ -2,6 +2,7 @@
 import '../../../../config/utils/date_extensions.dart';
 import '../../../../config/utils/map_extensions.dart';
 import '../../../models/additional_info.dart';
+import '../../../models/charge_status.dart';
 import '../../models/debtor_details.dart';
 import '../../models/due_charge_discount.dart';
 import '../../models/due_charge_fine.dart';
@@ -15,6 +16,7 @@ class UpdateDueChargeRequestBody {
   final String? pixKey;
   final int? expiryDaysAfterExpiration;
   final int? locationId;
+  final ChargeStatus? status;
   final DueChargeFine? fine;
   final DueChargeInterestRate? interestRate;
   final DueChargeReduction? reduction;
@@ -29,6 +31,7 @@ class UpdateDueChargeRequestBody {
     required this.pixKey,
     required this.expiryDaysAfterExpiration,
     required this.locationId,
+    required this.status,
     required this.fine,
     required this.interestRate,
     required this.reduction,

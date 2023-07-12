@@ -5,9 +5,9 @@ import '../../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import '../../../config/utils/txid.dart';
 import '../../../gerencia_net_credentials.dart';
 import '../../models/additional_info.dart';
-import 'models/create_charge_request_body.dart';
 import '../models/debtor.dart';
 import '../models/immediate_charge.dart';
+import 'models/create_charge_request_body.dart';
 
 class PixCreateCharge {
   final GerenciaNetPlusPixRestClient client;
