@@ -1,6 +1,6 @@
 name: gerencia_net_plus
 description: A starting point for Dart libraries or applications.
-version: 1.0.0
+version: 0.0.1
 repository: https://github.com/cardosoOReis/gerencia_net_plus.git
 environment:
   sdk: ^3.0.5
