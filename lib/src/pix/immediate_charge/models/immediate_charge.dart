@@ -45,7 +45,7 @@ class ImmediateCharge {
   final List<AdditionalInfo>? additionalInfo;
 
   ///
-  final List<PixRecieved>? pixPayment;
+  final List<PixRecieved>? pixPayments;
 
   const ImmediateCharge._({
     required this.creation,
@@ -59,7 +59,7 @@ class ImmediateCharge {
     this.debtor,
     this.payerSolicitation,
     this.additionalInfo,
-    this.pixPayment,
+    this.pixPayments,
   });
 
   factory ImmediateCharge.fromMap(Map<String, dynamic> json) {
@@ -105,7 +105,7 @@ class ImmediateCharge {
       pixKey: json['chave'],
       value: double.parse(json['valor']['original']),
       additionalInfo: additionalInfo,
-      pixPayment: pix,
+      pixPayments: pix,
     );
   }
 
@@ -121,7 +121,7 @@ class ImmediateCharge {
         'pixKey': pixKey,
         'payerSolicitation': payerSolicitation,
         'additionalInfo': additionalInfo?.map((e) => e.toMap()).toList(),
-        'pix': pixPayment?.map((p) => p.toMap()).toList(),
+        'pix': pixPayments?.map((p) => p.toMap()).toList(),
       };
 
   String toJson() => json.encode(toMap());

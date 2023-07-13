@@ -5,7 +5,7 @@ import '../base_credentials.dart';
 Future<void> main(List<String> args) async {
   final gerenciaNetPlus = GerenciaNetPlus(credentials: baseCredentials);
 
-  // In sandbox mode, charges between 0.01 and 10.00 are paid.
+  // In sandbox mode, charges between 0.01 and 10.00 are paid after 30 seconds.
   final newCharge = await gerenciaNetPlus.pix.immediateCharge.createCharge(
     value: 5,
   );
@@ -17,7 +17,7 @@ Future<void> main(List<String> args) async {
     newCharge.txid,
   );
 
-  final endToEndId = payedCharge.pixPayment?.first.endToEndId;
+  final endToEndId = payedCharge.pixPayments?.first.endToEndId;
 
   print(endToEndId);
 }
