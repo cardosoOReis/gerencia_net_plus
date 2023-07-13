@@ -6,7 +6,7 @@ import '../../../config/utils/date_extensions.dart';
 import '../../models/additional_info.dart';
 import '../../models/charge_status.dart';
 import '../../models/location_info.dart';
-import '../../models/pix_payment.dart';
+import '../../models/pix_recieved.dart';
 import 'debtor.dart';
 
 ///
@@ -45,7 +45,7 @@ class ImmediateCharge {
   final List<AdditionalInfo>? additionalInfo;
 
   ///
-  final List<PixPayment>? pixPayment;
+  final List<PixRecieved>? pixPayment;
 
   const ImmediateCharge._({
     required this.creation,
@@ -86,10 +86,10 @@ class ImmediateCharge {
     }
 
     List<dynamic>? pixJson = json['pix'];
-    List<PixPayment>? pix;
+    List<PixRecieved>? pix;
     if (pixJson != null) {
       pix = pixJson
-          .map((p) => PixPayment.fromMap(p as Map<String, dynamic>))
+          .map((p) => PixRecieved.fromMap(p as Map<String, dynamic>))
           .toList();
     }
 

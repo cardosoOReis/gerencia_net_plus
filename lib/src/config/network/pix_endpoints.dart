@@ -3,6 +3,7 @@ import 'models/end_point.dart';
 import 'models/http_method.dart';
 import 'pix/pix_due_charge_end_points.dart';
 import 'pix/pix_immediate_charge_end_points.dart';
+import 'pix/pix_transactions_end_points.dart';
 import 'pix/pix_webhooks_end_point.dart';
 
 /// Contains all Pix endpoints.
@@ -33,6 +34,10 @@ class PixEndPoints {
 
   /// Contains all due charge endpoints.
   PixDueChargeEndPoints get dueCharge => PixDueChargeEndPoints(url: url);
+
+  /// Contains all transactions endpoints.
+  PixTransactionsEndPoints get transactions =>
+      PixTransactionsEndPoints(url: url);
 
   /// Contains all webhooks endpoints.
   PixWebHookEndPoints get webhook => PixWebHookEndPoints(url: url);

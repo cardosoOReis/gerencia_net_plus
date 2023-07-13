@@ -5,7 +5,7 @@ import 'dart:convert';
 import '../../config/utils/date_extensions.dart';
 import 'devolution.dart';
 
-class PixPayment {
+class PixRecieved {
   final String endToEndId;
   final String txid;
   final double value;
@@ -14,7 +14,7 @@ class PixPayment {
   final String? payerInfo;
   final List<Devolution>? devolutions;
 
-  const PixPayment({
+  const PixRecieved({
     required this.endToEndId,
     required this.txid,
     required this.pixKey,
@@ -34,7 +34,7 @@ class PixPayment {
         'devolucoes': devolutions?.map((d) => d.toMap()).toList(),
       };
 
-  factory PixPayment.fromMap(Map<String, dynamic> map) {
+  factory PixRecieved.fromMap(Map<String, dynamic> map) {
     List<dynamic>? devolutionJson = map['devolucoes'];
     List<Devolution>? devolutions;
     if (devolutionJson != null) {
@@ -43,7 +43,7 @@ class PixPayment {
           .toList();
     }
 
-    return PixPayment(
+    return PixRecieved(
       endToEndId: map['endToEndId'] as String,
       txid: map['txid'] as String,
       value: double.parse(map['valor']),
@@ -56,6 +56,6 @@ class PixPayment {
 
   String toJson() => json.encode(toMap());
 
-  factory PixPayment.fromJson(String source) =>
-      PixPayment.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory PixRecieved.fromJson(String source) =>
+      PixRecieved.fromMap(json.decode(source) as Map<String, dynamic>);
 }
