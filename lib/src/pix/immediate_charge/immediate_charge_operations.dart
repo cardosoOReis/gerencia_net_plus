@@ -1,10 +1,4 @@
-// Project imports:
-import 'dart:developer';
-
-import 'package:dio/dio.dart';
-
 import '../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
-import '../../core/gerencia_net_exception.dart';
 import '../../gerencia_net_credentials.dart';
 import '../models/additional_info.dart';
 import '../models/charge_status.dart';
@@ -16,12 +10,12 @@ import 'models/debtor.dart';
 import 'models/immediate_charge.dart';
 import 'models/immediate_charge_pagination.dart';
 
-/// Groups all available Immediate Charge operations
+/// Groups all available Immediate Charge operations.
 class ImmediateChargeOperations {
   final GerenciaNetPlusPixRestClient _client;
   final GerenciaNetCredentials _credentials;
 
-  /// Default Constructor
+  /// Groups all available Immediate Charge operations.
   const ImmediateChargeOperations({
     required GerenciaNetPlusPixRestClient client,
     required GerenciaNetCredentials credentials,
@@ -58,41 +52,22 @@ class ImmediateChargeOperations {
     String? payerSolicitation,
     List<AdditionalInfo> additionalInfo = const [],
   }) async {
-    try {
-      final pixCreateCharge = CreateCharge(_client);
+    final pixCreateCharge = CreateCharge(_client);
 
-      final result = pixCreateCharge(
-        credentials: _credentials,
-        expiration: expiration,
-        txid: txid,
-        value: value,
-        debtor: debtor,
-        payerSolicitation: payerSolicitation,
-        additionalInfo: additionalInfo,
-      );
+    final result = pixCreateCharge(
+      credentials: _credentials,
+      expiration: expiration,
+      txid: txid,
+      value: value,
+      debtor: debtor,
+      payerSolicitation: payerSolicitation,
+      additionalInfo: additionalInfo,
+    );
 
-      return result;
-    } on DioException catch (e, s) {
-      final exception = GerenciaNetException(
-        title: e.message,
-        message: e.message,
-        statusCode: e.response?.statusCode,
-        originalException: e,
-        stackTrace: s,
-      );
-      rethrow;
-      // throw GerenciaNetException(
-      //   title: ,
-      //   message: message,
-      //   statusCode: statusCode,
-      //   originalException: e,
-      //   stackTrace: s,
-
-      // );
-    }
+    return result;
   }
 
-  /// Updates an Immediate Charge with the given [txid]
+  /// Updates an Immediate Charge with the given [txid].
 
   /// This function allows you to update an existing Immediate Charge with new
   /// information. By providing the necessary parameters, you can modify various
@@ -150,7 +125,7 @@ class ImmediateChargeOperations {
     );
   }
 
-  /// Details an Immediate Charge with the given [txid]
+  /// Details an Immediate Charge with the given [txid].
   ///
   /// Optionally, you can specify the [revision] parameter to retrieve a
   /// specific revision of the charge. If provided, the function will return
