@@ -1,7 +1,7 @@
 class GerenciaNetException implements Exception {
-  final String title;
-  final String message;
-  final int statusCode;
+  final String? title;
+  final String? message;
+  final int? statusCode;
   final List<String>? violations;
   final Exception originalException;
   final StackTrace stackTrace;

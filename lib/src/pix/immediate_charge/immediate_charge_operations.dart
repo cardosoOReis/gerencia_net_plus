@@ -1,5 +1,10 @@
 // Project imports:
+import 'dart:developer';
+
+import 'package:dio/dio.dart';
+
 import '../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
+import '../../core/gerencia_net_exception.dart';
 import '../../gerencia_net_credentials.dart';
 import '../models/additional_info.dart';
 import '../models/charge_status.dart';
@@ -53,17 +58,38 @@ class ImmediateChargeOperations {
     String? payerSolicitation,
     List<AdditionalInfo> additionalInfo = const [],
   }) async {
-    final pixCreateCharge = CreateCharge(_client);
+    try {
+      final pixCreateCharge = CreateCharge(_client);
 
-    return pixCreateCharge(
-      credentials: _credentials,
-      expiration: expiration,
-      txid: txid,
-      value: value,
-      debtor: debtor,
-      payerSolicitation: payerSolicitation,
-      additionalInfo: additionalInfo,
-    );
+      final result = pixCreateCharge(
+        credentials: _credentials,
+        expiration: expiration,
+        txid: txid,
+        value: value,
+        debtor: debtor,
+        payerSolicitation: payerSolicitation,
+        additionalInfo: additionalInfo,
+      );
+
+      return result;
+    } on DioException catch (e, s) {
+      final exception = GerenciaNetException(
+        title: e.message,
+        message: e.message,
+        statusCode: e.response?.statusCode,
+        originalException: e,
+        stackTrace: s,
+      );
+      rethrow;
+      // throw GerenciaNetException(
+      //   title: ,
+      //   message: message,
+      //   statusCode: statusCode,
+      //   originalException: e,
+      //   stackTrace: s,
+
+      // );
+    }
   }
 
   /// Updates an Immediate Charge with the given [txid]
