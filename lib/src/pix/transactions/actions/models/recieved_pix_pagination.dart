@@ -17,7 +17,13 @@ class RecievedPixPagination {
   factory RecievedPixPagination.fromMap(Map<String, dynamic> map) =>
       RecievedPixPagination(
         parameters: Parameters.fromMap(map['parametros']),
-        pix: map['pix'].map(RecievedPix.fromMap).toList(),
+        pix: List<RecievedPix>.from(
+          (map['pix'] as List<dynamic>).map<RecievedPix>(
+            (x) => RecievedPix.fromMap(
+              x as Map<String, dynamic>,
+            ),
+          ),
+        ),
       );
 
   String toJson() => json.encode(toMap());
