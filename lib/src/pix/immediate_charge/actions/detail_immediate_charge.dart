@@ -1,5 +1,8 @@
 // Project imports:
+import 'package:dio/dio.dart';
+
 import '../../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
+import '../../../core/gerencia_net_exception.dart';
 import '../models/immediate_charge.dart';
 
 /// Detail an immediate charge.
@@ -27,11 +30,21 @@ class DetailCharge {
       });
     }
 
-    final result = await _client<Map<String, dynamic>>(
-      endPoint: endPoint,
-      queryParameters: queryParameters,
-    );
+    try {
+      final result = await _client<Map<String, dynamic>>(
+        endPoint: endPoint,
+        queryParameters: queryParameters,
+      );
 
-    return ImmediateCharge.fromMap(result.data!);
+      return ImmediateCharge.fromMap(result.data!);
+    } on DioException catch (e, s) {
+      throw GerenciaNetException(
+        title: e.response?.data['nome'] ?? e.message,
+        message: e.response?.data['mensagem'] ?? e.message,
+        statusCode: e.response?.statusCode,
+        originalException: e,
+        stackTrace: s,
+      );
+    }
   }
 }

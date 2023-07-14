@@ -1,17 +1,19 @@
+/// Default Exception class to treat any error that happens with the
+/// GerenciaNetPlus library.
 class GerenciaNetException implements Exception {
+  final Exception originalException;
+  final StackTrace stackTrace;
   final String? title;
   final String? message;
   final int? statusCode;
   final List<String>? violations;
-  final Exception originalException;
-  final StackTrace stackTrace;
 
   const GerenciaNetException({
-    required this.title,
-    required this.message,
-    required this.statusCode,
     required this.originalException,
     required this.stackTrace,
+    this.title,
+    this.message,
+    this.statusCode,
     this.violations,
   });
 }
