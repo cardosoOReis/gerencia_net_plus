@@ -5,11 +5,21 @@ import '../../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import '../../../core/gerencia_net_exception.dart';
 import '../models/immediate_charge.dart';
 
-/// Detail an immediate charge.
+/// Details an Immediate Charge with the given [txid].
+///
+/// Optionally, you can specify the [revision] parameter to retrieve a
+/// specific revision of the charge. If provided, the function will return
+/// the charge as it existed at the specified revision. If no revision is
+/// specified, the function will return the most recent version of the charge.
 class DetailCharge {
   final GerenciaNetPlusPixRestClient _client;
 
-  /// Default constructor.
+  /// Details an Immediate Charge with the given [txid].
+  ///
+  /// Optionally, you can specify the [revision] parameter to retrieve a
+  /// specific revision of the charge. If provided, the function will return
+  /// the charge as it existed at the specified revision. If no revision is
+  /// specified, the function will return the most recent version of the charge.
   const DetailCharge(this._client);
 
   /// Details an Immediate Charge with the given [txid].
