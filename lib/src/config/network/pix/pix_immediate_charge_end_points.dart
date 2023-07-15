@@ -16,11 +16,6 @@ class PixImmediateChargeEndPoints {
         method: HttpMethod.put,
       );
 
-  EndPoint pixCreateImmediateCharge() => EndPoint(
-        path: '$url$_baseEndPoint',
-        method: HttpMethod.post,
-      );
-
   EndPoint pixDetailCharge(String txid) => EndPoint(
         path: '$url$_baseEndPoint/$txid',
         method: HttpMethod.get,

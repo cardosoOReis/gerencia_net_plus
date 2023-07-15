@@ -10,7 +10,7 @@ Future<void> main(List<String> args) async {
   try {
     final result = await gerenciaNetPlus.pix.immediateCharge.createCharge(
       expiration: const Duration(days: 1),
-      value: 00,
+      value: 10,
       debtor: const LegalPersonDebtor(
         name: 'Empresa de Serviços SA',
         cnpj: '12345678000195',
