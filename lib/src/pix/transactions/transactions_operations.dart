@@ -1,20 +1,22 @@
 import '../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
+import '../../config/utils/txid.dart';
+import '../../gerencia_net_credentials.dart';
 import '../models/recieved_pix.dart';
 import 'actions/detail_recieved_pix.dart';
 import 'actions/list_recieved_pix.dart';
 import 'actions/models/recieved_pix_pagination.dart';
+import 'actions/send_pix.dart';
+import 'models/payee_details.dart';
 
 /// Groups all available transactions operations.
 class TransactionsOperations {
   final GerenciaNetPlusPixRestClient _client;
-  //TODO: Uncomment [_credentials] if is needed.
-
-  // final GerenciaNetCredentials _credentials;
+  final GerenciaNetCredentials _credentials;
 
   const TransactionsOperations({
     required GerenciaNetPlusPixRestClient client,
-    // required GerenciaNetCredentials credentials,
-  }) : // _credentials = credentials,
+    required GerenciaNetCredentials credentials,
+  })  : _credentials = credentials,
         _client = client;
 
   Future<RecievedPix> detailRecievedPix(String endToEndId) async {
@@ -46,6 +48,23 @@ class TransactionsOperations {
       cnpj: cnpj,
       currentPage: currentPage,
       pageSize: pageSize,
+    );
+  }
+
+  Future<void> sendPix({
+    required double value,
+    required PayeeDetails payeeDetails,
+    String? id,
+    String? payerInfo,
+  }) async {
+    final sendPix = SendPix(_client);
+
+    await sendPix(
+      id: id ?? Txid.generate(),
+      value: value,
+      payerPixKey: _credentials.pixKey,
+      payeeDetails: payeeDetails,
+      payerInfo: payerInfo,
     );
   }
 }

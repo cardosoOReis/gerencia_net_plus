@@ -14,7 +14,11 @@ class Pix {
   final GerenciaNetCredentials _credentials;
   final PixEndPoints _pixEndPoints;
 
-  /// Default [Pix.new] constructor
+  /// Contains all available Pix operations.
+  ///
+  /// Use this property to crate charges, consult your recieved Pix
+  /// transactions, return any Pix transactions recieved, send a Pix
+  /// transaction, etc.
   const Pix({
     required GerenciaNetCredentials credentials,
     required PixEndPoints pixEndPoints,
@@ -56,5 +60,6 @@ class Pix {
   ///   - Detail a devolution.
   TransactionsOperations get transactions => TransactionsOperations(
         client: _client,
+        credentials: _credentials,
       );
 }

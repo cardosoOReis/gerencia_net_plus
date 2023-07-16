@@ -17,8 +17,8 @@ class PixTransactionsEndPoints {
         path: '$url$_baseEndPoint',
         method: HttpMethod.get,
       );
-  EndPoint sendPix(String endToEndId) => EndPoint(
-        path: '$url$_baseGnEndPoint/$endToEndId',
+  EndPoint sendPix(String id) => EndPoint(
+        path: '$url$_baseGnEndPoint/$id',
         method: HttpMethod.put,
       );
   EndPoint detailSentPix(String endToEndId) => EndPoint(
