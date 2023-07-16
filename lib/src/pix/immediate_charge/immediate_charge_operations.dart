@@ -184,4 +184,50 @@ class ImmediateChargeOperations {
       itemAmount: itemAmount,
     );
   }
+
+  /// Removes the immediate charge with the given [txid].
+  ///
+  /// After removing this charge, payments can no longer be made to it.
+  ///
+  /// This is a helper method equivalent to:
+  ///
+  /// ```dart
+  /// updateCharge(txid: txid, status: ChargeStatus.removedByPayee);
+  /// ```
+  Future<ImmediateCharge> removeCharge(String txid) async => updateCharge(
+        txid: txid,
+        status: ChargeStatus.removedByPayee,
+      );
+
+  /// Changes the [value] of the immdiate charge with the given [txid].
+  ///
+  /// This is a helper method equivalent to:
+  ///
+  /// ```dart
+  /// updateCharge(txid: txid, value: newValue);
+  /// ```
+  Future<ImmediateCharge> changeValue({
+    required String txid,
+    required double newValue,
+  }) =>
+      updateCharge(
+        txid: txid,
+        value: newValue,
+      );
+
+  /// Changes the [location] of the immediate charge with the given [txid].
+  ///
+  /// This is a helper method equivalent to:
+  ///
+  /// ```dart
+  /// updateCharge(txid: txid, locId: locationId);
+  /// ```
+  Future<ImmediateCharge> changeLocation({
+    required String txid,
+    required int locationId,
+  }) async =>
+      updateCharge(
+        txid: txid,
+        locId: locationId,
+      );
 }
