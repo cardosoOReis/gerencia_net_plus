@@ -21,8 +21,8 @@ class PixLocationEndPoints {
         path: '$url$_baseEndPoint/$id',
         method: HttpMethod.get,
       );
-  EndPoint unbindTxidFromLocation(String txid) => EndPoint(
-        path: '$url$_baseEndPoint/$txid/txid',
+  EndPoint unbindTxidFromLocation(int id) => EndPoint(
+        path: '$url$_baseEndPoint/$id/txid',
         method: HttpMethod.delete,
       );
 }

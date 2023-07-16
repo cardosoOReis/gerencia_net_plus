@@ -1,10 +1,12 @@
 // Project imports:
 import '../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import '../models/charge_type.dart';
+import '../models/location_info.dart';
 import 'actions/create_location.dart';
 import 'actions/detail_location.dart';
 import 'actions/list_locations.dart';
 import 'actions/models/location_info_pagination.dart';
+import 'actions/unbind_txid_from_location.dart';
 import 'models/location_with_txid.dart';
 
 class LocationOperations {
@@ -41,5 +43,11 @@ class LocationOperations {
     final detailLocation = DetailLocation(_client);
 
     return detailLocation(id);
+  }
+
+  Future<LocationInfo> unbindTxidFromLocation(int id) async {
+    final unbindTxidFromLocation = UnbindTxidFromLocation(_client);
+
+    return unbindTxidFromLocation(id);
   }
 }
