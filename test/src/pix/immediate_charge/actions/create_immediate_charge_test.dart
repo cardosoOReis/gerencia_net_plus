@@ -1,3 +1,4 @@
+import 'package:gerencia_net_plus/src/core/gerencia_net_exception.dart';
 import 'package:gerencia_net_plus/src/pix/immediate_charge/actions/create_immediate_charge.dart';
 import 'package:gerencia_net_plus/src/pix/immediate_charge/models/immediate_charge.dart';
 import 'package:mocktail/mocktail.dart';
@@ -65,6 +66,31 @@ void main() {
           );
         },
       );
+    });
+    group('and the call is unsuccessful,', () {
+      test('should throw a [GerenciaNetException].', () async {
+        //Arrange
+        setUpErrorResponse<Map<String, dynamic>>(
+          () => mockClient(
+            endPoint: any(named: 'endPoint'),
+            body: any(named: 'body'),
+          ),
+          statusCode: 400,
+          errorData: mockPixChargeErrorMap,
+        );
+
+        //Act
+        final result = createCharge(
+          credentials: mockCredentials,
+          value: 0,
+        );
+
+        //Assert
+        expect(
+          result,
+          throwsA(isA<GerenciaNetException>()),
+        );
+      });
     });
   });
 }

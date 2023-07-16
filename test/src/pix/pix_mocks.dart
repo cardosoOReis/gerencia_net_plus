@@ -55,3 +55,21 @@ void setUp200Response<T>(
     ),
   );
 }
+
+void setUpErrorResponse<T>(
+  Future<Response<T>> Function() call, {
+  int? statusCode,
+  dynamic errorData,
+}) {
+  when<Future<Response<T>>>(call).thenThrow(
+    DioException(
+      requestOptions: RequestOptions(),
+      message: '',
+      response: Response(
+        requestOptions: RequestOptions(),
+        data: errorData,
+        statusCode: statusCode,
+      ),
+    ),
+  );
+}
