@@ -19,9 +19,9 @@ extension MapExtensions<K, V> on Map<K, V?> {
   }
 
   /// Add an entry to the map if the entry in [other] has a non-null value.
-  /// 
+  ///
   /// Example:
-  /// 
+  ///
   /// ```dart
   /// final map = <String, dynamic>{}
   ///    ..addAllIfNotNull({

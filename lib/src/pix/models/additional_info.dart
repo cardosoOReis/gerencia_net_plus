@@ -22,20 +22,20 @@ class AdditionalInfo extends Equatable {
   /// The value this additional information holds.
   final String value;
 
-/// Additional Information to associate to a Charge
-///
-/// [name] is the 'title' of the information, and [value] is what the
-/// information actually means.
-///
-/// Example:
-///
-/// ```dart
-/// const additionalInfo = AdditionalInfo(
-///    name: 'Itens purchased by debtor.',
-///    value: 'Item 1, Item 2, Item 3.',
-///  );
-/// ```
-///
+  /// Additional Information to associate to a Charge
+  ///
+  /// [name] is the 'title' of the information, and [value] is what the
+  /// information actually means.
+  ///
+  /// Example:
+  ///
+  /// ```dart
+  /// const additionalInfo = AdditionalInfo(
+  ///    name: 'Itens purchased by debtor.',
+  ///    value: 'Item 1, Item 2, Item 3.',
+  ///  );
+  /// ```
+  ///
   const AdditionalInfo({
     required this.name,
     required this.value,
