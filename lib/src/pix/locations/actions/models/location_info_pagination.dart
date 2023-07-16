@@ -1,12 +1,13 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// Dart imports:
 import 'dart:convert';
 
-import '../../../models/location_info.dart';
+// Project imports:
 import '../../../models/pagination.dart';
+import '../../models/location_with_txid.dart';
 
 class LocationInfoPagination {
   final Parameters parameters;
-  final List<LocationInfo> locations;
+  final List<LocationInfoWithTxid> locations;
 
   const LocationInfoPagination({
     required this.parameters,
@@ -21,9 +22,9 @@ class LocationInfoPagination {
   factory LocationInfoPagination.fromMap(Map<String, dynamic> map) =>
       LocationInfoPagination(
         parameters: Parameters.fromMap(map['parametros']),
-        locations: List<LocationInfo>.from(
+        locations: List<LocationInfoWithTxid>.from(
           (map['loc'] as List<dynamic>).map(
-            (x) => LocationInfo.fromMap(x as Map<String, dynamic>),
+            (x) => LocationInfoWithTxid.fromMap(x as Map<String, dynamic>),
           ),
         ),
       );

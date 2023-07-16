@@ -1,3 +1,4 @@
+// Project imports:
 import '../models/end_point.dart';
 import '../models/http_method.dart';
 
@@ -16,7 +17,7 @@ class PixLocationEndPoints {
         path: '$url$_baseEndPoint',
         method: HttpMethod.get,
       );
-  EndPoint detailLocation(String id) => EndPoint(
+  EndPoint detailLocation(int id) => EndPoint(
         path: '$url$_baseEndPoint/$id',
         method: HttpMethod.get,
       );

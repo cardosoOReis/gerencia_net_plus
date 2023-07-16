@@ -1,13 +1,14 @@
+// Project imports:
 import '../../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import '../../models/charge_type.dart';
-import '../../models/location_info.dart';
+import '../models/location_with_txid.dart';
 
 class CreateLocation {
   final GerenciaNetPlusPixRestClient _client;
 
   const CreateLocation(this._client);
 
-  Future<LocationInfo> call({
+  Future<LocationInfoWithTxid> call({
     required ChargeType chargeType,
   }) async {
     final body = {
@@ -21,6 +22,6 @@ class CreateLocation {
       body: body,
     );
 
-    return LocationInfo.fromMap(result.data!);
+    return LocationInfoWithTxid.fromMap(result.data!);
   }
 }

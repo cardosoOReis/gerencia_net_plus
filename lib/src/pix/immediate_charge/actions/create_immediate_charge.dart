@@ -1,8 +1,9 @@
 // Dart imports:
 
-// Project imports:
+// Package imports:
 import 'package:dio/dio.dart';
 
+// Project imports:
 import '../../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import '../../../config/utils/txid.dart';
 import '../../../core/gerencia_net_exception.dart';
