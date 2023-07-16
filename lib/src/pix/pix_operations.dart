@@ -5,6 +5,7 @@ import '../gerencia_net_credentials.dart';
 import 'due_charge/due_charge_operations.dart';
 import 'immediate_charge/immediate_charge_operations.dart';
 import 'locations/location_operations.dart';
+import 'qr_code/qr_code_operations.dart';
 import 'transactions/transactions_operations.dart';
 
 /// Contains all available Pix operations.
@@ -65,4 +66,6 @@ class Pix {
       );
 
   LocationOperations get location => LocationOperations(client: _client);
+
+  QrCodeOperations get qrCode => QrCodeOperations(client: _client);
 }

@@ -4,6 +4,7 @@ import 'models/http_method.dart';
 import 'pix/pix_due_charge_end_points.dart';
 import 'pix/pix_immediate_charge_end_points.dart';
 import 'pix/pix_location_end_points.dart';
+import 'pix/pix_qr_code_endpoints.dart';
 import 'pix/pix_transactions_end_points.dart';
 import 'pix/pix_webhooks_end_point.dart';
 
@@ -42,6 +43,9 @@ class PixEndPoints {
 
   /// Contains all location endpoints.
   PixLocationEndPoints get location => PixLocationEndPoints(url: url);
+
+  /// Contains all QR Code endpoints.
+  PixQrCodeEndpoints get qrCode => PixQrCodeEndpoints(url: url);
 
   /// Contains all webhooks endpoints.
   PixWebHookEndPoints get webhook => PixWebHookEndPoints(url: url);
