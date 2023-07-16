@@ -38,7 +38,7 @@ class TransactionsOperations {
   }) {
     final listRecievedPix = ListRecievedPix(_client);
 
-    return listRecievedPix.call(
+    return listRecievedPix(
       start: start,
       end: end,
       txid: txid,

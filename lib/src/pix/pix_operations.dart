@@ -4,6 +4,7 @@ import '../config/network/pix_endpoints.dart';
 import '../gerencia_net_credentials.dart';
 import 'due_charge/due_charge_operations.dart';
 import 'immediate_charge/immediate_charge_operations.dart';
+import 'locations/location_operations.dart';
 import 'transactions/transactions_operations.dart';
 
 /// Contains all available Pix operations.
@@ -62,4 +63,6 @@ class Pix {
         client: _client,
         credentials: _credentials,
       );
+
+  LocationOperations get location => LocationOperations(client: _client);
 }
