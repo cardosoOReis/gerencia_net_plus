@@ -127,10 +127,9 @@ class GerenciaNetPlusRestClient extends DioForNative {
     required String certificatePath,
     required String keyPath,
   }) {
-    final root = Directory.current.path;
     final securityContext = SecurityContext(withTrustedRoots: true)
-      ..useCertificateChain('$root/$certificatePath')
-      ..usePrivateKey('$root/$keyPath');
+      ..useCertificateChain(certificatePath)
+      ..usePrivateKey(keyPath);
 
     clientSetting.context = securityContext;
   }
