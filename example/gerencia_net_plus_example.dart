@@ -4,8 +4,8 @@ import 'package:gerencia_net_plus/gerencia_net_plus.dart';
 import 'package:gerencia_net_plus/src/pix/models/additional_info.dart';
 
 Future<void> main(List<String> args) async {
-  const gerenciaNetPlus = GerenciaNetPlus(
-    credentials: GerenciaNetCredentials(
+  final gerenciaNetPlus = GerenciaNetPlus(
+    credentials: const GerenciaNetCredentials(
       clientId: 'Client_Id',
       clientSecret: 'Client_Secret',
       certificatePath: 'certificates/certificate.crt.pem',

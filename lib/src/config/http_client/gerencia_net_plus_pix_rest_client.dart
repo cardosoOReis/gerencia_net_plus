@@ -17,6 +17,7 @@ class GerenciaNetPlusPixRestClient extends GerenciaNetPlusRestClient {
   GerenciaNetPlusPixRestClient({
     required GerenciaNetCredentials credentials,
     required this.pixEndPoints,
+    required super.certificateLoader,
   }) : super(
           certificatePath: credentials.certificatePath,
           keyPath: credentials.privateKeyPath,

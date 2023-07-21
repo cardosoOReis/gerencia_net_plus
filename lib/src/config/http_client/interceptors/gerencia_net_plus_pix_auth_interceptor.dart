@@ -7,6 +7,8 @@ import 'package:dio/dio.dart';
 // Project imports:
 import '../../../gerencia_net_credentials.dart';
 import '../../network/pix_endpoints.dart';
+import '../certificate_loader/certificate_loader.dart';
+import '../certificate_loader/dart_certificate_loader.dart';
 import '../gerencia_net_plus_rest_client.dart';
 import '../models/token.dart';
 
@@ -21,6 +23,8 @@ class GerenciaNetPlusPixAuthInterceptor extends Interceptor {
     required PixEndPoints pixEndPoints,
   })  : _pixEndPoints = pixEndPoints,
         _credentials = credentials;
+
+  CertificateLoader get certificateLoader => DartCertificateLoader();
 
   @override
   Future<void> onRequest(
@@ -38,6 +42,7 @@ class GerenciaNetPlusPixAuthInterceptor extends Interceptor {
 
   Future<Token> _authorize() async {
     final client = GerenciaNetPlusRestClient(
+      certificateLoader: certificateLoader,
       certificatePath: _credentials.certificatePath,
       keyPath: _credentials.privateKeyPath,
     );

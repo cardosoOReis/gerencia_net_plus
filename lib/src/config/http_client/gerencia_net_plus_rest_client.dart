@@ -1,6 +1,3 @@
-// Dart imports:
-import 'dart:io';
-
 // Package imports:
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
@@ -10,6 +7,7 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 // Project imports:
 import '../network/models/end_point.dart';
 import '../network/models/http_method.dart';
+import 'certificate_loader/certificate_loader.dart';
 
 /// Base Dio client to use during requests.
 class GerenciaNetPlusRestClient extends DioForNative {
@@ -26,8 +24,13 @@ class GerenciaNetPlusRestClient extends DioForNative {
   GerenciaNetPlusRestClient({
     required String certificatePath,
     required String keyPath,
+    required CertificateLoader certificateLoader,
   }) : super(_baseOptions) {
-    _configureCertificates(certificatePath: certificatePath, keyPath: keyPath);
+    _configureCertificates(
+      certificateLoader: certificateLoader,
+      certificatePath: certificatePath,
+      keyPath: keyPath,
+    );
     interceptors.add(PrettyDioLogger(requestBody: true));
   }
 
@@ -106,14 +109,15 @@ class GerenciaNetPlusRestClient extends DioForNative {
       );
 
   void _configureCertificates({
+    required CertificateLoader certificateLoader,
     required String certificatePath,
     required String keyPath,
   }) {
     httpClientAdapter = Http2Adapter(
       ConnectionManager(
-        onClientCreate: (uri, clientSetting) => _onClientCreate(
-          uri: uri,
+        onClientCreate: (_, clientSetting) => _onClientCreate(
           clientSetting: clientSetting,
+          certificateLoader: certificateLoader,
           certificatePath: certificatePath,
           keyPath: keyPath,
         ),
@@ -122,15 +126,14 @@ class GerenciaNetPlusRestClient extends DioForNative {
   }
 
   void _onClientCreate({
-    required Uri uri,
     required ClientSetting clientSetting,
+    required CertificateLoader certificateLoader,
     required String certificatePath,
     required String keyPath,
-  }) {
-    final securityContext = SecurityContext(withTrustedRoots: true)
-      ..useCertificateChain(certificatePath)
-      ..usePrivateKey(keyPath);
-
-    clientSetting.context = securityContext;
+  }) async {
+    clientSetting.context = await certificateLoader(
+      certificatePath: certificatePath,
+      privateKeyPath: keyPath,
+    );
   }
 }
