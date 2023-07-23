@@ -1,15 +1,23 @@
 // ignore_for_file: unused_local_variable
 
+import 'dart:io';
+
 import 'package:gerencia_net_plus/gerencia_net_plus.dart';
 import 'package:gerencia_net_plus/src/pix/models/additional_info.dart';
 
 Future<void> main(List<String> args) async {
-  const gerenciaNetPlus = GerenciaNetPlus(
+  final certificateBytes =
+      File('certificates/certificate.crt.pem').readAsBytesSync();
+
+  final privateKeyBytes =
+      File('certificates/private_key.key.pem').readAsBytesSync();
+
+  final gerenciaNetPlus = GerenciaNetPlus(
     credentials: GerenciaNetCredentials(
       clientId: 'Client_Id',
       clientSecret: 'Client_Secret',
-      certificatePath: 'certificates/certificate.crt.pem',
-      privateKeyPath: 'certificates/private_key.ke',
+      certificateBytes: certificateBytes,
+      privateKeyBytes: privateKeyBytes,
       pixKey: 'pixKey',
     ),
   );

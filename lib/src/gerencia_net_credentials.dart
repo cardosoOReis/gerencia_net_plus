@@ -1,5 +1,6 @@
 // Dart imports:
 import 'dart:convert';
+import 'dart:typed_data';
 
 // Package imports:
 import 'package:equatable/equatable.dart';
@@ -30,7 +31,7 @@ class GerenciaNetCredentials extends Equatable {
   /// to the other one available.
   final bool sandbox;
 
-  /// The path to the .pem certificate of your application.
+  /// Your application's .pem certificate bytes.
   ///
   /// To use the GerenciaNet Api in Flutter/Dart, is necessary to convert
   /// your appliation certificate from a .p12 file to a .pem file.
@@ -42,7 +43,8 @@ class GerenciaNetCredentials extends Equatable {
   /// root directory of your project, a 'certificates/' folder to store your application certificates.
   /// Also, add the certificates folder to your .gitignore file.
   ///
-  /// Put your certificates there, and pass it's relative path to this field.
+  /// Put your certificates there, load it's bytes to memory, and pass them to
+  /// this field.
   ///
   /// Let's suppose your file structure is like this:
   /// ```bash
@@ -53,14 +55,55 @@ class GerenciaNetCredentials extends Equatable {
   /// │   ├── main.dart
   /// ```
   ///
-  /// You should pass it's path like:
+  /// ## If you are using Flutter
+  ///
+  /// If you are using Flutter with this library, follow this method to load
+  /// your certificate bytes into the appliation.
+  ///
+  /// Inside your pubspec.yaml file, add in your assets options:
+  /// ```yaml
+  /// flutter:
+  ///   assets:
+  ///     - certificates/
+  /// ```
+  ///
+  /// And load the certificate file bytes using `rootBundle`:
   ///
   /// ```dart
-  /// certificatePath: 'certificates/my_application_certificate.cert.pem'
+  /// import 'package:flutter/services.dart' show rootBundle;
+  ///
+  /// final certificateBytes = await rootBundle
+  ///     .load('certificates/my_application_certificate.cert.pem')
+  ///     .then((byteData) => byteData.buffer.asUint8List());
   /// ```
-  final String certificatePath;
+  ///
+  /// After this, pass the bytes to the constructor like this:
+  ///
+  /// ```dart
+  /// certificateBytes: certificateBytes,
+  /// ```
+  ///
+  /// ## If you are using only Dart
+  ///
+  /// If this is a Dart project only, without Flutter, follow these steps.
+  ///
+  /// Load the certificate using the [File] class, and get the file bytes using
+  /// the [readAsBytesSync()].
+  ///
+  /// ```dart
+  /// final certificateBytes =
+  ///     File('certificates/my_application_certificate.crt.pem').readAsBytesSync();
+  /// ```
+  ///
+  /// After this, pass the bytes to the constructor like this:
+  ///
+  /// ```dart
+  /// certificateBytes: certificateBytes,
+  /// ```
+  ///
+  final Uint8List certificateBytes;
 
-  /// The path to the .pem private key of your application.
+  /// Your application's .pem private key bytes.
   ///
   /// To use the GerenciaNet Api in Flutter/Dart, it is necessary to extract,
   /// from the .p12 certificate, the private key of your certificate.
@@ -74,7 +117,8 @@ class GerenciaNetCredentials extends Equatable {
   ///
   /// Also, add the certificates folder to your .gitignore file.
   ///
-  /// Put your private key there, and pass it's relative path to this field.
+  /// Put your private key there, load it's bytes to memory, and pass them to
+  /// this field.
   ///
   /// Let's suppose your file structure is like this:
   ///
@@ -86,12 +130,53 @@ class GerenciaNetCredentials extends Equatable {
   /// │   ├── main.dart
   /// ```
   ///
-  /// You should pass it's path like:
+  /// ## If you are using Flutter
+  ///
+  /// If you are using Flutter with this library, follow this method to load
+  /// your certificate bytes into the appliation.
+  ///
+  /// Inside your pubspec.yaml file, add in your assets options:
+  /// ```yaml
+  /// flutter:
+  ///   assets:
+  ///     - certificates/
+  /// ```
+  ///
+  /// And load the certificate file bytes using `rootBundle`:
   ///
   /// ```dart
-  /// privateKeyPath: 'certificates/my_application_private_key.key.pem'
+  /// import 'package:flutter/services.dart' show rootBundle;
+  ///
+  /// final certificateBytes = await rootBundle
+  ///     .load('certificates/my_application_private_key.key.pem')
+  ///     .then((byteData) => byteData.buffer.asUint8List());
   /// ```
-  final String privateKeyPath;
+  ///
+  /// After this, pass the bytes to the constructor like this:
+  ///
+  /// ```dart
+  /// privateKeyBytes: privateKeyBytes,
+  /// ```
+  ///
+  /// ## If you are using only Dart
+  ///
+  /// If this is a Dart project only, without Flutter, follow these steps.
+  ///
+  /// Load the certificate using the [File] class, and get the file bytes using
+  /// the [readAsBytesSync()].
+  ///
+  /// ```dart
+  /// final privateKeyBytes =
+  ///     File('certificates/my_application_private_key.key.pem').readAsBytesSync();
+  /// ```
+  ///
+  /// After this, pass the bytes to the constructor like this:
+  ///
+  /// ```dart
+  /// privateKeyBytes: privateKeyBytes,
+  /// ```
+  ///
+  final Uint8List privateKeyBytes;
 
   /// One of the Pix keys registered in your GerenciaNet account.
   ///
@@ -102,23 +187,69 @@ class GerenciaNetCredentials extends Equatable {
   /// - EVP / Random key.
   final String pixKey;
 
-  /// Default constructor
+  /// Account credentials to connect to the GerenciaNet Api.
+  ///
+  /// To get your's account credentials:
+  ///
+  /// - Pix: https://dev.gerencianet.com.br/docs/api-pix-autenticacao-e-seguranca;
+  ///
+  /// - BillPayment: https://dev.gerencianet.com.br/docs/api-pagamentos;
+  ///
+  /// - OpenFinance: https://dev.gerencianet.com.br/docs/credenciais-certificado-e-autoriza%C3%A7%C3%A3o;
   const GerenciaNetCredentials({
     required this.clientId,
     required this.clientSecret,
-    required this.certificatePath,
-    required this.privateKeyPath,
+    required this.certificateBytes,
+    required this.privateKeyBytes,
     required this.pixKey,
     this.sandbox = true,
   });
+
+  /// Account credentials to connect to the GerenciaNet Api.
+  ///
+  /// To get your's account credentials:
+  ///
+  /// - Pix: https://dev.gerencianet.com.br/docs/api-pix-autenticacao-e-seguranca;
+  ///
+  /// - BillPayment: https://dev.gerencianet.com.br/docs/api-pagamentos;
+  ///
+  /// - OpenFinance: https://dev.gerencianet.com.br/docs/credenciais-certificado-e-autoriza%C3%A7%C3%A3o;
+  /// 
+  /// This is a helper constructor to create in a sandbox enviroment.
+  const GerenciaNetCredentials.sandbox({
+    required this.clientId,
+    required this.clientSecret,
+    required this.certificateBytes,
+    required this.privateKeyBytes,
+    required this.pixKey,
+  }) : sandbox = true;
+
+  /// Account credentials to connect to the GerenciaNet Api.
+  ///
+  /// To get your's account credentials:
+  ///
+  /// - Pix: https://dev.gerencianet.com.br/docs/api-pix-autenticacao-e-seguranca;
+  ///
+  /// - BillPayment: https://dev.gerencianet.com.br/docs/api-pagamentos;
+  ///
+  /// - OpenFinance: https://dev.gerencianet.com.br/docs/credenciais-certificado-e-autoriza%C3%A7%C3%A3o;
+  /// 
+  /// This is a helper constructor to create in a production enviroment.
+  const GerenciaNetCredentials.production({
+    required this.clientId,
+    required this.clientSecret,
+    required this.certificateBytes,
+    required this.privateKeyBytes,
+    required this.pixKey,
+  }) : sandbox = false;
 
   /// Helper method to transform this class into a Map
   Map<String, dynamic> toMap() => <String, dynamic>{
         'clientId': clientId,
         'clientSecret': clientSecret,
         'sandbox': sandbox,
-        'certificatePath': certificatePath,
-        'privateKeyPath': privateKeyPath,
+        'certificatePath': certificateBytes,
+        'privateKeyPath': privateKeyBytes,
         'pixKey': pixKey,
       };
 
@@ -128,8 +259,8 @@ class GerenciaNetCredentials extends Equatable {
         clientId: map['clientId'] as String,
         clientSecret: map['clientSecret'] as String,
         sandbox: map['sandbox'] as bool,
-        certificatePath: map['certificatePath'] as String,
-        privateKeyPath: map['privateKeyPath'] as String,
+        certificateBytes: map['certificatePath'] as Uint8List,
+        privateKeyBytes: map['privateKeyPath'] as Uint8List,
         pixKey: map['pixKey'] as String,
       );
 
@@ -147,8 +278,8 @@ class GerenciaNetCredentials extends Equatable {
         clientId,
         clientSecret,
         sandbox,
-        certificatePath,
-        privateKeyPath,
+        certificateBytes,
+        privateKeyBytes,
         pixKey,
       ];
 }

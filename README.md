@@ -31,11 +31,12 @@ Go to:
 ## Features
 
 - Create, update and list your Pix Charges, with or without additional expiration fees.
+- List Pix transactions.
+- Create a QRCode, Pix copy and paste, and a link to view the QRCode.
 
-  TODO:
+TODO:
 
-  - List Pix transactions
-  - Webhook functionlity
+- Webhook functionality
 
 ## Getting started
 
@@ -99,10 +100,20 @@ In the root of your project, create a new folder called `certificates` and put y
 │   ├── certificate.pem
 ├── lib
 │   ├── src
-│   ├── main.dart
-└── .gitignore
+│   └── main.dart
+├── .gitignore
 ├── analysis_options.yaml
-├── pubspec.yaml
+└── pubspec.yaml
+```
+
+#### If you are using Flutter
+
+if you are using Flutter with this library, you also need to add your `certificates` folder to the assets configuration in your pubspec.yaml file.
+
+```yaml
+flutter:
+  assets:
+    - certificates/
 ```
 
 ### How to register Pix keys
@@ -128,12 +139,15 @@ To register your Pix keys through the application:
 ```dart
 import 'package:gerencia_net_plus/gerencia_net_plus.dart';
 
-const gerenciaNetPlus = GerenciaNetPlus(
+final certificateBytes = File('certificates/my_application_certificate.crt.pem').readAsBytesSync();
+final privateKeyBytes = File('certificates/my_application_private_key.key.pem').readAsBytesSync();
+
+final gerenciaNetPlus = GerenciaNetPlus(
     credentials: GerenciaNetCredentials(
       clientId: 'Client_Id',
       clientSecret: 'Client_Secret',
-      certificatePath: 'certificates/certificate_path.pem',
-      privateKeyPath: 'certificates/private_key_path.pem',
+      certificateBytes: certificateBytes,
+      privateKeyBytes: privateKeyBytes,
       pixKey: 'pixKey',
       sandbox: true,
     ),

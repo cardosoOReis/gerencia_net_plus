@@ -1,4 +1,6 @@
 // Package imports:
+import 'dart:typed_data';
+
 import 'package:dio/dio.dart';
 // Project imports:
 import 'package:gerencia_net_plus/src/config/http_client/gerencia_net_plus_pix_rest_client.dart';
@@ -33,11 +35,11 @@ class MockPixImmediateChargeEndPoints extends Mock
   EndPoint pixListCharges() => mockEndpoint;
 }
 
-const mockCredentials = GerenciaNetCredentials(
+final mockCredentials = GerenciaNetCredentials(
   clientId: '',
   clientSecret: '',
-  certificatePath: '',
-  privateKeyPath: '',
+  certificateBytes: Uint8List(0),
+  privateKeyBytes: Uint8List(0),
   pixKey: '',
 );
 

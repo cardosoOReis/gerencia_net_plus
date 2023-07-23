@@ -18,8 +18,8 @@ class GerenciaNetPlusPixRestClient extends GerenciaNetPlusRestClient {
     required GerenciaNetCredentials credentials,
     required this.pixEndPoints,
   }) : super(
-          certificatePath: credentials.certificatePath,
-          keyPath: credentials.privateKeyPath,
+          certificateBytes: credentials.certificateBytes,
+          keyBytes: credentials.privateKeyBytes,
         ) {
     interceptors.add(
       GerenciaNetPlusPixAuthInterceptor(

@@ -1,5 +1,6 @@
 // Dart imports:
 import 'dart:io';
+import 'dart:typed_data';
 
 // Package imports:
 import 'package:dio/dio.dart';
@@ -24,10 +25,13 @@ class GerenciaNetPlusRestClient extends DioForNative {
   ///
   /// After this, we add a [PrettyDioLogger] to help logging.
   GerenciaNetPlusRestClient({
-    required String certificatePath,
-    required String keyPath,
+    required Uint8List certificateBytes,
+    required Uint8List keyBytes,
   }) : super(_baseOptions) {
-    _configureCertificates(certificatePath: certificatePath, keyPath: keyPath);
+    _configureCertificates(
+      certificateBytes: certificateBytes,
+      keyBytes: keyBytes,
+    );
     interceptors.add(PrettyDioLogger(requestBody: true));
   }
 
@@ -106,16 +110,16 @@ class GerenciaNetPlusRestClient extends DioForNative {
       );
 
   void _configureCertificates({
-    required String certificatePath,
-    required String keyPath,
+    required Uint8List certificateBytes,
+    required Uint8List keyBytes,
   }) {
     httpClientAdapter = Http2Adapter(
       ConnectionManager(
         onClientCreate: (uri, clientSetting) => _onClientCreate(
           uri: uri,
           clientSetting: clientSetting,
-          certificatePath: certificatePath,
-          keyPath: keyPath,
+          certificateBytes: certificateBytes,
+          keyBytes: keyBytes,
         ),
       ),
     );
@@ -124,12 +128,12 @@ class GerenciaNetPlusRestClient extends DioForNative {
   void _onClientCreate({
     required Uri uri,
     required ClientSetting clientSetting,
-    required String certificatePath,
-    required String keyPath,
+    required Uint8List certificateBytes,
+    required Uint8List keyBytes,
   }) {
     final securityContext = SecurityContext(withTrustedRoots: true)
-      ..useCertificateChain(certificatePath)
-      ..usePrivateKey(keyPath);
+      ..useCertificateChainBytes(certificateBytes)
+      ..usePrivateKeyBytes(keyBytes);
 
     clientSetting.context = securityContext;
   }

@@ -38,8 +38,8 @@ class GerenciaNetPlusPixAuthInterceptor extends Interceptor {
 
   Future<Token> _authorize() async {
     final client = GerenciaNetPlusRestClient(
-      certificatePath: _credentials.certificatePath,
-      keyPath: _credentials.privateKeyPath,
+      certificateBytes: _credentials.certificateBytes,
+      keyBytes: _credentials.privateKeyBytes,
     );
 
     final headers = {
