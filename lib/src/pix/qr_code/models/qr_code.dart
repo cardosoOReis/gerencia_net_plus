@@ -1,6 +1,8 @@
+// Dart imports:
 import 'dart:convert';
 import 'dart:typed_data';
 
+// Package imports:
 import 'package:equatable/equatable.dart';
 
 class QrCode extends Equatable {

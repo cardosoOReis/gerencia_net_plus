@@ -1,11 +1,13 @@
 // Package imports:
+
+// Package imports:
+import 'package:mocktail/mocktail.dart';
+import 'package:test/test.dart';
+
 // Project imports:
 import 'package:gerencia_net_plus/src/core/gerencia_net_exception.dart';
 import 'package:gerencia_net_plus/src/pix/immediate_charge/actions/create_immediate_charge.dart';
 import 'package:gerencia_net_plus/src/pix/immediate_charge/models/immediate_charge.dart';
-import 'package:mocktail/mocktail.dart';
-import 'package:test/test.dart';
-
 import '../../pix_maps.dart';
 import '../../pix_mocks.dart';
 

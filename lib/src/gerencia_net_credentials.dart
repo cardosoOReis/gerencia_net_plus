@@ -214,7 +214,7 @@ class GerenciaNetCredentials extends Equatable {
   /// - BillPayment: https://dev.gerencianet.com.br/docs/api-pagamentos;
   ///
   /// - OpenFinance: https://dev.gerencianet.com.br/docs/credenciais-certificado-e-autoriza%C3%A7%C3%A3o;
-  /// 
+  ///
   /// This is a helper constructor to create in a sandbox enviroment.
   const GerenciaNetCredentials.sandbox({
     required this.clientId,
@@ -233,7 +233,7 @@ class GerenciaNetCredentials extends Equatable {
   /// - BillPayment: https://dev.gerencianet.com.br/docs/api-pagamentos;
   ///
   /// - OpenFinance: https://dev.gerencianet.com.br/docs/credenciais-certificado-e-autoriza%C3%A7%C3%A3o;
-  /// 
+  ///
   /// This is a helper constructor to create in a production enviroment.
   const GerenciaNetCredentials.production({
     required this.clientId,
