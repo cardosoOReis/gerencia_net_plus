@@ -3,8 +3,6 @@ import 'dart:typed_data';
 
 // Package imports:
 import 'package:dio/dio.dart';
-import 'package:mocktail/mocktail.dart';
-
 // Project imports:
 import 'package:gerencia_net_plus/src/config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import 'package:gerencia_net_plus/src/config/network/models/end_point.dart';
@@ -12,6 +10,7 @@ import 'package:gerencia_net_plus/src/config/network/models/http_method.dart';
 import 'package:gerencia_net_plus/src/config/network/pix/pix_immediate_charge_end_points.dart';
 import 'package:gerencia_net_plus/src/config/network/pix_endpoints.dart';
 import 'package:gerencia_net_plus/src/gerencia_net_credentials.dart';
+import 'package:mocktail/mocktail.dart';
 
 class MockGerenciaNetPlusPixRestClient extends Mock
     implements GerenciaNetPlusPixRestClient {

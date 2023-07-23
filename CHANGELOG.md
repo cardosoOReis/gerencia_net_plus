@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.0.4
+
+- Flutter compability.
+
 ## 0.0.3
 
 - Better documentation.
