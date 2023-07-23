@@ -4,16 +4,13 @@ import 'dart:math';
 /// The current package name.
 ///
 /// Used to stylize the txid.
-const packageName = 'GerenciaNetPlus';
+const _packageName = 'GerenciaNetPlus';
 
 /// A valid txid max length.
-const txidMaxLength = 35;
-
-/// A valid txid min length.
-const txidMinLentgh = 26;
+const _txidMaxLength = 35;
 
 /// Allowed characters in a txid.
-const allowedCharacters =
+const _allowedCharacters =
     'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
 /// Generates a valid random txid to be used in the requisitions.
@@ -26,14 +23,14 @@ String generate() {
   final random = Random.secure();
 
   final lastTxidCharacters = List.generate(
-    txidMaxLength - packageName.length,
+    _txidMaxLength - _packageName.length,
     (_) {
-      final index = random.nextInt(allowedCharacters.length);
-      return allowedCharacters[index];
+      final index = random.nextInt(_allowedCharacters.length);
+      return _allowedCharacters[index];
     },
   ).join();
 
-  return '$packageName$lastTxidCharacters';
+  return '$_packageName$lastTxidCharacters';
 }
 
 /// Txid validator.

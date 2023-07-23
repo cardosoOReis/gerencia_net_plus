@@ -15,6 +15,7 @@ enum ChargeStatus {
   /// Payments can no longer be made to this charge.
   removedByPSP('REMOVIDA_PELO_PSP');
 
+  /// The status that is returned from the GerenciaNet Api.
   final String value;
 
   const ChargeStatus(this.value);

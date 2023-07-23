@@ -67,6 +67,8 @@ class Pix {
 
   LocationOperations get location => LocationOperations(client: _client);
 
+  /// All the QR Code operations, with some helper methods to make integration
+  /// with the QR Code functionality easier.
   QrCodeOperations get qrCode => QrCodeOperations(
         client: _client,
         immediateChargeOperations: immediateCharge,
