@@ -1,6 +1,6 @@
 // Project imports:
 import '../../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
-import '../../../config/utils/txid.dart';
+import '../../../config/utils/txid.dart' as txid_utils;
 import '../../models/additional_info.dart';
 import '../models/debtor_details.dart';
 import '../models/due_charge.dart';
@@ -48,7 +48,7 @@ class CreateDueCharge {
     );
 
     final endPoint = _client.pixEndPoints.dueCharge.createDueCharge(
-      txid ?? Txid.generate(),
+      txid ?? txid_utils.generate(),
     );
 
     final response = await _client<Map<String, dynamic>>(
