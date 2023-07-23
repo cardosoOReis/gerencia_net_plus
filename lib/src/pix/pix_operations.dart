@@ -67,5 +67,8 @@ class Pix {
 
   LocationOperations get location => LocationOperations(client: _client);
 
-  QrCodeOperations get qrCode => QrCodeOperations(client: _client);
+  QrCodeOperations get qrCode => QrCodeOperations(
+        client: _client,
+        immediateChargeOperations: immediateCharge,
+      );
 }
