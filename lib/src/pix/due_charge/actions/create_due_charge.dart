@@ -10,11 +10,11 @@ import '../models/due_charge_interest_rates.dart';
 import '../models/due_charge_reduction.dart';
 import 'models/create_due_charge_request_body.dart';
 
-/// Operation to create a due charge
+/// Creates a Due Charge with the given [originalValue].
 class CreateDueCharge {
   final GerenciaNetPlusPixRestClient _client;
 
-  /// Default constructor.
+  /// Creates a Due Charge with the given [originalValue].
   const CreateDueCharge(this._client);
 
   Future<DueCharge> call({

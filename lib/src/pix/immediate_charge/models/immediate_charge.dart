@@ -1,6 +1,3 @@
-// Dart imports:
-import 'dart:convert';
-
 // Project imports:
 import '../../../config/utils/date_extensions.dart';
 import '../../models/additional_info.dart';
@@ -9,42 +6,29 @@ import '../../models/location_info.dart';
 import '../../models/recieved_pix.dart';
 import 'debtor.dart';
 
-///
 class ImmediateCharge {
-  ///
   final DateTime creation;
 
-  ///
   final Duration expiration;
 
-  ///
   final String txid;
 
-  ///
   final int revisionAmount;
 
-  ///
   final LocationInfo locationInfo;
 
-  ///
   final ChargeStatus status;
 
-  ///
   final double value;
 
-  ///
   final String pixKey;
 
-  ///
   final Debtor? debtor;
 
-  ///
   final String? payerSolicitation;
 
-  ///
   final List<AdditionalInfo>? additionalInfo;
 
-  ///
   final List<RecievedPix>? pixPayments;
 
   const ImmediateCharge._({
@@ -123,9 +107,4 @@ class ImmediateCharge {
         'additionalInfo': additionalInfo?.map((e) => e.toMap()).toList(),
         'pix': pixPayments?.map((p) => p.toMap()).toList(),
       };
-
-  String toJson() => json.encode(toMap());
-
-  factory ImmediateCharge.fromJson(String source) =>
-      ImmediateCharge.fromMap(json.decode(source) as Map<String, dynamic>);
 }
