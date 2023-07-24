@@ -51,7 +51,7 @@ linter:
     - prefer_final_in_for_each
     - prefer_single_quotes
     # TODO - uncomment this rule and document the package
-    - public_member_api_docs
+    # - public_member_api_docs
     - require_trailing_commas
     - unawaited_futures
     - unnecessary_await_in_return
