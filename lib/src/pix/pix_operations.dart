@@ -7,6 +7,7 @@ import 'immediate_charge/immediate_charge_operations.dart';
 import 'locations/location_operations.dart';
 import 'qr_code/qr_code_operations.dart';
 import 'transactions/transactions_operations.dart';
+import 'webhook/webhook_operations.dart';
 
 /// Contains all available Pix operations.
 ///
@@ -72,5 +73,10 @@ class Pix {
   QrCodeOperations get qrCode => QrCodeOperations(
         client: _client,
         immediateChargeOperations: immediateCharge,
+      );
+
+  WebhookOperations get webhook => WebhookOperations(
+        client: _client,
+        credentials: _credentials,
       );
 }

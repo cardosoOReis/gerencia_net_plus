@@ -11,13 +11,13 @@ class PixWebHookEndPoints {
 
   static const _baseEndPoint = '/v2/webhook';
 
-  EndPoint pixConfigWebhook(String key) => EndPoint(
-        path: '$url$_baseEndPoint/$key',
+  EndPoint pixConfigWebhook(String pixKey) => EndPoint(
+        path: '$url$_baseEndPoint/$pixKey',
         method: HttpMethod.put,
       );
 
-  EndPoint pixDetailWebhook(String key) => EndPoint(
-        path: '$url$_baseEndPoint/$key',
+  EndPoint pixDetailWebhook(String pixKey) => EndPoint(
+        path: '$url$_baseEndPoint/$pixKey',
         method: HttpMethod.get,
       );
 
@@ -26,8 +26,8 @@ class PixWebHookEndPoints {
         method: HttpMethod.get,
       );
 
-  EndPoint pixDeleteWebhook(String key) => EndPoint(
-        path: '$url$_baseEndPoint/$key',
+  EndPoint pixDeleteWebhook(String pixKey) => EndPoint(
+        path: '$url$_baseEndPoint/$pixKey',
         method: HttpMethod.delete,
       );
 }
