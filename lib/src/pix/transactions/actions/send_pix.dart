@@ -1,6 +1,7 @@
 // Project imports:
 import '../../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import '../models/payee_details.dart';
+import '../models/sent_pix.dart';
 import 'models/send_pix_request_body.dart';
 
 // Not tested!
@@ -9,7 +10,7 @@ class SendPix {
 
   const SendPix(this._client);
 
-  Future<void> call({
+  Future<SentPix> call({
     required String id,
     required double value,
     required String payerPixKey,
@@ -30,6 +31,6 @@ class SendPix {
       body: body,
     );
 
-    print(result.data);
+    return SentPix.fromMap(result.data!);
   }
 }

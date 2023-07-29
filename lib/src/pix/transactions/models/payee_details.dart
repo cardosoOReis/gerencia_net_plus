@@ -1,6 +1,3 @@
-// Project imports:
-import '../../../config/utils/map_extensions.dart';
-
 abstract class PayeeDetails {
   const PayeeDetails();
 
@@ -9,23 +6,21 @@ abstract class PayeeDetails {
 
 class PixKeyPayeeDetails extends PayeeDetails {
   final String pixKey;
-  final String? cpf;
   const PixKeyPayeeDetails({
     required this.pixKey,
-    this.cpf,
   });
 
   @override
   Map<String, dynamic> toMap() => <String, dynamic>{
         'chave': pixKey,
-      }..addIfNotNull('cpf', cpf);
+      };
 }
 
 class BankAccountPayeeDetails extends PayeeDetails {
   final String name;
   final String cpf;
-  final String bankCode;
-  final int banAgency;
+  final String? bankCode;
+  final int bankAgency;
   final int bankAccount;
   final BankAccountType bankAccountType;
 
@@ -33,7 +28,7 @@ class BankAccountPayeeDetails extends PayeeDetails {
     required this.name,
     required this.cpf,
     required this.bankCode,
-    required this.banAgency,
+    required this.bankAgency,
     required this.bankAccount,
     required this.bankAccountType,
   });
@@ -43,12 +38,22 @@ class BankAccountPayeeDetails extends PayeeDetails {
         'contaBanco': <String, dynamic>{
           'nome': name,
           'cpf': cpf,
-          'codigoBanco': bankAccount,
-          'agencia': '$banAgency',
+          'codigoBanco': bankCode,
+          'agencia': '$bankAgency',
           'conta': '$bankAccount',
           'tipoConta': bankAccountType.value,
         },
       };
+
+  factory BankAccountPayeeDetails.fromMap(Map<String, dynamic> map) =>
+      BankAccountPayeeDetails(
+        name: map['nome'],
+        cpf: map['cpf'],
+        bankCode: map['codigoBanco'],
+        bankAgency: int.parse(map['agencia']),
+        bankAccount: int.parse(map['conta']),
+        bankAccountType: BankAccountType.match(map['tipoConta']),
+      );
 }
 
 enum BankAccountType {
@@ -58,4 +63,14 @@ enum BankAccountType {
   final String value;
 
   const BankAccountType(this.value);
+
+  factory BankAccountType.match(String type) =>
+      BankAccountType.values.firstWhere(
+        (e) => e.value == type,
+        orElse: () => switch (type) {
+          'corrente' => BankAccountType.checkingAcount,
+          'poupanca' => BankAccountType.savingsAccount,
+          _ => throw ArgumentError.value(type),
+        },
+      );
 }

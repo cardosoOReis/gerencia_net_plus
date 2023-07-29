@@ -17,7 +17,7 @@ class SendPixRequestBody {
 
   Map<String, dynamic> toMap() => <String, dynamic>{
         'valor': value.toStringAsFixed(2),
-        'pagador': {
+        'pagador': <String, String?>{
           'chave': payerPixKey,
         }..addIfNotNull('infoPagador', payerInfo),
         'favorecido': payeeDetails.toMap(),
