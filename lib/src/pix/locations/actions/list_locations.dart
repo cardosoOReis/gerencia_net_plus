@@ -1,7 +1,10 @@
 // Project imports:
+import 'package:dio/dio.dart';
+
 import '../../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import '../../../config/utils/date_extensions.dart';
 import '../../../config/utils/map_extensions.dart';
+import '../../../core/gerencia_net_exception.dart';
 import 'models/location_info_pagination.dart';
 
 class ListLocations {
@@ -25,11 +28,21 @@ class ListLocations {
 
     final endPoint = _client.pixEndPoints.location.listLocations();
 
-    final result = await _client<Map<String, dynamic>>(
-      endPoint: endPoint,
-      queryParameters: params,
-    );
+    try {
+      final result = await _client<Map<String, dynamic>>(
+        endPoint: endPoint,
+        queryParameters: params,
+      );
 
-    return LocationInfoPagination.fromMap(result.data!);
+      return LocationInfoPagination.fromMap(result.data!);
+    } on DioException catch (e, s) {
+      throw GerenciaNetException(
+        title: e.response?.data['nome'],
+        message: e.response?.data['mensagem'],
+        statusCode: e.response?.statusCode,
+        originalException: e,
+        stackTrace: s,
+      );
+    }
   }
 }
