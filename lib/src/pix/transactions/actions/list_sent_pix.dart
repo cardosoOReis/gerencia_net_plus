@@ -1,7 +1,10 @@
 // Project imports:
+import 'package:dio/dio.dart';
+
 import '../../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import '../../../config/utils/date_extensions.dart';
 import '../../../config/utils/map_extensions.dart';
+import '../../../core/gerencia_net_exception.dart';
 import '../models/sent_pix_pagination.dart';
 import '../models/sent_pix_status.dart';
 
@@ -30,11 +33,21 @@ class ListSentPix {
 
     final endpoint = _client.pixEndPoints.transactions.listSentPix();
 
-    final result = await _client<Map<String, dynamic>>(
-      endPoint: endpoint,
-      queryParameters: params,
-    );
+    try {
+      final result = await _client<Map<String, dynamic>>(
+        endPoint: endpoint,
+        queryParameters: params,
+      );
 
-    return SentPixPagination.fromMap(result.data!);
+      return SentPixPagination.fromMap(result.data!);
+    } on DioException catch (e, s) {
+      throw GerenciaNetException(
+        title: e.response?.data['title'],
+        message: e.response?.data['detail'],
+        statusCode: e.response?.data['status'] ?? e.response?.statusCode,
+        originalException: e,
+        stackTrace: s,
+      );
+    }
   }
 }
