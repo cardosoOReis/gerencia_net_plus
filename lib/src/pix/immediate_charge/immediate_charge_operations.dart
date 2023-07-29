@@ -55,7 +55,7 @@ class ImmediateChargeOperations {
   }) async {
     final pixCreateCharge = CreateCharge(_client);
 
-    final result = pixCreateCharge(
+    return pixCreateCharge(
       credentials: _credentials,
       expiration: expiration,
       txid: txid,
@@ -64,8 +64,6 @@ class ImmediateChargeOperations {
       payerSolicitation: payerSolicitation,
       additionalInfo: additionalInfo,
     );
-
-    return result;
   }
 
   /// Updates an Immediate Charge with the given [txid].

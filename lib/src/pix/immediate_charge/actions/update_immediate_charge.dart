@@ -18,11 +18,7 @@ import 'models/update_charge_request_body.dart';
 ///
 /// To update an immediate charge, you need to provide the unique identifier
 /// of the charge using the [txid] parameter. This identifier ensures that the
-/// correct charge is being updated. Additionally, you can specify the
-/// [persist] parameter, which determines whether the only changes made to the
-/// charge are the ones passed. If set to true, the only changes made are the
-/// ones passed in the parameters. Otherwise, this is the same thing as
-/// creating a new Immediate Charge, while maintaining the same [txid].
+/// correct charge is being updated.
 ///
 /// The [value] parameter allows you to change the amount of money associated
 /// with the immediate charge. By providing a new value, you can update the
@@ -89,11 +85,7 @@ class UpdateCharge {
   ///
   /// To update an immediate charge, you need to provide the unique identifier
   /// of the charge using the [txid] parameter. This identifier ensures that the
-  /// correct charge is being updated. Additionally, you can specify the
-  /// [persist] parameter, which determines whether the only changes made to the
-  /// charge are the ones passed. If set to true, the only changes made are the
-  /// ones passed in the parameters. Otherwise, this is the same thing as
-  /// creating a new Immediate Charge, while maintaining the same [txid].
+  /// correct charge is being updated.
   ///
   /// The [value] parameter allows you to change the amount of money associated
   /// with the immediate charge. By providing a new value, you can update the
@@ -123,27 +115,23 @@ class UpdateCharge {
     required String? pixKey,
     required List<AdditionalInfo>? additionalInfo,
     required ChargeStatus? status,
-    bool persist = true,
   }) async {
+    final body = UpdateChargeRequestBody(
+      locId: locId,
+      value: value,
+      debtor: debtor,
+      payerSolicitation: payerSolicitation,
+      pixKey: pixKey,
+      additionalInfo: additionalInfo,
+      status: status,
+    );
+
+    final endPoint = _client.pixEndPoints.immediateCharge.pixUpdateCharge(txid);
+
     try {
-      final body = UpdateChargeRequestBody(
-        locId: locId,
-        value: value,
-        debtor: debtor,
-        payerSolicitation: payerSolicitation,
-        pixKey: pixKey,
-        additionalInfo: additionalInfo,
-        status: status,
-      );
-
-      final endPoint =
-          _client.pixEndPoints.immediateCharge.pixUpdateCharge(txid);
-
       final response = await _client<Map<String, dynamic>>(
         endPoint: endPoint,
-        body: body.toMap(
-          persist: persist,
-        ),
+        body: body.toMap(),
       );
 
       return ImmediateCharge.fromMap(response.data!);
