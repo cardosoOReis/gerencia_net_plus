@@ -1,15 +1,28 @@
+// Package imports:
 import 'package:equatable/equatable.dart';
 
+// Project imports:
 import '../../../config/utils/date_extensions.dart';
 import 'sent_pix_status.dart';
 
+/// Represents a sent Pix transaction.
 class SentPix extends Equatable {
+  /// The unique identifier of the sent Pix transaction.
   final String id;
+
+  /// The end-to-end identifier of the sent Pix transaction.
   final String endToEndId;
+
+  /// The value of the sent Pix transaction.
   final double value;
+
+  /// The date and time when the Pix transaction was solicited.
   final DateTime solicitationTime;
+
+  /// The status of the sent Pix transaction.
   final SentPixStatus status;
 
+  /// Represents a sent Pix transaction.
   const SentPix({
     required this.id,
     required this.endToEndId,

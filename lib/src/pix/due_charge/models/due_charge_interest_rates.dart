@@ -1,5 +1,4 @@
 // Dart imports:
-import 'dart:convert';
 
 class DueChargeInterestRate {
   final double value;
@@ -19,13 +18,6 @@ class DueChargeInterestRate {
       DueChargeInterestRate(
         value: double.parse(map['valorPerc']),
         modality: InterestRateModality.match(map['modalidade']),
-      );
-
-  String toJson() => json.encode(toMap());
-
-  factory DueChargeInterestRate.fromJson(String source) =>
-      DueChargeInterestRate.fromMap(
-        json.decode(source) as Map<String, dynamic>,
       );
 
   DueChargeInterestRate copyWith({

@@ -1,5 +1,4 @@
 // Dart imports:
-import 'dart:convert';
 
 // Project imports:
 import '../../config/utils/date_extensions.dart';
@@ -53,9 +52,4 @@ class RecievedPix {
       devolutions: devolutions,
     );
   }
-
-  String toJson() => json.encode(toMap());
-
-  factory RecievedPix.fromJson(String source) =>
-      RecievedPix.fromMap(json.decode(source) as Map<String, dynamic>);
 }

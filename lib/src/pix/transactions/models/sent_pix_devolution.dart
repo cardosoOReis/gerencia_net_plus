@@ -1,14 +1,21 @@
-import 'dart:convert';
-
+// Package imports:
 import 'package:equatable/equatable.dart';
 
+// Project imports:
 import '../../../config/utils/date_extensions.dart';
 
+/// Represents a devolution of a sent Pix transaction.
 class SentPixDevolution extends Equatable {
+  /// The unique identifier of the sent Pix devolution.
   final String rtrId;
+
+  /// The value of the sent Pix devolution.
   final double value;
+
+  /// The date and time when the Pix devolution occurred.
   final DateTime time;
 
+  /// Represents a devolution of a sent Pix transaction.
   const SentPixDevolution({
     required this.rtrId,
     required this.value,
@@ -16,7 +23,7 @@ class SentPixDevolution extends Equatable {
   });
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [rtrId, value, time];
 
   Map<String, dynamic> toMap() => <String, dynamic>{
         'rtrId': rtrId,
@@ -30,9 +37,4 @@ class SentPixDevolution extends Equatable {
         value: double.parse(map['valor']),
         time: DateTime.parse(map['horario']),
       );
-
-  String toJson() => json.encode(toMap());
-
-  factory SentPixDevolution.fromJson(String source) =>
-      SentPixDevolution.fromMap(json.decode(source) as Map<String, dynamic>);
 }

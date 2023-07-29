@@ -1,5 +1,4 @@
 // Dart imports:
-import 'dart:convert';
 import 'dart:typed_data';
 
 // Package imports:
@@ -262,15 +261,6 @@ class GerenciaNetCredentials extends Equatable {
         certificateBytes: map['certificatePath'] as Uint8List,
         privateKeyBytes: map['privateKeyPath'] as Uint8List,
         pixKey: map['pixKey'] as String,
-      );
-
-  /// Helper method to transform this class into a JSON String
-  String toJson() => json.encode(toMap());
-
-  /// Helper constructor to instantiate this class from a JSON String
-  factory GerenciaNetCredentials.fromJson(String source) =>
-      GerenciaNetCredentials.fromMap(
-        json.decode(source) as Map<String, dynamic>,
       );
 
   @override

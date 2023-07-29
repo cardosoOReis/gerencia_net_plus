@@ -1,6 +1,3 @@
-// Dart imports:
-import 'dart:convert';
-
 // Package imports:
 import 'package:equatable/equatable.dart';
 
@@ -22,11 +19,6 @@ class DueChargeFine extends Equatable {
         value: double.parse(map['valorPerc']),
         modality: DueChargeFineModality.match(map['modalidade']),
       );
-
-  String toJson() => json.encode(toMap());
-
-  factory DueChargeFine.fromJson(String source) =>
-      DueChargeFine.fromMap(json.decode(source) as Map<String, dynamic>);
 
   DueChargeFine copyWith({
     double? value,

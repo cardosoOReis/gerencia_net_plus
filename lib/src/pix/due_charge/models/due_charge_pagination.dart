@@ -1,5 +1,4 @@
 // Dart imports:
-import 'dart:convert';
 
 // Project imports:
 import '../../models/pagination.dart';
@@ -28,9 +27,4 @@ class DueChargePagination {
           ),
         ),
       );
-
-  String toJson() => json.encode(toMap());
-
-  factory DueChargePagination.fromJson(String source) =>
-      DueChargePagination.fromMap(json.decode(source) as Map<String, dynamic>);
 }

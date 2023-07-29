@@ -1,5 +1,4 @@
 // Dart imports:
-import 'dart:convert';
 
 // Project imports:
 import '../../models/pagination.dart';
@@ -27,9 +26,4 @@ class RecievedPixPagination {
           ),
         ),
       );
-
-  String toJson() => json.encode(toMap());
-
-  factory RecievedPixPagination.fromJson(String source) =>
-      RecievedPixPagination.fromMap(json.decode(source));
 }

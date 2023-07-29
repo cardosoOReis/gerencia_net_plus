@@ -1,5 +1,4 @@
 // Dart imports:
-import 'dart:convert';
 
 // Project imports:
 import '../../../models/pagination.dart';
@@ -27,12 +26,5 @@ class LocationInfoPagination {
             (x) => LocationInfoWithTxid.fromMap(x as Map<String, dynamic>),
           ),
         ),
-      );
-
-  String toJson() => json.encode(toMap());
-
-  factory LocationInfoPagination.fromJson(String source) =>
-      LocationInfoPagination.fromMap(
-        json.decode(source) as Map<String, dynamic>,
       );
 }

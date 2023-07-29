@@ -1,9 +1,16 @@
+// Project imports:
 import '../../models/pagination.dart';
 import 'pix_webhook.dart';
 
+/// Represents a pagination result containing a list of Pix webhooks.
 class PixWebhookPagination {
+  /// The parameters used for pagination.
   final Parameters parameters;
+
+  /// The list of Pix webhooks in this pagination result.
   final List<PixWebhook> webhooks;
+
+  /// Represents a pagination result containing a list of Pix webhooks.
   const PixWebhookPagination({
     required this.parameters,
     required this.webhooks,

@@ -1,5 +1,7 @@
+// Package imports:
 import 'package:equatable/equatable.dart';
 
+// Project imports:
 import '../../../config/utils/date_extensions.dart';
 import 'payee_details.dart';
 import 'sent_pix_devolution.dart';

@@ -1,5 +1,4 @@
 // Dart imports:
-import 'dart:convert';
 
 class DueChargeReduction {
   final double value;
@@ -17,11 +16,6 @@ class DueChargeReduction {
         value: double.parse(map['valorPerc']),
         modality: ReductionModality.match(map['modalidade'] as int),
       );
-
-  String toJson() => json.encode(toMap());
-
-  factory DueChargeReduction.fromJson(String source) =>
-      DueChargeReduction.fromMap(json.decode(source) as Map<String, dynamic>);
 
   DueChargeReduction copyWith({
     double? value,

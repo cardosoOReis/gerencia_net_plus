@@ -1,5 +1,4 @@
 // Dart imports:
-import 'dart:convert';
 
 // Project imports:
 import '../../models/pagination.dart';
@@ -30,12 +29,5 @@ class ImmediateChargePagination {
             ),
           ),
         ),
-      );
-
-  String toJson() => json.encode(toMap());
-
-  factory ImmediateChargePagination.fromJson(String source) =>
-      ImmediateChargePagination.fromMap(
-        json.decode(source) as Map<String, dynamic>,
       );
 }

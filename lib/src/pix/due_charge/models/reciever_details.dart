@@ -1,5 +1,4 @@
 // Dart imports:
-import 'dart:convert';
 
 class RecieverDetails {
   final String name;
@@ -35,9 +34,4 @@ class RecieverDetails {
         federativeUnit: map['uf'] as String,
         cep: map['cep'] as String,
       );
-
-  String toJson() => json.encode(toMap());
-
-  factory RecieverDetails.fromJson(String source) =>
-      RecieverDetails.fromMap(json.decode(source) as Map<String, dynamic>);
 }
