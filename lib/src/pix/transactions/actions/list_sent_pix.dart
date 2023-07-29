@@ -2,44 +2,39 @@
 import '../../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import '../../../config/utils/date_extensions.dart';
 import '../../../config/utils/map_extensions.dart';
-import '../models/recieved_pix_pagination.dart';
+import '../models/sent_pix_pagination.dart';
+import '../models/sent_pix_status.dart';
 
-class ListRecievedPix {
+class ListSentPix {
   final GerenciaNetPlusPixRestClient _client;
 
-  const ListRecievedPix(this._client);
+  const ListSentPix(this._client);
 
-  Future<RecievedPixPagination> call({
+  Future<SentPixPagination> call({
     required DateTime start,
     required DateTime end,
-    required String? txid,
-    required bool? hasTxid,
+    required SentPixStatus? status,
     required bool? hasDevolution,
-    required String? cpf,
-    required String? cnpj,
-    required int? currentPage,
+    required int? pageNumber,
     required int? pageSize,
   }) async {
     final params = <String, dynamic>{
       'inicio': start.toRFC3339(),
       'fim': end.toRFC3339(),
     }..addAllIfNotNull({
-        'txid': txid,
-        'txIdPresente': hasTxid,
         'devolucaoPresente': hasDevolution,
-        'cpf': cpf,
-        'cnpj': cnpj,
-        'paginacao.paginaAtual': currentPage,
+        'status': status?.value,
+        'paginacao.paginaAtual': pageNumber,
         'paginacao.itensPorPagina': pageSize,
       });
 
-    final endpoint = _client.pixEndPoints.transactions.listReceivedPix();
+    final endpoint = _client.pixEndPoints.transactions.listSentPix();
 
     final result = await _client<Map<String, dynamic>>(
       endPoint: endpoint,
       queryParameters: params,
     );
 
-    return RecievedPixPagination.fromMap(result.data!);
+    return SentPixPagination.fromMap(result.data!);
   }
 }

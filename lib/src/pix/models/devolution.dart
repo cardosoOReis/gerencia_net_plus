@@ -1,4 +1,5 @@
 import '../../config/utils/date_extensions.dart';
+import '../../config/utils/map_extensions.dart';
 
 /// Represents a devolution made from a [RecievedPix].
 class Devolution {
@@ -19,6 +20,12 @@ class Devolution {
   /// The current devolution's status.
   final DevolutionStatus status;
 
+  /// The reason the devolution was not made.
+  ///
+  /// This field will only be not null when [status] is
+  /// [DevolutionStatus.rejected]
+  final String? reason;
+
   /// Represents a devolution made from a [RecievedPix].
   const Devolution({
     required this.id,
@@ -26,6 +33,7 @@ class Devolution {
     required this.value,
     required this.solicitationTime,
     required this.status,
+    this.reason,
   });
 
   /// Handy method to convert a [Devolution] to a [Map].
@@ -37,15 +45,16 @@ class Devolution {
           'solicitacao': solicitationTime.toRFC3339(),
         },
         'status': status.value,
-      };
+      }..addIfNotNull('motivo', reason);
 
   /// Handy method to convert a [Map] to a [Devolution].
   factory Devolution.fromMap(Map<String, dynamic> map) => Devolution(
         id: map['id'] as String,
         rtrId: map['rtrId'] as String,
-        value: map['value'] as double,
+        value: double.parse(map['valor']),
         solicitationTime: DateTime.parse(map['horario']['solicitacao']),
         status: DevolutionStatus.match(map['status']),
+        reason: map['motivo'],
       );
 }
 
@@ -54,18 +63,18 @@ class Devolution {
 /// - [processing]: The devolution is still being processed, and has not been
 /// made yet.
 ///
-/// - [returned]: The devolution was made.
+/// - [confirmed]: The devolution was made.
 ///
-/// - [unrealized]: The devolution was not made, and it won't be made.
+/// - [rejected]: The devolution was not made, and it won't be made.
 enum DevolutionStatus {
   /// The devolution is still being processed, and has not been made yet.
   processing('EM_PROCESSAMENTO'),
 
   ///The devolution was made.
-  returned('DEVOLVIDO'),
+  confirmed('DEVOLVIDO'),
 
   /// The devolution was not made, and it won't be made.
-  unrealized('NAO_REALIZADO');
+  rejected('NAO_REALIZADO');
 
   /// The status that is returned from the GerenciaNet Api.
   final String value;

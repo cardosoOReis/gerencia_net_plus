@@ -32,11 +32,11 @@ class PixTransactionsEndPoints {
       );
   EndPoint requestDevolution(String endToEndId, String devolutionId) =>
       EndPoint(
-        path: '$url$_baseEndPoint$endToEndId/devolucao/$devolutionId',
+        path: '$url$_baseEndPoint/$endToEndId/devolucao/$devolutionId',
         method: HttpMethod.put,
       );
   EndPoint detailDevolution(String endToEndId, String devolutionId) => EndPoint(
-        path: '$url$_baseEndPoint$endToEndId/devolucao/$devolutionId',
+        path: '$url$_baseEndPoint/$endToEndId/devolucao/$devolutionId',
         method: HttpMethod.get,
       );
 }

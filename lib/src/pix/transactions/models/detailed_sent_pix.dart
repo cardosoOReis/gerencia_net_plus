@@ -69,11 +69,11 @@ class DetailedSentPix extends Equatable {
       payerPixKey: map['chave'] as String,
       status: SentPixStatus.match(map['status']),
       solicitationTime: DateTime.parse(map['horario']['solicitacao']),
-      liquidationTime: DateTime.tryParse(map['horario']['liquidacao']),
+      liquidationTime: DateTime.tryParse(map['horario']['liquidacao'] ?? ''),
       payeeDetails: payeeDetails,
       payerInfo: map['infoPagador'],
-      devolutions: (map['devolucoes'] as List<dynamic>)
-          .map((e) => SentPixDevolution.fromMap(e as Map<String, dynamic>))
+      devolutions: (map['devolucoes'] as List<dynamic>?)
+          ?.map((e) => SentPixDevolution.fromMap(e as Map<String, dynamic>))
           .toList(),
     );
   }

@@ -2,8 +2,8 @@
 import 'dart:convert';
 
 // Project imports:
-import '../../../models/pagination.dart';
-import '../../../models/recieved_pix.dart';
+import '../../models/pagination.dart';
+import '../../models/recieved_pix.dart';
 
 class RecievedPixPagination {
   final Parameters parameters;
