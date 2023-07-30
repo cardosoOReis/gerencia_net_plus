@@ -87,7 +87,7 @@ class GerenciaNetCredentials extends Equatable {
   /// If this is a Dart project only, without Flutter, follow these steps.
   ///
   /// Load the certificate using the [File] class, and get the file bytes using
-  /// the [readAsBytesSync()].
+  /// the [File.readAsBytesSync()].
   ///
   /// ```dart
   /// final certificateBytes =
@@ -146,7 +146,7 @@ class GerenciaNetCredentials extends Equatable {
   /// ```dart
   /// import 'package:flutter/services.dart' show rootBundle;
   ///
-  /// final certificateBytes = await rootBundle
+  /// final privateKeyBytes = await rootBundle
   ///     .load('certificates/my_application_private_key.key.pem')
   ///     .then((byteData) => byteData.buffer.asUint8List());
   /// ```
@@ -162,7 +162,7 @@ class GerenciaNetCredentials extends Equatable {
   /// If this is a Dart project only, without Flutter, follow these steps.
   ///
   /// Load the certificate using the [File] class, and get the file bytes using
-  /// the [readAsBytesSync()].
+  /// the [File.readAsBytesSync()] method.
   ///
   /// ```dart
   /// final privateKeyBytes =

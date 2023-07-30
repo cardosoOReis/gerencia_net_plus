@@ -3,20 +3,34 @@ import 'package:equatable/equatable.dart';
 
 /// The person responsible for paying the immediate charge.
 ///
-/// The person paying can be either a [PhysicalPerson], with a CPF, or a
-/// [LegalPerson], with a CNPJ.
+/// It doesn't identifies the person/entity actually pays the charge, only
+/// the person that should pay the charge. Another unrelated person could still
+/// pay the charge.
+///
+/// The person paying can be either a [PhysicalPersonDebtor], with a CPF, or a
+/// [LegalPersonDebtor], with a CNPJ. All the other fields are equal for both
+/// classes.
 sealed class Debtor extends Equatable {
   /// The person responsible for paying the immediate charge.
   ///
-  /// The person paying can be either a [PhysicalPerson], with a CPF, or a
-  /// [LegalPerson], with a CNPJ.
+  /// It doesn't identifies the person/entity actually pays the charge, only
+  /// the person that should pay the charge. Another unrelated person could still
+  /// pay the charge.
+  ///
+  /// The person paying can be either a [PhysicalPersonDebtor], with a CPF, or a
+  /// [LegalPersonDebtor], with a CNPJ. All the other fields are equal for both
+  /// classes.
   const Debtor();
 
   /// Handy method to convert a [Debtor] to a [Map].
   Map<String, dynamic> toMap();
 }
 
-/// The Physical Person responsible to pay a charge.
+/// The Physical Person responsible for paying the immediate charge.
+///
+/// It doesn't identifies the person/entity actually pays the charge, only
+/// the person that should pay the charge. Another unrelated person could still
+/// pay the charge.
 class PhysicalPersonDebtor extends Debtor {
   /// The physical person's name.
   final String name;
@@ -24,7 +38,11 @@ class PhysicalPersonDebtor extends Debtor {
   /// The physical person's CPF.
   final String cpf;
 
-  /// The Physical Person responsible to pay a charge.
+  /// The Physical Person responsible for paying the immediate charge.
+  ///
+  /// It doesn't identifies the person/entity actually pays the charge, only
+  /// the person that should pay the charge. Another unrelated person could
+  /// still pay the charge.
   const PhysicalPersonDebtor({
     required this.name,
     required this.cpf,
@@ -57,7 +75,11 @@ class PhysicalPersonDebtor extends Debtor {
       );
 }
 
-/// The Legal Person responsible to pay a charge.
+/// The Legal Person responsible for paying the immediate charge.
+///
+/// It doesn't identifies the person/entity actually pays the charge, only
+/// the person that should pay the charge. Another unrelated person could
+/// still pay the charge.
 class LegalPersonDebtor extends Debtor {
   /// The leagal person's name.
   final String name;
@@ -65,7 +87,11 @@ class LegalPersonDebtor extends Debtor {
   /// The leagal person's CNPJ.
   final String cnpj;
 
-  /// The Legal Person responsible to pay a charge.
+  /// The Legal Person responsible for paying the immediate charge.
+  ///
+  /// It doesn't identifies the person/entity actually pays the charge, only
+  /// the person that should pay the charge. Another unrelated person could
+  /// still pay the charge.
   const LegalPersonDebtor({
     required this.name,
     required this.cnpj,

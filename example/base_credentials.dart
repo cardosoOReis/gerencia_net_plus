@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:dotenv/dotenv.dart';
-import 'package:gerencia_net_plus/src/core/gerencia_net_credentials.dart';
+import 'package:gerencia_net_plus/gerencia_net_plus.dart';
 
 GerenciaNetCredentials get baseCredentials {
   final env = DotEnv(includePlatformEnvironment: true)..load();
