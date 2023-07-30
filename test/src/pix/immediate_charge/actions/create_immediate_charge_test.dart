@@ -39,6 +39,11 @@ void main() {
           final result = await createCharge(
             credentials: mockCredentials,
             value: 0,
+            additionalInfo: [],
+            debtor: null,
+            expiration: null,
+            payerSolicitation: null,
+            txid: '',
           );
 
           //Assert
@@ -65,6 +70,11 @@ void main() {
             () async => call(
               credentials: mockCredentials,
               value: 0,
+              additionalInfo: [],
+              debtor: null,
+              expiration: null,
+              payerSolicitation: null,
+              txid: '',
             ),
             throwsA(isA<Error>()),
           );
@@ -87,6 +97,11 @@ void main() {
         final result = createCharge(
           credentials: mockCredentials,
           value: 0,
+          additionalInfo: [],
+          debtor: null,
+          expiration: null,
+          payerSolicitation: null,
+          txid: '',
         );
 
         //Assert

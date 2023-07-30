@@ -66,6 +66,9 @@ class Pix {
         credentials: _credentials,
       );
 
+  /// Groups all available Location operations.
+  ///
+  /// If you want to use QR Code functionality, use the `qrCode` property.
   LocationOperations get location => LocationOperations(client: _client);
 
   /// All the QR Code operations, with some helper methods to make integration
@@ -75,6 +78,11 @@ class Pix {
         immediateChargeOperations: immediateCharge,
       );
 
+  /// All the available operations related to PIX webhooks.
+  ///
+  /// Provides methods to interact with PIX webhooks, including
+  /// configuring a webhook, retrieving webhook details, listing webhooks, and
+  /// canceling a webhook.
   WebhookOperations get webhook => WebhookOperations(
         client: _client,
         credentials: _credentials,

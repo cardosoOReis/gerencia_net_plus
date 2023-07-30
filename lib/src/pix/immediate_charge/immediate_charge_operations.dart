@@ -1,5 +1,6 @@
 // Project imports:
 import '../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
+import '../../config/utils/txid.dart' as txid_utils;
 import '../../core/gerencia_net_credentials.dart';
 import '../models/additional_info.dart';
 import '../models/charge_status.dart';
@@ -23,7 +24,7 @@ class ImmediateChargeOperations {
   })  : _client = client,
         _credentials = credentials;
 
-  /// Creates an Immediate Charge with the given [value]
+  /// Creates an Immediate Charge with the given [value].
   ///
   ///
   /// You can specify an optional [expiration] duration, which
@@ -58,7 +59,7 @@ class ImmediateChargeOperations {
     return pixCreateCharge(
       credentials: _credentials,
       expiration: expiration,
-      txid: txid,
+      txid: txid ?? txid_utils.generate(),
       value: value,
       debtor: debtor,
       payerSolicitation: payerSolicitation,

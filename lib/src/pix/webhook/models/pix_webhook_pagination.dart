@@ -16,11 +16,13 @@ class PixWebhookPagination {
     required this.webhooks,
   });
 
+  /// Handy method to convert a [PixWebhookPagination] to a Map.
   Map<String, dynamic> toMap() => <String, dynamic>{
         'parametros ': parameters.toMap(),
         'webhooks': webhooks.map((x) => x.toMap()).toList(),
       };
 
+  /// Handy method to convert a Map to [PixWebhookPagination].
   factory PixWebhookPagination.fromMap(Map<String, dynamic> map) =>
       PixWebhookPagination(
         parameters:

@@ -5,7 +5,6 @@ import 'package:dio/dio.dart';
 
 // Project imports:
 import '../../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
-import '../../../config/utils/txid.dart' as txid_utils;
 import '../../../core/gerencia_net_credentials.dart';
 import '../../../core/gerencia_net_exception.dart';
 import '../../models/additional_info.dart';
@@ -87,11 +86,11 @@ class CreateCharge {
   Future<ImmediateCharge> call({
     required GerenciaNetCredentials credentials,
     required double value,
-    Duration? expiration,
-    String? txid,
-    Debtor? debtor,
-    String? payerSolicitation,
-    List<AdditionalInfo> additionalInfo = const [],
+    required Duration? expiration,
+    required String txid,
+    required Debtor? debtor,
+    required String? payerSolicitation,
+    required List<AdditionalInfo> additionalInfo,
   }) async {
     final body = CreateImmediateChargeRequestBody(
       credentials: credentials,
@@ -101,9 +100,7 @@ class CreateCharge {
       payerSolicitation: payerSolicitation,
       additionalInfo: additionalInfo,
     );
-    final endPoint = _client.pixEndPoints.immediateCharge.pixCreateCharge(
-      txid ?? txid_utils.generate(),
-    );
+    final endPoint = _client.pixEndPoints.immediateCharge.pixCreateCharge(txid);
 
     try {
       final response = await _client<Map<String, dynamic>>(

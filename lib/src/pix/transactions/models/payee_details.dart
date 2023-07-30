@@ -56,10 +56,15 @@ class BankAccountPayeeDetails extends PayeeDetails {
       );
 }
 
+/// Enum representing the types of bank accounts.
 enum BankAccountType {
+  /// Represents a checking account.
   checkingAcount('cacc'),
+
+  /// Represents a savings account.
   savingsAccount('svgs');
 
+  /// Helper to convert from the map.
   final String value;
 
   const BankAccountType(this.value);

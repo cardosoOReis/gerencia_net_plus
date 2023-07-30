@@ -13,11 +13,13 @@ class SentPixPagination {
   /// Represents a pagination result containing a list of sent Pix transactions.
   const SentPixPagination({required this.parameters, required this.pix});
 
+  /// Handy method to convert a [SentPixPagination] to a Map.
   Map<String, dynamic> toMap() => <String, dynamic>{
         'parametros': parameters.toMap(),
         'pix': pix.map((x) => x.toMap()).toList(),
       };
 
+  /// Handy method to convert a Map to a [SentPixPagination].
   factory SentPixPagination.fromMap(Map<String, dynamic> map) =>
       SentPixPagination(
         parameters: Parameters.fromMap(map['parametros']),

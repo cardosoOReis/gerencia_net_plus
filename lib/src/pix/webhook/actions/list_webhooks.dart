@@ -7,11 +7,29 @@ import '../../../config/utils/date_extensions.dart';
 import '../../../core/gerencia_net_exception.dart';
 import '../models/pix_webhook_pagination.dart';
 
+/// Retrieves a paginated list of webhooks within a specified timeframe.
+///
+/// The [start] and [end] parameters define the period for which the webhooks
+/// are retrieved. The optional [pageSize] parameter allows you to specify the
+/// number of webhooks to retrieve per page, and the [pageNumber] parameter
+/// allows you to specify the desired page number.
 class ListWebhook {
   final GerenciaNetPlusPixRestClient _client;
 
+  /// Retrieves a paginated list of webhooks within a specified timeframe.
+  ///
+  /// The [start] and [end] parameters define the period for which the webhooks
+  /// are retrieved. The optional [pageSize] parameter allows you to specify the
+  /// number of webhooks to retrieve per page, and the [pageNumber] parameter
+  /// allows you to specify the desired page number.
   const ListWebhook(this._client);
 
+  /// Retrieves a paginated list of webhooks within a specified timeframe.
+  ///
+  /// The [start] and [end] parameters define the period for which the webhooks
+  /// are retrieved. The optional [pageSize] parameter allows you to specify the
+  /// number of webhooks to retrieve per page, and the [pageNumber] parameter
+  /// allows you to specify the desired page number.
   Future<PixWebhookPagination> call({
     required DateTime start,
     required DateTime end,

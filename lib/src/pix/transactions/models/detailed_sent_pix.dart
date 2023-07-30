@@ -7,18 +7,44 @@ import 'payee_details.dart';
 import 'sent_pix_devolution.dart';
 import 'sent_pix_status.dart';
 
+/// Represents a detailed sent PIX transaction.
 class DetailedSentPix extends Equatable {
+  /// The end-to-end identifier of the sent PIX transaction.
   final String endToEndId;
+
+  /// The unique identifier of the sent PIX transaction.
   final String id;
+
+  /// The value (amount) of the sent PIX transaction.
   final double value;
+
+  /// The PIX key of the payer who initiated the transaction.
   final String payerPixKey;
+
+  /// The status of the sent PIX transaction.
   final SentPixStatus status;
+
+  /// The date and time when the PIX transaction was solicited.
   final DateTime solicitationTime;
+
+  /// Details of the payee who received the PIX transaction.
   final PayeeDetails payeeDetails;
+
+  /// The date and time when the PIX transaction was paid.
+  ///
+  /// This will only not be null when the [SentPixStatus] is
+  /// [SentPixStatus.confirmed]
   final DateTime? liquidationTime;
+
+  /// Additional information about the payer (if available) for the sent PIX
+  /// transaction.
   final String? payerInfo;
+
+  /// A list of devolutions associated with the sent PIX transaction, if
+  /// applicable.
   final List<SentPixDevolution>? devolutions;
 
+  /// Represents a detailed sent PIX transaction.
   const DetailedSentPix({
     required this.endToEndId,
     required this.id,
@@ -45,6 +71,7 @@ class DetailedSentPix extends Equatable {
         payeeDetails,
       ];
 
+  /// Handy method to convert a [DetailedSentPix] to a Map.
   Map<String, dynamic> toMap() => <String, dynamic>{
         'endToEndId': endToEndId,
         'id': id,
@@ -58,6 +85,7 @@ class DetailedSentPix extends Equatable {
         'devolutions': devolutions?.map((e) => e.toMap()).toList(),
       };
 
+  /// Handy method to convert a Map to a [DetailedSentPix].
   factory DetailedSentPix.fromMap(Map<String, dynamic> map) {
     final Map<String, dynamic> payeeJson = map['favorecido'];
     final payeeDetails = payeeJson.containsKey('chave')
