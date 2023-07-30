@@ -9,7 +9,7 @@ Future<void> main(List<String> args) async {
     end: DateTime(2024),
     cnpj: '12345678000195',
     status: ChargeStatus.completed,
-    itemAmount: 5,
+    pageSize: 5,
     pageNumber: 0,
   );
 

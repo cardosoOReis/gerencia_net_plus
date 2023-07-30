@@ -1,3 +1,5 @@
+// ignore_for_file: public_member_api_docs
+
 // Project imports:
 import '../../../../config/utils/date_extensions.dart';
 import '../../../../config/utils/map_extensions.dart';

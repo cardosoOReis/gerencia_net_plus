@@ -9,11 +9,68 @@ import '../../../core/gerencia_net_exception.dart';
 import '../../models/charge_status.dart';
 import '../models/due_charge_pagination.dart';
 
+/// Retrieves a list of Due Charges within a specified timeframe.
+///
+/// By providing the [start] and [end] parameters, you can define the desired
+/// period for which you want to retrieve the charges. This allows you to
+/// fetch charges created during a specific timeframe.
+///
+/// Optionally, you can further refine the search results by utilizing
+/// additional parameters. For example, you can provide a [cpf]
+/// (Brazilian individual taxpayer registry) or [cnpj] (Brazilian corporate
+/// taxpayer registry) to filter charges associated with specific entities.
+/// Moreover, you can specify a [status] to retrieve charges with a particular
+/// [SentPixStatus] value, allowing you to focus on charges with specific
+/// processing statuses.
+///
+/// If there are multiple pages of charges available, you can specify the
+/// desired [pageNumber] to retrieve a specific page. Additionally, you can
+/// control the number of charges to retrieve per page by providing the
+/// [pageSize] parameter. This allows you to customize the pagination and
+/// retrieve charges in a suitable manner.
 class ListDueCharges {
   final GerenciaNetPlusPixRestClient _client;
 
+  /// Retrieves a list of Due Charges within a specified timeframe.
+  ///
+  /// By providing the [start] and [end] parameters, you can define the desired
+  /// period for which you want to retrieve the charges. This allows you to
+  /// fetch charges created during a specific timeframe.
+  ///
+  /// Optionally, you can further refine the search results by utilizing
+  /// additional parameters. For example, you can provide a [cpf]
+  /// (Brazilian individual taxpayer registry) or [cnpj] (Brazilian corporate
+  /// taxpayer registry) to filter charges associated with specific entities.
+  /// Moreover, you can specify a [status] to retrieve charges with a particular
+  /// [SentPixStatus] value, allowing you to focus on charges with specific
+  /// processing statuses.
+  ///
+  /// If there are multiple pages of charges available, you can specify the
+  /// desired [pageNumber] to retrieve a specific page. Additionally, you can
+  /// control the number of charges to retrieve per page by providing the
+  /// [pageSize] parameter. This allows you to customize the pagination and
+  /// retrieve charges in a suitable manner.
   const ListDueCharges(this._client);
 
+  /// Retrieves a list of Due Charges within a specified timeframe.
+  ///
+  /// By providing the [start] and [end] parameters, you can define the desired
+  /// period for which you want to retrieve the charges. This allows you to
+  /// fetch charges created during a specific timeframe.
+  ///
+  /// Optionally, you can further refine the search results by utilizing
+  /// additional parameters. For example, you can provide a [cpf]
+  /// (Brazilian individual taxpayer registry) or [cnpj] (Brazilian corporate
+  /// taxpayer registry) to filter charges associated with specific entities.
+  /// Moreover, you can specify a [status] to retrieve charges with a particular
+  /// [SentPixStatus] value, allowing you to focus on charges with specific
+  /// processing statuses.
+  ///
+  /// If there are multiple pages of charges available, you can specify the
+  /// desired [pageNumber] to retrieve a specific page. Additionally, you can
+  /// control the number of charges to retrieve per page by providing the
+  /// [pageSize] parameter. This allows you to customize the pagination and
+  /// retrieve charges in a suitable manner.
   Future<DueChargePagination> call({
     required DateTime start,
     required DateTime end,
@@ -23,19 +80,20 @@ class ListDueCharges {
     required ChargeStatus? status,
     required int? idDueChargeBatch,
     required int? pageNumber,
-    required int? itemAmount,
+    required int? pageSize,
   }) async {
     final params = <String, dynamic>{
       'inicio': start.toRFC3339(),
       'fim': end.toRFC3339(),
-    }
-      ..addIfNotNull('cpf', cpf)
-      ..addIfNotNull('cnpj', cnpj)
-      ..addIfNotNull('locationPresente', hasLocation)
-      ..addIfNotNull('status', status?.value)
-      ..addIfNotNull('loteCobVID', idDueChargeBatch)
-      ..addIfNotNull('paginacao.paginaAtual', pageNumber)
-      ..addIfNotNull('paginacao.itensPorPagina', itemAmount);
+    }..addAllIfNotNull({
+        'cpf': cpf,
+        'cnpj': cnpj,
+        'locationPresente': hasLocation,
+        'status': status,
+        'loteCobVID': idDueChargeBatch,
+        'paginacao.paginaAtual': pageNumber,
+        'paginacao.itensPorPagina': pageSize,
+      });
 
     final endPoint = _client.pixEndPoints.dueCharge.listDueCharges();
 

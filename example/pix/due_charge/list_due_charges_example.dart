@@ -8,7 +8,7 @@ Future<void> main(List<String> args) async {
     start: DateTime.now().subtract(const Duration(days: 10)),
     end: DateTime.now().add(const Duration(days: 10)),
     status: ChargeStatus.active,
-    itemAmount: 5,
+    pageSize: 5,
     pageNumber: 0,
   );
 

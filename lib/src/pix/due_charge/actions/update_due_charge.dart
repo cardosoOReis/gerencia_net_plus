@@ -14,11 +14,110 @@ import '../models/due_charge_interest_rates.dart';
 import '../models/due_charge_reduction.dart';
 import 'models/update_due_charge_request_body.dart';
 
+/// Updates an existing Due Charge.
+///
+/// This method allows you to update an existing Due Charge with new
+/// information. By providing the necessary parameters, you can modify various
+/// aspects of the charge.
+///
+/// To update a Due Charge, you need to provide the unique identifier
+/// of the charge using the [txid] parameter. This identifier ensures that the
+/// correct charge is being updated.
+///
+/// The [dueDate], [debtorDetails], and [originalValue] parameters allow you
+/// to change the due date, debtor details, and the original value of the Due
+/// Charge, respectively.
+///
+/// You can also modify the [pixKey] associated with the charge, if needed.
+///
+/// Additionally, you can provide the [expiryDaysAfterExpiration] to update
+/// the deadline for the payer to complete the payment.
+///
+/// The [locationId] parameter allows you to update the location identifier
+/// associated with the charge, if applicable.
+///
+/// The [status] parameter enables you to change the status of the charge to
+/// reflect its current state accurately.
+///
+/// The [fine], [interestRate], [reduction], and [discount] parameters allow
+/// you to update the additional details of the Due Charge.
+///
+/// To provide any payer solicitation or instructions, you can use the
+/// [payerSolicitation] parameter to update the solicitation message.
+///
+/// If needed, you can modify the [additionalInfo] parameter to include or
+/// update supplementary information relevant to the charge.
 class UpdateDueCharge {
   final GerenciaNetPlusPixRestClient _client;
 
+  /// Updates an existing Due Charge.
+  ///
+  /// This method allows you to update an existing Due Charge with new
+  /// information. By providing the necessary parameters, you can modify various
+  /// aspects of the charge.
+  ///
+  /// To update a Due Charge, you need to provide the unique identifier
+  /// of the charge using the [txid] parameter. This identifier ensures that the
+  /// correct charge is being updated.
+  ///
+  /// The [dueDate], [debtorDetails], and [originalValue] parameters allow you
+  /// to change the due date, debtor details, and the original value of the Due
+  /// Charge, respectively.
+  ///
+  /// You can also modify the [pixKey] associated with the charge, if needed.
+  ///
+  /// Additionally, you can provide the [expiryDaysAfterExpiration] to update
+  /// the deadline for the payer to complete the payment.
+  ///
+  /// The [locationId] parameter allows you to update the location identifier
+  /// associated with the charge, if applicable.
+  ///
+  /// The [status] parameter enables you to change the status of the charge to
+  /// reflect its current state accurately.
+  ///
+  /// The [fine], [interestRate], [reduction], and [discount] parameters allow
+  /// you to update the additional details of the Due Charge.
+  ///
+  /// To provide any payer solicitation or instructions, you can use the
+  /// [payerSolicitation] parameter to update the solicitation message.
+  ///
+  /// If needed, you can modify the [additionalInfo] parameter to include or
+  /// update supplementary information relevant to the charge.
   const UpdateDueCharge(this._client);
 
+  /// Updates an existing Due Charge.
+  ///
+  /// This method allows you to update an existing Due Charge with new
+  /// information. By providing the necessary parameters, you can modify various
+  /// aspects of the charge.
+  ///
+  /// To update a Due Charge, you need to provide the unique identifier
+  /// of the charge using the [txid] parameter. This identifier ensures that the
+  /// correct charge is being updated.
+  ///
+  /// The [dueDate], [debtorDetails], and [originalValue] parameters allow you
+  /// to change the due date, debtor details, and the original value of the Due
+  /// Charge, respectively.
+  ///
+  /// You can also modify the [pixKey] associated with the charge, if needed.
+  ///
+  /// Additionally, you can provide the [expiryDaysAfterExpiration] to update
+  /// the deadline for the payer to complete the payment.
+  ///
+  /// The [locationId] parameter allows you to update the location identifier
+  /// associated with the charge, if applicable.
+  ///
+  /// The [status] parameter enables you to change the status of the charge to
+  /// reflect its current state accurately.
+  ///
+  /// The [fine], [interestRate], [reduction], and [discount] parameters allow
+  /// you to update the additional details of the Due Charge.
+  ///
+  /// To provide any payer solicitation or instructions, you can use the
+  /// [payerSolicitation] parameter to update the solicitation message.
+  ///
+  /// If needed, you can modify the [additionalInfo] parameter to include or
+  /// update supplementary information relevant to the charge.
   Future<DueCharge> call(
     String txid, {
     required DateTime? dueDate,

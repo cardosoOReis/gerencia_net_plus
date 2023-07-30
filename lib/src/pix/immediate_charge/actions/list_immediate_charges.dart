@@ -69,7 +69,7 @@ class ListCharges {
   /// If there are multiple pages of charges available, you can specify the
   /// desired [pageNumber] to retrieve a specific page. Additionally, you can
   /// control the number of charges to retrieve per page by providing the
-  /// [itemAmount] parameter. This allows you to customize the pagination and
+  /// [pageSize] parameter. This allows you to customize the pagination and
   /// retrieve charges in a suitable manner.
   Future<ImmediateChargePagination> call({
     required DateTime start,
@@ -78,7 +78,7 @@ class ListCharges {
     required String? cnpj,
     required ChargeStatus? status,
     required int? pageNumber,
-    required int? itemAmount,
+    required int? pageSize,
   }) async {
     final queryParameters = <String, dynamic>{
       'inicio': start.toRFC3339(),
@@ -88,7 +88,7 @@ class ListCharges {
       ..addIfNotNull('cnpj', cnpj)
       ..addIfNotNull('status', status?.value)
       ..addIfNotNull('paginacao.paginaAtual', pageNumber)
-      ..addIfNotNull('paginacao.itensPorPagina', itemAmount);
+      ..addIfNotNull('paginacao.itensPorPagina', pageSize);
 
     final endPoint = _client.pixEndPoints.immediateCharge.pixListCharges();
 

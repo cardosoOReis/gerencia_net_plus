@@ -6,7 +6,7 @@ import '../../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import '../../../config/utils/date_extensions.dart';
 import '../../../config/utils/map_extensions.dart';
 import '../../../core/gerencia_net_exception.dart';
-import 'models/location_info_pagination.dart';
+import '../models/location_info_pagination.dart';
 
 class ListLocations {
   final GerenciaNetPlusPixRestClient _client;

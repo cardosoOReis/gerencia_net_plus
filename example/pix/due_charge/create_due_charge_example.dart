@@ -10,7 +10,7 @@ Future<void> main(List<String> args) async {
       name: 'Empresa de Serviços SA',
       cnpj: '12345678000195',
       email: 'email@email.com',
-      adress: 'Alameda Souza, Numero 80, Bairro Braz',
+      address: 'Alameda Souza, Numero 80, Bairro Braz',
       city: 'Recife',
       federativeUnit: 'PE',
       cep: '70011750',

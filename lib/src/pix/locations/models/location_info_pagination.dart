@@ -1,8 +1,8 @@
 // Dart imports:
 
 // Project imports:
-import '../../../models/pagination.dart';
-import '../../models/location_with_txid.dart';
+import '../../models/pagination.dart';
+import 'location_with_txid.dart';
 
 class LocationInfoPagination {
   final Parameters parameters;
