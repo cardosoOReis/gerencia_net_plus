@@ -8,11 +8,44 @@ import '../../../config/utils/map_extensions.dart';
 import '../../../core/gerencia_net_exception.dart';
 import '../models/location_info_pagination.dart';
 
+/// List all locations associated with your account.
+///
+/// By providing the [start] and [end] parameters, you can define the desired
+/// period for which you want to retrieve the charges. This allows you to
+/// fetch locations created during a specific timeframe.
+///
+/// If there are multiple pages of locations available, you can specify the
+/// desired [pageNumber] to retrieve a specific page. Additionally, you can
+/// control the number of locations to retrieve per page by providing the
+/// [pageSize] parameter. This allows you to customize the pagination and
+/// retrieve locations in a suitable manner.
 class ListLocations {
   final GerenciaNetPlusPixRestClient _client;
 
+  /// List all locations associated with your account.
+  ///
+  /// By providing the [start] and [end] parameters, you can define the desired
+  /// period for which you want to retrieve the charges. This allows you to
+  /// fetch locations created during a specific timeframe.
+  ///
+  /// If there are multiple pages of locations available, you can specify the
+  /// desired [pageNumber] to retrieve a specific page. Additionally, you can
+  /// control the number of locations to retrieve per page by providing the
+  /// [pageSize] parameter. This allows you to customize the pagination and
+  /// retrieve locations in a suitable manner.
   const ListLocations(this._client);
 
+  /// List all locations associated with your account.
+  ///
+  /// By providing the [start] and [end] parameters, you can define the desired
+  /// period for which you want to retrieve the charges. This allows you to
+  /// fetch locations created during a specific timeframe.
+  ///
+  /// If there are multiple pages of locations available, you can specify the
+  /// desired [pageNumber] to retrieve a specific page. Additionally, you can
+  /// control the number of locations to retrieve per page by providing the
+  /// [pageSize] parameter. This allows you to customize the pagination and
+  /// retrieve locations in a suitable manner.
   Future<LocationInfoPagination> call({
     required DateTime start,
     required DateTime end,

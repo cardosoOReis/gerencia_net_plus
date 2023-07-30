@@ -7,11 +7,26 @@ import '../../../core/gerencia_net_exception.dart';
 import '../../models/charge_type.dart';
 import '../models/location_with_txid.dart';
 
+/// Creates a location with a specific [ChargeType].
+///
+/// After creating this location, it still won't have a charge associated with
+/// it, you need to manually assign a charge to it. You can only associate
+/// a charge with the same [ChargeType] as the location.
 class CreateLocation {
   final GerenciaNetPlusPixRestClient _client;
 
+  /// Creates a location with a specific [ChargeType].
+  ///
+  /// After creating this location, it still won't have a charge associated with
+  /// it, you need to manually assign a charge to it. You can only associate
+  /// a charge with the same [ChargeType] as the location.
   const CreateLocation(this._client);
 
+  /// Creates a location with a specific [ChargeType].
+  ///
+  /// After creating this location, it still won't have a charge associated with
+  /// it, you need to manually assign a charge to it. You can only associate
+  /// a charge with the same [ChargeType] as the location.
   Future<LocationInfoWithTxid> call({
     required ChargeType chargeType,
   }) async {

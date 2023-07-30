@@ -6,11 +6,14 @@ import '../../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import '../../../core/gerencia_net_exception.dart';
 import '../models/location_with_txid.dart';
 
+/// Details a location with the given [id].
 class DetailLocation {
   final GerenciaNetPlusPixRestClient _client;
 
+  /// Details a location with the given [id].
   const DetailLocation(this._client);
 
+  /// Details a location with the given [id].
   Future<LocationInfoWithTxid> call(int id) async {
     final endPoint = _client.pixEndPoints.location.detailLocation(id);
 
