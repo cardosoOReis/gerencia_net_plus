@@ -1,5 +1,4 @@
 import 'package:gerencia_net_plus/gerencia_net_plus.dart';
-import 'package:gerencia_net_plus/src/pix/transactions/models/sent_pix_status.dart';
 
 import '../../base_credentials.dart';
 

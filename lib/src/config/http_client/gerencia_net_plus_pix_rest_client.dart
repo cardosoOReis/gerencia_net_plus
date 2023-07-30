@@ -1,5 +1,5 @@
 // Project imports:
-import '../../gerencia_net_credentials.dart';
+import '../../core/gerencia_net_credentials.dart';
 import '../network/pix_endpoints.dart';
 import 'gerencia_net_plus_rest_client.dart';
 import 'interceptors/gerencia_net_plus_pix_auth_interceptor.dart';

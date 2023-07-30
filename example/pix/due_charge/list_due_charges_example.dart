@@ -1,5 +1,4 @@
 import 'package:gerencia_net_plus/gerencia_net_plus.dart';
-import 'package:gerencia_net_plus/src/pix/models/charge_status.dart';
 
 import '../../base_credentials.dart';
 

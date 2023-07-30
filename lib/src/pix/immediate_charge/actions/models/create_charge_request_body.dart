@@ -1,5 +1,5 @@
 // Project imports:
-import '../../../../gerencia_net_credentials.dart';
+import '../../../../core/gerencia_net_credentials.dart';
 import '../../../models/additional_info.dart';
 import '../../models/debtor.dart';
 

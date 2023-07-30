@@ -3,7 +3,6 @@
 import 'dart:io';
 
 import 'package:gerencia_net_plus/gerencia_net_plus.dart';
-import 'package:gerencia_net_plus/src/pix/models/additional_info.dart';
 
 Future<void> main(List<String> args) async {
   final certificateBytes =

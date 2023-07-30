@@ -1,6 +1,43 @@
-/// A library to facilitate integrating GerenciaNet Services with Dart/Flutter
-library;
+// GENERATED CODE - DO NOT MODIFY BY HAND
 
-export 'src/gerencia_net_credentials.dart';
-export 'src/gerencia_net_plus.dart';
+library gerencia_net_plus;
+
+export 'src/core/gerencia_net_credentials.dart';
+export 'src/core/gerencia_net_exception.dart';
+export 'src/core/gerencia_net_plus.dart';
+export 'src/pix/due_charge/due_charge_operations.dart';
+export 'src/pix/due_charge/models/debtor_details.dart';
+export 'src/pix/due_charge/models/due_charge.dart';
+export 'src/pix/due_charge/models/due_charge_discount.dart';
+export 'src/pix/due_charge/models/due_charge_fine.dart';
+export 'src/pix/due_charge/models/due_charge_interest_rates.dart';
+export 'src/pix/due_charge/models/due_charge_pagination.dart';
+export 'src/pix/due_charge/models/due_charge_reduction.dart';
+export 'src/pix/due_charge/models/reciever_details.dart';
+export 'src/pix/immediate_charge/immediate_charge_operations.dart';
+export 'src/pix/immediate_charge/models/debtor.dart';
+export 'src/pix/immediate_charge/models/immediate_charge.dart';
+export 'src/pix/immediate_charge/models/immediate_charge_pagination.dart';
+export 'src/pix/locations/location_operations.dart';
+export 'src/pix/locations/models/location_with_txid.dart';
+export 'src/pix/models/additional_info.dart';
+export 'src/pix/models/charge_status.dart';
+export 'src/pix/models/charge_type.dart';
+export 'src/pix/models/devolution.dart';
+export 'src/pix/models/location_info.dart';
+export 'src/pix/models/pagination.dart';
+export 'src/pix/models/recieved_pix.dart';
+export 'src/pix/pix_operations.dart';
 export 'src/pix/qr_code/models/qr_code.dart';
+export 'src/pix/qr_code/qr_code_operations.dart';
+export 'src/pix/transactions/models/detailed_sent_pix.dart';
+export 'src/pix/transactions/models/payee_details.dart';
+export 'src/pix/transactions/models/recieved_pix_pagination.dart';
+export 'src/pix/transactions/models/sent_pix.dart';
+export 'src/pix/transactions/models/sent_pix_devolution.dart';
+export 'src/pix/transactions/models/sent_pix_pagination.dart';
+export 'src/pix/transactions/models/sent_pix_status.dart';
+export 'src/pix/transactions/transactions_operations.dart';
+export 'src/pix/webhook/models/pix_webhook.dart';
+export 'src/pix/webhook/models/pix_webhook_pagination.dart';
+export 'src/pix/webhook/webhook_operations.dart';

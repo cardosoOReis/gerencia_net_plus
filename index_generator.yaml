@@ -1,0 +1,8 @@
+index_generator:
+  exclude:
+    - '**/actions/**'
+  indexes:
+    - path: lib
+      include:
+        - "src/core/**"
+        - "src/pix/**"

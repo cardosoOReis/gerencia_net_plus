@@ -1,8 +1,4 @@
 import 'package:gerencia_net_plus/gerencia_net_plus.dart';
-import 'package:gerencia_net_plus/src/pix/due_charge/models/debtor_details.dart';
-import 'package:gerencia_net_plus/src/pix/due_charge/models/due_charge_fine.dart';
-import 'package:gerencia_net_plus/src/pix/due_charge/models/due_charge_reduction.dart';
-import 'package:gerencia_net_plus/src/pix/models/additional_info.dart';
 
 import '../../base_credentials.dart';
 

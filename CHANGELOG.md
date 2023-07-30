@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.0
+
+- Sending Pix functionality.
+- Webhook functionality.
+- Error handling.
+- More documentation.
+
 ## 0.0.4
 
 - Flutter compability.

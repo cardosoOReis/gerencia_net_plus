@@ -1,7 +1,7 @@
 // Project imports:
-import 'config/network/app_network.dart';
+import '../config/network/app_network.dart';
+import '../pix/pix_operations.dart';
 import 'gerencia_net_credentials.dart';
-import 'pix/pix_operations.dart';
 
 /// Base GerenciaNetPlus class to use for integration.
 ///

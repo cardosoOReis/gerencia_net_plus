@@ -1,6 +1,6 @@
 // Project imports:
-import '../../../gerencia_net_plus.dart';
 import '../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
+import '../../core/gerencia_net_credentials.dart';
 import 'actions/cancel_webhook.dart';
 import 'actions/configure_webhook.dart';
 import 'actions/detail_webhook.dart';

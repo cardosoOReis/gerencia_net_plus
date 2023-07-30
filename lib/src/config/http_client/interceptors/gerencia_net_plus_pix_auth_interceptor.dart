@@ -5,7 +5,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 
 // Project imports:
-import '../../../gerencia_net_credentials.dart';
+import '../../../core/gerencia_net_credentials.dart';
 import '../../network/pix_endpoints.dart';
 import '../gerencia_net_plus_rest_client.dart';
 import '../models/token.dart';

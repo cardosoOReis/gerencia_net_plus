@@ -1,7 +1,7 @@
 // Project imports:
 import '../config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import '../config/network/pix_endpoints.dart';
-import '../gerencia_net_credentials.dart';
+import '../core/gerencia_net_credentials.dart';
 import 'due_charge/due_charge_operations.dart';
 import 'immediate_charge/immediate_charge_operations.dart';
 import 'locations/location_operations.dart';
