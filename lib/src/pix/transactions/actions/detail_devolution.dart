@@ -6,7 +6,6 @@ import '../../../config/http_client/gerencia_net_plus_pix_rest_client.dart';
 import '../../../core/gerencia_net_exception.dart';
 import '../../models/devolution.dart';
 
-
 class DetailDevolution {
   final GerenciaNetPlusPixRestClient _client;
 
